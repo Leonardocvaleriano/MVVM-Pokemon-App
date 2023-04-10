@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">MVVM Pokemon App</string>
+    <string name="list">List</string>
+    <string name="favorites">Favorites</string>
+    <string name="pokemon_image">Pokemon Image</string>
+    <string name="favorites_icon">Favorites</string>
+</resources>

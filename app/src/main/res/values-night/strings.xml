@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="list">List</string>
+    <string name="favorites">Favorites</string>
+    <string name="pokemon_image">Pokemon Image</string>
+    <string name="favorites_icon">Favorites</string>
+</resources>
