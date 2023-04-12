@@ -1,4 +1,4 @@
-package com.codeplace.mvvmpokemonapp.ui.activity
+package com.codeplace.mvvmpokemonapp.ui.home.view.activity
 
 
 import android.os.Bundle

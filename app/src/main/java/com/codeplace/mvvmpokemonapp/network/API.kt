@@ -1,7 +1,7 @@
 package com.codeplace.mvvmpokemonapp.network
 
 import PokemonList
-import com.codeplace.mvvmpokemonapp.ui.activity.models.PokemonDetail
+import com.codeplace.mvvmpokemonapp.ui.home.view.activity.models.PokemonDetail
 import retrofit2.Response
 import retrofit2.http.Path
 import retrofit2.http.Query

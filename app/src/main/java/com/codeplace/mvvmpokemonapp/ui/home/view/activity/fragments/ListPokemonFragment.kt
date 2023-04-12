@@ -1,4 +1,4 @@
-package com.codeplace.mvvmpokemonapp.ui.fragments
+package com.codeplace.mvvmpokemonapp.ui.home.view.activity.fragments
 
 import android.os.Bundle
 import android.view.LayoutInflater
