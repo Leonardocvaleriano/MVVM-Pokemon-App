@@ -1,4 +1,4 @@
-package com.codeplace.mvvmpokemonapp.ui.home.view.activity.models
+package com.codeplace.mvvmpokemonapp.ui.home.view.models
 
 data class PokemonList(
     val count: Int,
