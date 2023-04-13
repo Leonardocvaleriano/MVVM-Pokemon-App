@@ -1,5 +1,5 @@
 package com.codeplace.mvvmpokemonapp.ui.home.view.models
 
-class Types (
+class Type (
     val name: String
     )

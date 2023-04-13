@@ -1,6 +1,6 @@
 package com.codeplace.mvvmpokemonapp.ui.home.view.models
 
-class Species (
+class Move (
     val name: String
 )
 
