@@ -10,21 +10,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3593562e-6abe-4c2f-93a0-a3aefb630319" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/codeplace/mvvmpokemonapp/network/repository/PokemonRepository.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/codeplace/mvvmpokemonapp/network/API.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/codeplace/mvvmpokemonapp/network/API.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/codeplace/mvvmpokemonapp/ui/activity/PokemonListActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/codeplace/mvvmpokemonapp/ui/home/view/activity/PokemonListActivity.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/codeplace/mvvmpokemonapp/ui/activity/models/PokemonDetail.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/codeplace/mvvmpokemonapp/ui/home/view/activity/models/PokemonDetail.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/codeplace/mvvmpokemonapp/ui/activity/models/PokemonList.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/codeplace/mvvmpokemonapp/ui/home/view/activity/models/PokemonList.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/codeplace/mvvmpokemonapp/ui/activity/models/Results.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/codeplace/mvvmpokemonapp/ui/home/view/activity/models/Results.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/codeplace/mvvmpokemonapp/ui/activity/models/Species.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/codeplace/mvvmpokemonapp/ui/home/view/activity/models/Species.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/codeplace/mvvmpokemonapp/ui/activity/models/Sprites.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/codeplace/mvvmpokemonapp/ui/home/view/activity/models/Sprites.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/codeplace/mvvmpokemonapp/ui/activity/models/Types.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/codeplace/mvvmpokemonapp/ui/home/view/activity/models/Types.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/codeplace/mvvmpokemonapp/ui/fragments/FavoritesFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/codeplace/mvvmpokemonapp/ui/home/view/activity/fragments/FavoritesFragment.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/codeplace/mvvmpokemonapp/ui/fragments/ListPokemonFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/codeplace/mvvmpokemonapp/ui/home/view/activity/fragments/ListPokemonFragment.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_pokemon_list.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_pokemon_list.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/navigation/pokemon_nav_graph.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/navigation/pokemon_nav_graph.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/codeplace/mvvmpokemonapp/network/repository/PokemonRepository.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/codeplace/mvvmpokemonapp/network/repository/PokemonRepository.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -216,7 +203,19 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="setup-retrofit" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
           </value>
         </entry>
       </map>
