@@ -22,9 +22,12 @@ class PokemonListActivity : AppCompatActivity() {
         binding = ActivityPokemonListBinding.inflate(LayoutInflater.from(this))
         setContentView(binding.root)
 
+        initListeners()
+    }
+
+
+    private fun initListeners() {
         val navHostFragment = supportFragmentManager.findFragmentById(R.id.fragmentContainerView) as NavHostFragment
         navController = navHostFragment.navController
-        binding.bottomNavigationView.setupWithNavController(navController)
-
-    }
+        binding.bottomNavigationView.setupWithNavController(navController)    }
 }
