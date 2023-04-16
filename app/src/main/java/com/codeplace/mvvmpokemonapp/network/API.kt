@@ -1,17 +1,20 @@
 package com.codeplace.mvvmpokemonapp.network
 
-import com.codeplace.mvvmpokemonapp.ui.home.view.models.PokemonDetail
-import com.codeplace.mvvmpokemonapp.ui.home.view.models.PokemonList
+import androidx.transition.Transition.MatchOrder
+import com.codeplace.mvvmpokemonapp.ui.home.view.models.Pokemons
 import retrofit2.Response
+import retrofit2.http.GET
 import retrofit2.http.Path
 import retrofit2.http.Query
 
 interface API {
 
+    @GET("pokemon")
     suspend fun getPokemonList(
         @Query("limit")limit:Int,
-        @Query("offset")offset:Int):Response<PokemonList>
+        @Query("offset")offset:Int):Response<Map<String,*>>
 
-    suspend fun getPokemonDetail(
-        @Path("id")id:Int):Response<PokemonDetail>
+    @GET("pokemon/{name}")
+    suspend fun getPokemonDetails(
+        @Path("name")name:String):Response<Map<String,*>>
 }

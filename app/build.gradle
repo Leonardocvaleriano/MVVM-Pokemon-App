@@ -64,6 +64,6 @@ dependencies {
     //implementation("androidx.lifecycle:lifecycle-runtime-ktx:$lifecycle_version")
 
     // Dependency Injection
-
+    implementation("io.insert-koin:koin-android:3.4.0")
 
 }
