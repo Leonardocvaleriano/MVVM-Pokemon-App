@@ -5,12 +5,12 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 
 class PokemonRepository (private val baseUrl: String) {
-        suspend fun getPokemonList(limit:Int, offset:Int) = withContext(Dispatchers.IO){
+        suspend fun getPokemonList() = withContext(Dispatchers.IO){
             val api = RetrofitInstance.getRetrofit(baseUrl)
-            return@withContext api.getPokemonList(limit, offset)
+            return@withContext api.getPokemonList()
         }
-         suspend fun getPokemonDetails(name: String) = withContext(Dispatchers.IO){
+         suspend fun getPokemonImage(name: String) = withContext(Dispatchers.IO){
              val api = RetrofitInstance.getRetrofit(baseUrl)
-             return@withContext api.getPokemonDetails(name)
+             return@withContext api.getPokemonImage(name)
     }
 }

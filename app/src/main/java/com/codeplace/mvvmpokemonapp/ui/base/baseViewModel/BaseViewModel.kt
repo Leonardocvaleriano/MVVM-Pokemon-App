@@ -20,7 +20,7 @@ open class BaseViewModel : ViewModel() {
 
             try {
                 val response = service()
-                val jsonResponse = JSONObject(response.body()!! as Map<*,*>)
+                val jsonResponse = JSONObject(response.body()!! as Map<*, *>)
                 if (response.isSuccessful) {
                     liveData.value = StateFlow.Loading(false)
                     liveData.value = StateFlow.Success(jsonResponse)

@@ -1,6 +1,7 @@
 package com.codeplace.mvvmpokemonapp.ui.home.view.activity
 
 
+import RecyclerViewClickListener
 import android.os.Bundle
 import android.view.LayoutInflater
 import androidx.appcompat.app.AppCompatActivity

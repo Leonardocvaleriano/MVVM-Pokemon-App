@@ -1,5 +1,7 @@
 package com.codeplace.mvvmpokemonapp.ui.home.view.fragments
 
+import FragmentListPokemonAdapter
+import RecyclerViewClickListener
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -9,17 +11,18 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.codeplace.mvvmpokemonapp.R
 import com.codeplace.mvvmpokemonapp.databinding.FragmentListPokemonBinding
 import com.codeplace.mvvmpokemonapp.stateFlow.StateFlow
-import com.codeplace.mvvmpokemonapp.ui.home.view.adapter.FragmentListPokemonAdapter
+import com.codeplace.mvvmpokemonapp.ui.home.view.models.PokemonName
 import com.codeplace.mvvmpokemonapp.ui.home.viewModel.PokemonViewModel
 import org.json.JSONObject
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
-class ListPokemonFragment: Fragment(){
+class ListPokemonFragment: Fragment(), RecyclerViewClickListener{
     private lateinit var binding: FragmentListPokemonBinding
-    private val viewModel by viewModel<PokemonViewModel> ()
+    private val viewModel by viewModel<PokemonViewModel>()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -40,49 +43,53 @@ class ListPokemonFragment: Fragment(){
         viewModel.getPokemonList()
     }
 
-
     private fun initObservables() {
-        viewModel.pokemonList.observe(viewLifecycleOwner) {
+        viewModel.pokemonListNames.observe(viewLifecycleOwner) {
             when(it){
-                is StateFlow.Loading -> (Loading(it.loading))
-                is StateFlow.Success<*> -> (fillListPokemons(it.data as JSONObject))
+                is StateFlow.Loading -> (loading(it.loading))
+                is StateFlow.Success<*> -> (fillListPokemon(it.data as JSONObject))
                 is StateFlow.Error -> (errorMessage(it.errorMessage))
             }
         }
-        viewModel.pokemonDetailList.observe(viewLifecycleOwner) {
+        viewModel.pokemonImage.observe(viewLifecycleOwner) {
             when(it){
-                is StateFlow.Loading -> (Loading(it.loading))
+                is StateFlow.Loading -> (loading(it.loading))
                 is StateFlow.Success<*> -> (fillListPokemonDetails(it.data as JSONObject))
                 is StateFlow.Error -> (errorMessage(it.errorMessage))
             }
         }
     }
 
-   private fun fillListPokemons(result: JSONObject){
+   private fun fillListPokemon(result: JSONObject){
        viewModel.fillListPokemonNames(result)
-       viewModel.initPokemonDetailsList()
+       viewModel.initPokemonImages()
    }
 
     private fun fillListPokemonDetails(result: JSONObject){
-        viewModel.fillListPokemonDetails(result)
-        initRecyclerAdapter()
+        viewModel.fillListPokemonImage(result)
+            initRecyclerAdapter()
     }
 
     private fun initRecyclerAdapter() {
         with(binding){
-            val adapter = FragmentListPokemonAdapter(viewModel.listPokemonNames, viewModel.listPokemonDetails)
+            val adapter = FragmentListPokemonAdapter(viewModel.listPokemonNames, viewModel.listPokemonImages, this@ListPokemonFragment)
             recyclerView.layoutManager = LinearLayoutManager(activity)
             recyclerView.adapter = adapter
         }
     }
-
-    private fun Loading(loading: Boolean) {
+    private fun loading(loading: Boolean) {
         binding.progressBar.visibility = if(loading) VISIBLE else GONE
     }
 
     private fun errorMessage(message:String) {
         Toast.makeText(activity, message, Toast.LENGTH_SHORT).show()
-
     }
 
+    override fun onRecyclerViewCardClick(view: View, pokemon: PokemonName) {
+        when(view.id){
+            R.id.icFavoriteCard -> {
+                Toast.makeText(activity, "Ic favorite clicked", Toast.LENGTH_SHORT).show()
+            }
+        }
+    }
 }
