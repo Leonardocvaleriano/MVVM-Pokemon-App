@@ -48,7 +48,7 @@ class FragmentListPokemonAdapter(
          val url = listPokemonImages.firstOrNull(){ it.name == listPokemonNames[position].name}
             Glide.
                 with(holder.itemView.context)
-                    .load(url!!.url)
+                    .load(url?.url)
                     .into(imgPokemon)
 
           }
