@@ -9,7 +9,7 @@ import com.codeplace.mvvmpokemonapp.ui.home.view.models.Pokemon
 import com.codeplace.mvvmpokemonapp.ui.home.view.models.PokemonImages
 import org.json.JSONObject
 
-class PokemonViewModel(val pokemonRepository: PokemonRepository) : BaseViewModel() {
+class PokemonViewModel(private val pokemonRepository: PokemonRepository) : BaseViewModel() {
 
     /**
      * This pokemonList of type MutableLiveData will hold the current data defined to the BaseViewModel,
@@ -20,7 +20,6 @@ class PokemonViewModel(val pokemonRepository: PokemonRepository) : BaseViewModel
 
     val listPokemonNames = ArrayList<Pokemon>()
     val listPokemonImages = ArrayList<PokemonImages>()
-    val allPokemons = ArrayList<PokemonImages>()
 
 
     /**
@@ -48,7 +47,7 @@ class PokemonViewModel(val pokemonRepository: PokemonRepository) : BaseViewModel
         }
     }
 
-    fun getPokemonImage(name: String) = fetchData(pokemonDetails) {
+    private fun getPokemonImage(name: String) = fetchData(pokemonDetails) {
         pokemonRepository.getPokemonImage(name)
     }
 

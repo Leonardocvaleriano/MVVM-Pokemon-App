@@ -16,7 +16,7 @@ class FragmentListPokemonAdapter(
 
     /**
      * This view holder class is used to hold the whole view of our recyclerView, which in this case contain all the views
-     * previously created inside the pokemon_items.xml
+w     * previously created inside the pokemon_items.xml
      */
     inner class FragmentListPokemonHolder(val binding: PokemonItemsBinding): RecyclerView.ViewHolder(binding.root){
     }
@@ -53,7 +53,6 @@ class FragmentListPokemonAdapter(
 
           }
     }
-
 
 }
 
