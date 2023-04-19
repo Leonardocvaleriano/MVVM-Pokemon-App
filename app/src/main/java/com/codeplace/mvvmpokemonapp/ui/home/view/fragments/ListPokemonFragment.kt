@@ -14,7 +14,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.codeplace.mvvmpokemonapp.R
 import com.codeplace.mvvmpokemonapp.databinding.FragmentListPokemonBinding
 import com.codeplace.mvvmpokemonapp.stateFlow.StateFlow
-import com.codeplace.mvvmpokemonapp.ui.home.view.models.PokemonName
+import com.codeplace.mvvmpokemonapp.ui.home.view.models.Pokemon
+import com.codeplace.mvvmpokemonapp.ui.home.view.models.PokemonImages
 import com.codeplace.mvvmpokemonapp.ui.home.viewModel.PokemonViewModel
 import org.json.JSONObject
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -22,6 +23,7 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class ListPokemonFragment: Fragment(), RecyclerViewClickListener{
     private lateinit var binding: FragmentListPokemonBinding
+    private lateinit var adapter:FragmentListPokemonAdapter
     private val viewModel by viewModel<PokemonViewModel>()
 
     override fun onCreateView(
@@ -38,7 +40,6 @@ class ListPokemonFragment: Fragment(), RecyclerViewClickListener{
         return binding.root
     }
 
-
     private fun initValues() {
         viewModel.getPokemonList()
     }
@@ -47,35 +48,44 @@ class ListPokemonFragment: Fragment(), RecyclerViewClickListener{
         viewModel.pokemonListNames.observe(viewLifecycleOwner) {
             when(it){
                 is StateFlow.Loading -> (loading(it.loading))
-                is StateFlow.Success<*> -> (fillListPokemon(it.data as JSONObject))
+                is StateFlow.Success<*> -> (fillListPokemonInfo(it.data as JSONObject))
                 is StateFlow.Error -> (errorMessage(it.errorMessage))
             }
         }
-        viewModel.pokemonImage.observe(viewLifecycleOwner) {
+        viewModel.pokemonDetails.observe(viewLifecycleOwner) {
             when(it){
                 is StateFlow.Loading -> (loading(it.loading))
-                is StateFlow.Success<*> -> (fillListPokemonDetails(it.data as JSONObject))
+                is StateFlow.Success<*> -> (fillListPokemonImage(it.data as JSONObject))
                 is StateFlow.Error -> (errorMessage(it.errorMessage))
             }
         }
     }
 
-   private fun fillListPokemon(result: JSONObject){
+   private fun fillListPokemonInfo(result: JSONObject){
+
+       clearPokemonList()
        viewModel.fillListPokemonNames(result)
        viewModel.initPokemonImages()
    }
 
-    private fun fillListPokemonDetails(result: JSONObject){
-        viewModel.fillListPokemonImage(result)
+
+    private fun fillListPokemonImage(result: JSONObject){
+        viewModel.fillListPokemonImages(result)
+        if(viewModel.listPokemonImages.size >= viewModel.listPokemonNames.size){
             initRecyclerAdapter()
+        }
     }
 
+
+
     private fun initRecyclerAdapter() {
-        with(binding){
-            val adapter = FragmentListPokemonAdapter(viewModel.listPokemonNames, viewModel.listPokemonImages, this@ListPokemonFragment)
-            recyclerView.layoutManager = LinearLayoutManager(activity)
-            recyclerView.adapter = adapter
-        }
+
+            with(binding){
+                adapter = FragmentListPokemonAdapter(viewModel.listPokemonNames, viewModel.listPokemonImages,this@ListPokemonFragment)
+                recyclerView.layoutManager = LinearLayoutManager(activity)
+                recyclerView.adapter = adapter
+            }
+
     }
     private fun loading(loading: Boolean) {
         binding.progressBar.visibility = if(loading) VISIBLE else GONE
@@ -85,11 +95,17 @@ class ListPokemonFragment: Fragment(), RecyclerViewClickListener{
         Toast.makeText(activity, message, Toast.LENGTH_SHORT).show()
     }
 
-    override fun onRecyclerViewCardClick(view: View, pokemon: PokemonName) {
+    override fun onRecyclerViewCardClick(view: View, pokemon: Pokemon) {
         when(view.id){
             R.id.icFavoriteCard -> {
                 Toast.makeText(activity, "Ic favorite clicked", Toast.LENGTH_SHORT).show()
             }
         }
     }
+
+    fun clearPokemonList(){
+        viewModel.listPokemonImages.clear()
+        viewModel.listPokemonNames.clear()
+    }
+
 }

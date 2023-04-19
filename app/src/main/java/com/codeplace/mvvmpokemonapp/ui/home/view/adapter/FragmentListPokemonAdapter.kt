@@ -3,14 +3,17 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.codeplace.mvvmpokemonapp.databinding.PokemonItemsBinding
+import com.codeplace.mvvmpokemonapp.ui.home.view.models.Pokemon
 import com.codeplace.mvvmpokemonapp.ui.home.view.models.PokemonImages
-import com.codeplace.mvvmpokemonapp.ui.home.view.models.PokemonName
 
 class FragmentListPokemonAdapter(
-    private var listPokemonNames: List<PokemonName>,
-    private var listPokemonImages: List<PokemonImages>,
+    private var listPokemonNames: MutableList<Pokemon>,
+    var listPokemonImages: MutableList<PokemonImages>,
     private val recyclerViewClickListener: RecyclerViewClickListener
  ): RecyclerView.Adapter<FragmentListPokemonAdapter.FragmentListPokemonHolder>(){
+
+
+
     /**
      * This view holder class is used to hold the whole view of our recyclerView, which in this case contain all the views
      * previously created inside the pokemon_items.xml
@@ -32,6 +35,7 @@ class FragmentListPokemonAdapter(
      */
     override fun getItemCount() : Int{
         return listPokemonNames.size
+
     }
     /**
      * Bind the data to our items that is inside the RecyclerView individually.
@@ -41,11 +45,16 @@ class FragmentListPokemonAdapter(
     override fun onBindViewHolder(holder: FragmentListPokemonHolder, position: Int) {
       with(holder.binding){
         txtPokemonName.text = listPokemonNames[position].name
-          val url = listPokemonImages.firstOrNull(){ it.name == listPokemonNames[position].name }
-          Glide
-              .with(holder.itemView.context)
-              .load(url!!.url)
-              .into(imgPokemon)
+         val url = listPokemonImages.firstOrNull(){ it.name == listPokemonNames[position].name}
+            Glide.
+                with(holder.itemView.context)
+                    .load(url!!.url)
+                    .into(imgPokemon)
+
           }
-     }
- }
+    }
+
+
+}
+
+

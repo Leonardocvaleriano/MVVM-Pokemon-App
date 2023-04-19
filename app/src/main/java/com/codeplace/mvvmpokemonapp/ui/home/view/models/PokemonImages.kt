@@ -9,8 +9,7 @@ data class PokemonImages(
     ): Serializable {
     constructor(jsonObject: JSONObject):this(
         jsonObject.getJSONObject("forms").getString("name"),
-        jsonObject.getJSONObject("sprites").getString("front_default"),
-
+        jsonObject.getJSONObject("sprites").getString("front_default")
      )
 }
 
