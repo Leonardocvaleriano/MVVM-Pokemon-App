@@ -63,7 +63,6 @@ class ListPokemonFragment: Fragment(), RecyclerViewClickListener{
 
    private fun fillListPokemonInfo(result: JSONObject){
 
-       clearPokemonList()
        viewModel.fillListPokemonNames(result)
        viewModel.initPokemonImages()
    }
@@ -75,8 +74,6 @@ class ListPokemonFragment: Fragment(), RecyclerViewClickListener{
             initRecyclerAdapter()
         }
     }
-
-
 
     private fun initRecyclerAdapter() {
 
@@ -101,11 +98,6 @@ class ListPokemonFragment: Fragment(), RecyclerViewClickListener{
                 Toast.makeText(activity, "Ic favorite clicked", Toast.LENGTH_SHORT).show()
             }
         }
-    }
-
-    fun clearPokemonList(){
-        viewModel.listPokemonImages.clear()
-        viewModel.listPokemonNames.clear()
     }
 
 }

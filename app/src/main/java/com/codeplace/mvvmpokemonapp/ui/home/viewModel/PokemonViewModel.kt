@@ -28,17 +28,17 @@ class PokemonViewModel(private val pokemonRepository: PokemonRepository) : BaseV
      * 2. Sending the intended repository with the fun configured to call the API.
      */
     fun getPokemonList() = fetchData(pokemonListNames) {
+        listPokemonNames.clear()
+        listPokemonImages.clear()
         pokemonRepository.getPokemonList()
     }
-
-    fun fillListPokemonNames(result: JSONObject) {
+     fun fillListPokemonNames(result: JSONObject) {
         val resultJSONArray = result.getJSONArray("results")
         (0 until resultJSONArray.length())
             .map { resultJSONArray.getJSONObject(it) }
             .forEach {
                 listPokemonNames += Pokemon(it)
             }
-
     }
 
     fun initPokemonImages() {
@@ -50,7 +50,6 @@ class PokemonViewModel(private val pokemonRepository: PokemonRepository) : BaseV
     private fun getPokemonImage(name: String) = fetchData(pokemonDetails) {
         pokemonRepository.getPokemonImage(name)
     }
-
 
     @SuppressLint("SuspiciousIndentation")
     fun fillListPokemonImages(result: JSONObject) {
