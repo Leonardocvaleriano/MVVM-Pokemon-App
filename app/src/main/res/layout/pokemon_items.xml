@@ -52,7 +52,7 @@
 
         <androidx.cardview.widget.CardView
             android:id="@+id/cvPokemonType"
-            android:layout_width="70dp"
+            android:layout_width="100dp"
             android:layout_height="30dp"
             android:layout_margin="10dp"
             android:backgroundTint="@color/purple"
@@ -65,14 +65,14 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:textColor="@color/white"
-                tools:text="Type"
+                tools:text="Skill"
                 />
 
         </androidx.cardview.widget.CardView>
 
         <androidx.cardview.widget.CardView
-            android:id="@+id/cvPokemonSkill"
-            android:layout_width="70dp"
+            android:id="@+id/cvPokemonMove"
+            android:layout_width="100dp"
             android:layout_height="30dp"
             android:layout_margin="10dp"
             android:backgroundTint="@color/navy"
@@ -80,12 +80,12 @@
             app:layout_constraintEnd_toStartOf="@id/cvPokemonType" >
 
             <TextView
-                android:id="@+id/txtPokemonSkill"
+                android:id="@+id/txtPokemonMove"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:textColor="@color/white"
-                tools:text="Specie"
+                tools:text="Type"
                 />
         </androidx.cardview.widget.CardView>
     </androidx.constraintlayout.widget.ConstraintLayout>

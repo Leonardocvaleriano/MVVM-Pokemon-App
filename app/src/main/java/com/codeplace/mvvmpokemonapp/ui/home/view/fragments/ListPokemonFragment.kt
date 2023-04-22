@@ -15,7 +15,6 @@ import com.codeplace.mvvmpokemonapp.R
 import com.codeplace.mvvmpokemonapp.databinding.FragmentListPokemonBinding
 import com.codeplace.mvvmpokemonapp.stateFlow.StateFlow
 import com.codeplace.mvvmpokemonapp.ui.home.view.models.Pokemon
-import com.codeplace.mvvmpokemonapp.ui.home.view.models.PokemonImages
 import com.codeplace.mvvmpokemonapp.ui.home.viewModel.PokemonViewModel
 import org.json.JSONObject
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -69,8 +68,8 @@ class ListPokemonFragment: Fragment(), RecyclerViewClickListener{
 
 
     private fun fillListPokemonImage(result: JSONObject){
-        viewModel.fillListPokemonImages(result)
-        if(viewModel.listPokemonImages.size >= viewModel.listPokemonNames.size){
+        viewModel.fillListPokemonDetails(result)
+        if(viewModel.listPokemonDetails.size >= viewModel.listPokemonNames.size){
             initRecyclerAdapter()
         }
     }
@@ -78,7 +77,7 @@ class ListPokemonFragment: Fragment(), RecyclerViewClickListener{
     private fun initRecyclerAdapter() {
 
             with(binding){
-                adapter = FragmentListPokemonAdapter(viewModel.listPokemonNames, viewModel.listPokemonImages,this@ListPokemonFragment)
+                adapter = FragmentListPokemonAdapter(viewModel.listPokemonNames, viewModel.listPokemonDetails,this@ListPokemonFragment)
                 recyclerView.layoutManager = LinearLayoutManager(activity)
                 recyclerView.adapter = adapter
             }
