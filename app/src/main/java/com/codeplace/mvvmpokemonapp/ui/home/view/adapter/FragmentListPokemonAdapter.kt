@@ -5,6 +5,7 @@ import com.bumptech.glide.Glide
 import com.codeplace.mvvmpokemonapp.databinding.PokemonItemsBinding
 import com.codeplace.mvvmpokemonapp.ui.home.view.models.Pokemon
 import com.codeplace.mvvmpokemonapp.ui.home.view.models.PokemonDetails
+import com.codeplace.mvvmpokemonapp.util.capitalize
 
 class FragmentListPokemonAdapter(
     private var listPokemonNames: MutableList<Pokemon>,
@@ -49,9 +50,9 @@ w     * previously created inside the pokemon_items.xml
           val typeName = listPokemonDetails.firstOrNull(){ it.name == listPokemonNames[position].name}
           val moveName = listPokemonDetails.firstOrNull(){it.name == listPokemonNames[position].name}
 
-          txtPokemonName.text = listPokemonNames[position].name
-          txtPokemonType.text = typeName?.typeName
-          txtPokemonMove.text = moveName?.moveName
+          txtPokemonName.text = capitalize(listPokemonNames[position].name)
+          txtPokemonType.text = capitalize(typeName?.typeName)
+          txtPokemonMove.text = capitalize(moveName?.moveName)
             Glide.
                 with(holder.itemView.context)
                     .load(urlImage?.urlImage)
