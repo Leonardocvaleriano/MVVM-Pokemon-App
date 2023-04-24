@@ -4,8 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:id="@+id/cardView"
-    android:layout_height="160dp"
-    android:layout_margin="10dp"
+    android:layout_height="180dp"
     android:backgroundTint="@color/beige"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toStartOf="parent"
@@ -70,8 +69,8 @@
 
             <TextView
                 android:id="@+id/txtPokemonMove"
-                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
                 android:layout_gravity="center"
                 android:padding="3dp"
                 android:textColor="@color/white"

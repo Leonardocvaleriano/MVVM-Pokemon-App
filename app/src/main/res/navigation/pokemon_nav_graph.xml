@@ -11,7 +11,8 @@
         <action
             android:id="@+id/action_listPokemonFragment_to_favoritesFragment"
             app:destination="@id/favoritesPokemonFragment"
-            />
+            app:enterAnim="@anim/from_right"
+            app:popEnterAnim="@anim/from_right" />
     </fragment>
 
     <fragment
@@ -20,7 +21,7 @@
         android:label="FavoritesPokemonFragment" >
         <action
             android:id="@+id/action_favoritesPokemonFragment_to_listPokemonFragment"
-            app:destination="@id/listPokemonFragment" />
-
+            app:destination="@id/listPokemonFragment"
+            app:enterAnim="@anim/from_right" />
     </fragment>
 </navigation>

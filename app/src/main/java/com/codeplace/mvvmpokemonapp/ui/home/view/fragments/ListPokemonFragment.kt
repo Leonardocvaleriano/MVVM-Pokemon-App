@@ -3,6 +3,7 @@ package com.codeplace.mvvmpokemonapp.ui.home.view.fragments
 import FragmentListPokemonAdapter
 import RecyclerViewClickListener
 import android.os.Bundle
+import android.transition.TransitionInflater
 import android.view.LayoutInflater
 import android.view.View
 import android.view.View.GONE
@@ -10,6 +11,10 @@ import android.view.View.VISIBLE
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.navigation.ActivityNavigator
+import androidx.navigation.ActivityNavigatorExtras
+import androidx.navigation.NavOptions
+import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.codeplace.mvvmpokemonapp.R
 import com.codeplace.mvvmpokemonapp.databinding.FragmentListPokemonBinding
@@ -20,24 +25,33 @@ import org.json.JSONObject
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
-class ListPokemonFragment: Fragment(), RecyclerViewClickListener{
+class ListPokemonFragment: Fragment(), RecyclerViewClickListener {
+
     private lateinit var binding: FragmentListPokemonBinding
     private lateinit var adapter:FragmentListPokemonAdapter
     private val viewModel by viewModel<PokemonViewModel>()
+
+//    override fun onCreate(savedInstanceState: Bundle?) {
+//        super.onCreate(savedInstanceState)
+//        val inflater = TransitionInflater.from(requireContext())
+//        exitTransition = inflater.inflateTransition(R.transition.fade)
+//    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-
         binding = FragmentListPokemonBinding.inflate(inflater, container, false)
+
 
         initValues()
         initObservables()
 
-        return binding.root
+         return binding.root
+
     }
+
 
     private fun initValues() {
         viewModel.getPokemonList()

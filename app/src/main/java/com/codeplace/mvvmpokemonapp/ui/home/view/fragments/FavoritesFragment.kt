@@ -5,19 +5,22 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import com.codeplace.mvvmpokemonapp.R
+import com.codeplace.mvvmpokemonapp.databinding.FragmentFavoritesBinding
 
 class FavoritesFragment: Fragment(){
+
+    private lateinit var binding: FragmentFavoritesBinding
+
 
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
+        binding = FragmentFavoritesBinding.inflate(inflater, container, false)
+        return binding.root
 
-        val view = inflater.inflate(R.layout.fragment_favorites, container, false)
-        return view
 
 
     }
