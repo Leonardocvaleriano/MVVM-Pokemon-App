@@ -6,6 +6,7 @@ package com.codeplace.mvvmpokemonapp.ui.home.view.activity
  import androidx.appcompat.app.AppCompatActivity
  import androidx.navigation.findNavController
  import androidx.navigation.fragment.NavHostFragment
+ import androidx.navigation.ui.setupWithNavController
  import com.codeplace.mvvmpokemonapp.R
  import com.codeplace.mvvmpokemonapp.databinding.ActivityPokemonListBinding
  import com.codeplace.mvvmpokemonapp.ui.home.view.fragments.FavoritesFragmentDirections
@@ -24,7 +25,7 @@ class PokemonListActivity : AppCompatActivity() {
 
         val navHostFragment = supportFragmentManager.findFragmentById(R.id.fragmentContainerView) as NavHostFragment
         val navController = navHostFragment.navController
-        //binding.bottomNavigationView.setupWithNavController(navController)
+        binding.bottomNavigationView.setupWithNavController(navController)
 
 
         binding.bottomNavigationView.setOnNavigationItemSelectedListener {
