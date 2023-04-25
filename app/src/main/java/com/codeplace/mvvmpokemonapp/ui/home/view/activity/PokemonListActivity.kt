@@ -23,37 +23,33 @@ class PokemonListActivity : AppCompatActivity() {
         val view = binding.root
         setContentView(view)
 
+        initListeners()
+    }
+
+    fun initListeners(){
+
         val navHostFragment = supportFragmentManager.findFragmentById(R.id.fragmentContainerView) as NavHostFragment
         val navController = navHostFragment.navController
         binding.bottomNavigationView.setupWithNavController(navController)
 
-
         binding.bottomNavigationView.setOnNavigationItemSelectedListener {
             when (it.itemId) {
                 R.id.listPokemonFragment -> {
-                     navigateToFragmentListPokemon()
+                    val action = FavoritesFragmentDirections.actionFavoritesPokemonFragmentToListPokemonFragment()
+                    navController.navigate(action)
                     return@setOnNavigationItemSelectedListener true
                 }
                 R.id.favoritesPokemonFragment -> {
-                    navigateToFragmentFavorites()
+                    val action = ListPokemonFragmentDirections.actionListPokemonFragmentToFavoritesFragment()
+                    navController.navigate(action)
                     return@setOnNavigationItemSelectedListener true
                 }
                 else -> return@setOnNavigationItemSelectedListener false
             }
         }
-
-        binding.bottomNavigationView.setOnItemReselectedListener((BottomNavigationView.OnNavigationItemReselectedListener {
-                item -> navController.popBackStack(item.getItemId(), false) }))
-    }
-
-    private fun navigateToFragmentListPokemon() {
-        val navController = findNavController(R.id.fragmentContainerView)
-        val action = FavoritesFragmentDirections.actionFavoritesPokemonFragmentToListPokemonFragment()
-        navController.navigate(action)
-    }
-    private fun navigateToFragmentFavorites() {
-        val navController = findNavController(R.id.fragmentContainerView)
-        val action = ListPokemonFragmentDirections.actionListPokemonFragmentToFavoritesFragment()
-        navController.navigate(action)
+        binding.bottomNavigationView.setOnItemReselectedListener((BottomNavigationView.OnNavigationItemReselectedListener { item ->
+            navController.popBackStack(item.getItemId(), false) }))
     }
 }
+
+

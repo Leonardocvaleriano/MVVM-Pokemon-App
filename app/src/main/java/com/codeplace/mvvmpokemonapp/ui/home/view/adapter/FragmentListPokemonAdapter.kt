@@ -8,8 +8,8 @@ import com.codeplace.mvvmpokemonapp.ui.home.view.models.PokemonDetails
 import com.codeplace.mvvmpokemonapp.util.capitalize
 
 class FragmentListPokemonAdapter(
-    private var listPokemonNames: MutableList<Pokemon>,
-    var listPokemonDetails: MutableList<PokemonDetails>,
+    private var listPokemonNames: List<Pokemon>,
+    var listPokemonDetails: List<PokemonDetails>,
     private val recyclerViewClickListener: RecyclerViewClickListener
  ): RecyclerView.Adapter<FragmentListPokemonAdapter.FragmentListPokemonHolder>(){
 
