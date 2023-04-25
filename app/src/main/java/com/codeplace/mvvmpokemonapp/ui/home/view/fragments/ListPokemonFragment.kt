@@ -3,7 +3,6 @@ package com.codeplace.mvvmpokemonapp.ui.home.view.fragments
 import FragmentListPokemonAdapter
 import RecyclerViewClickListener
 import android.os.Bundle
-import android.transition.TransitionInflater
 import android.view.LayoutInflater
 import android.view.View
 import android.view.View.GONE
@@ -11,10 +10,6 @@ import android.view.View.VISIBLE
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
-import androidx.navigation.ActivityNavigator
-import androidx.navigation.ActivityNavigatorExtras
-import androidx.navigation.NavOptions
-import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.codeplace.mvvmpokemonapp.R
 import com.codeplace.mvvmpokemonapp.databinding.FragmentListPokemonBinding

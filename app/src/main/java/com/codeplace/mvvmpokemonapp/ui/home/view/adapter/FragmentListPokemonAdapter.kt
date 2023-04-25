@@ -10,7 +10,7 @@ import com.codeplace.mvvmpokemonapp.util.capitalize
 class FragmentListPokemonAdapter(
     private var listPokemonNames: List<Pokemon>,
     var listPokemonDetails: List<PokemonDetails>,
-    private val recyclerViewClickListener: RecyclerViewClickListener
+    private val listener: RecyclerViewClickListener
  ): RecyclerView.Adapter<FragmentListPokemonAdapter.FragmentListPokemonHolder>(){
 
 
@@ -57,6 +57,10 @@ w     * previously created inside the pokemon_items.xml
                 with(holder.itemView.context)
                     .load(urlImage?.urlImage)
                     .into(imgPokemon)
+
+          icFavoriteCard.setOnClickListener {
+              listener.onRecyclerViewCardClick(icFavoriteCard, listPokemonNames[position])
+          }
           }
     }
 
