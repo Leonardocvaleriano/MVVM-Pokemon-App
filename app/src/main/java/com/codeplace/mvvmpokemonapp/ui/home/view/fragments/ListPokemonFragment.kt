@@ -1,6 +1,6 @@
 package com.codeplace.mvvmpokemonapp.ui.home.view.fragments
 
-import FragmentListPokemonAdapter
+import com.codeplace.mvvmpokemonapp.ui.home.view.adapter.FragmentListPokemonAdapter
 import RecyclerViewClickListener
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -23,7 +23,7 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 class ListPokemonFragment: Fragment(), RecyclerViewClickListener {
 
     private lateinit var binding: FragmentListPokemonBinding
-    private lateinit var adapter:FragmentListPokemonAdapter
+    private lateinit var adapter: FragmentListPokemonAdapter
     private val viewModel by viewModel<PokemonViewModel>()
 
 //    override fun onCreate(savedInstanceState: Bundle?) {
