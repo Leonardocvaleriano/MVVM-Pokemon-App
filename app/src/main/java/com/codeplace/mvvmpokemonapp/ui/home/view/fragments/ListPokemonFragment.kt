@@ -2,6 +2,7 @@ package com.codeplace.mvvmpokemonapp.ui.home.view.fragments
 
 import com.codeplace.mvvmpokemonapp.ui.home.view.adapter.FragmentListPokemonAdapter
 import RecyclerViewClickListener
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -14,7 +15,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.codeplace.mvvmpokemonapp.R
 import com.codeplace.mvvmpokemonapp.databinding.FragmentListPokemonBinding
 import com.codeplace.mvvmpokemonapp.stateFlow.StateFlow
-import com.codeplace.mvvmpokemonapp.ui.home.view.models.Pokemon
+import com.codeplace.mvvmpokemonapp.ui.home.view.models.PokemonDetails
 import com.codeplace.mvvmpokemonapp.ui.home.viewModel.PokemonViewModel
 import org.json.JSONObject
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -26,12 +27,6 @@ class ListPokemonFragment: Fragment(), RecyclerViewClickListener {
     private lateinit var adapter: FragmentListPokemonAdapter
     private val viewModel by viewModel<PokemonViewModel>()
 
-//    override fun onCreate(savedInstanceState: Bundle?) {
-//        super.onCreate(savedInstanceState)
-//        val inflater = TransitionInflater.from(requireContext())
-//        exitTransition = inflater.inflateTransition(R.transition.fade)
-//    }
-
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -39,12 +34,10 @@ class ListPokemonFragment: Fragment(), RecyclerViewClickListener {
     ): View {
         binding = FragmentListPokemonBinding.inflate(inflater, container, false)
 
-
         initValues()
         initObservables()
 
-         return binding.root
-
+        return binding.root
     }
 
 
@@ -70,7 +63,6 @@ class ListPokemonFragment: Fragment(), RecyclerViewClickListener {
     }
 
    private fun fillListPokemonInfo(result: JSONObject){
-
        viewModel.fillListPokemonNames(result)
        viewModel.initPokemonImages()
    }
@@ -82,7 +74,6 @@ class ListPokemonFragment: Fragment(), RecyclerViewClickListener {
             initRecyclerAdapter()
         }
     }
-
     private fun initRecyclerAdapter() {
 
             with(binding){
@@ -90,7 +81,6 @@ class ListPokemonFragment: Fragment(), RecyclerViewClickListener {
                 recyclerView.layoutManager = LinearLayoutManager(activity)
                 recyclerView.adapter = adapter
             }
-
     }
     private fun loading(loading: Boolean) {
         binding.progressBar.visibility = if(loading) VISIBLE else GONE
@@ -100,12 +90,11 @@ class ListPokemonFragment: Fragment(), RecyclerViewClickListener {
         Toast.makeText(activity, message, Toast.LENGTH_SHORT).show()
     }
 
-    override fun onRecyclerViewCardClick(view: View, pokemon: Pokemon) {
+    override fun onRecyclerViewIcFavoriteCard(view: View, pokemon: PokemonDetails) {
         when(view.id){
             R.id.icFavoriteCard -> {
-                Toast.makeText(activity, "Ic favorite clicked", Toast.LENGTH_SHORT).show()
+
             }
         }
     }
-
 }

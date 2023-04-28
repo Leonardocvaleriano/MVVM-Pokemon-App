@@ -4,9 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-     tools:context=".ui.home.view.activity.PokemonListActivity"
-    android:background="@color/bluelight"
-    >
+     tools:context=".ui.home.view.activity.MainActivity"
+    android:background="@color/bluelight">
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomNavigationView"

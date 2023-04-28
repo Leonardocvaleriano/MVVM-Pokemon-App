@@ -29,8 +29,6 @@ w     * previously created inside the pokemon_items.xml
         return FragmentListPokemonHolder(PokemonItemsBinding.inflate(LayoutInflater.from(parent.context), parent, false))
     }
 
-
-
     /**
      * Defines how many items the RecyclerView have.
      */
@@ -53,6 +51,7 @@ w     * previously created inside the pokemon_items.xml
           txtPokemonName.text = capitalize(listPokemonNames[position].name)
           txtPokemonType.text = capitalize(typeName?.typeName)
           txtPokemonMove.text = capitalize(moveName?.moveName)
+          txtPokemonAbility.text = "Test"
 
             Glide.
                 with(holder.itemView.context)
@@ -60,9 +59,9 @@ w     * previously created inside the pokemon_items.xml
                     .into(imgPokemon)
 
           icFavoriteCard.setOnClickListener {
-              listener.onRecyclerViewCardClick(icFavoriteCard, listPokemonNames[position])
+              listener.onRecyclerViewIcFavoriteCard(icFavoriteCard, listPokemonDetails[position])
           }
-          }
+      }
     }
 
 }

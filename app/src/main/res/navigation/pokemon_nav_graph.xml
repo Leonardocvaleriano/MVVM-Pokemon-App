@@ -10,7 +10,7 @@
         android:label="ListPokemonFragment" >
         <action
             android:id="@+id/action_listPokemonFragment_to_favoritesFragment"
-            app:destination="@id/favoritesPokemonFragment"
+            app:destination="@id/ListFavoritesPokemonFragment"
             app:enterAnim="@anim/from_right"
             app:exitAnim="@anim/to_left"
             app:popEnterAnim="@anim/from_left"
@@ -18,8 +18,8 @@
     </fragment>
 
     <fragment
-        android:id="@+id/favoritesPokemonFragment"
-        android:name="com.codeplace.mvvmpokemonapp.ui.home.view.fragments.FavoritesFragment"
+        android:id="@+id/ListFavoritesPokemonFragment"
+        android:name="com.codeplace.mvvmpokemonapp.ui.home.view.fragments.ListFavoritesPokemonFragment"
         android:label="FavoritesPokemonFragment" >
         <action
             android:id="@+id/action_favoritesPokemonFragment_to_listPokemonFragment"

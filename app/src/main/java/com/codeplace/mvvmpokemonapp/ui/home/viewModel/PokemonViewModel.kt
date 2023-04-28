@@ -72,7 +72,6 @@ class PokemonViewModel(private val pokemonRepository: PokemonRepository) : BaseV
         val urlImage = images.getString("front_default")
         val moveName = move.getString("name")
 
-
         listPokemonDetails.add(PokemonDetails(name,urlImage,typeName, moveName))
     }
 }
