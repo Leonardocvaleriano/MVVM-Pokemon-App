@@ -61,12 +61,10 @@ class ListPokemonFragment: Fragment(), RecyclerViewClickListener {
             }
         }
     }
-
    private fun fillListPokemonInfo(result: JSONObject){
        viewModel.fillListPokemonNames(result)
        viewModel.initPokemonImages()
    }
-
 
     private fun fillListPokemonImage(result: JSONObject){
         viewModel.fillListPokemonDetails(result)
