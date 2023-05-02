@@ -7,4 +7,8 @@
     <string name="more_info">More info...</string>
     <string name="pokemon_details">Pokemon Details</string>
     <string name="characteristics">Characteristics</string>
+    <string name="height">Height</string>
+    <string name="weight">Weight</string>
+    <string name="stats">Stats</string>
+    <string name="item">Item</string>
 </resources>
