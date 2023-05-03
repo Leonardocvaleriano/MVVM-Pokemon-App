@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
+
+
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -9,9 +11,11 @@
     android:fillViewport="true"
     tools:context=".ui.home.view.activity.PokemonDetailsActivity">
 
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
+
 
         <View
             android:id="@+id/viewBackGround"
@@ -37,7 +41,7 @@
         <TextView
             android:padding="4dp"
             android:id="@+id/txtPokemonName"
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
              android:fontFamily="@font/baloo"
             android:textAlignment="center"

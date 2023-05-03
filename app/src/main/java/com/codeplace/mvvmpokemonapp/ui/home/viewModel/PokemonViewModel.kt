@@ -65,10 +65,15 @@ class PokemonViewModel(private val pokemonRepository: PokemonRepository) : BaseV
         val moves = result.getJSONArray("moves")
         val move = moves.getJSONObject(0).getJSONObject("move")
 
+        val abilities = result.getJSONArray("abilities")
+        val ability = abilities.getJSONObject(0).getJSONObject("ability")
+
         val typeName = type.getString("name")
         val name = forms.getJSONObject(0).getString("name")
         val urlImage = images.getString("front_default")
         val moveName = move.getString("name")
-        listPokemonDetails.add(PokemonDetails(name,urlImage,typeName, moveName))
+        val abilityName = ability.getString("name")
+
+        listPokemonDetails.add(PokemonDetails(name,urlImage,typeName, moveName,abilityName))
     }
 }

@@ -7,15 +7,18 @@ data class PokemonDetails(
     val name: String,
     val urlImage:String,
     val typeName: String,
-    val moveName:String
+    val moveName:String,
+    val abilityName:String
 
     ): Serializable {
     constructor(jsonObject: JSONObject):this(
         jsonObject.getString("name"),
         jsonObject.getString("front_default"),
         jsonObject.getString("name"),
+        jsonObject.getString("name"),
         jsonObject.getString("name")
-     )
+
+        )
 }
 
 

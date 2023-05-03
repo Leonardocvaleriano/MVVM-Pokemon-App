@@ -47,11 +47,12 @@ w     * previously created inside the pokemon_items.xml
           val urlImage = listPokemonDetails.firstOrNull { it.name == listPokemonNames[position].name}
           val typeName = listPokemonDetails.firstOrNull{ it.name == listPokemonNames[position].name}
           val moveName = listPokemonDetails.firstOrNull{it.name == listPokemonNames[position].name}
+          val abilityName = listPokemonDetails.firstOrNull{it.name == listPokemonNames[position].name}
 
           txtPokemonName.text = capitalize(listPokemonNames[position].name)
           txtPokemonType.text = capitalize(typeName?.typeName)
           txtPokemonMove.text = capitalize(moveName?.moveName)
-         // txtPokemonAbility.text = "Test"
+          txtPokemonAbility.text = capitalize(abilityName?.abilityName)
 
             Glide.
                 with(holder.itemView.context)
@@ -60,6 +61,10 @@ w     * previously created inside the pokemon_items.xml
 
           icFavoriteCard.setOnClickListener {
               listener.onRecyclerViewIcFavoriteCard(icFavoriteCard, listPokemonDetails[position])
+          }
+
+          cvPokemonMoreInfo.setOnClickListener {
+              listener.onRecyclerViewIcMoreInfo(cvPokemonMoreInfo, listPokemonDetails[position])
           }
       }
     }
