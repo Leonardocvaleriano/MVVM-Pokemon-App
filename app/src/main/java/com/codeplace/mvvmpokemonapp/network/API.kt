@@ -10,6 +10,6 @@ interface API {
     suspend fun getPokemonList():Response<Map<String, *>>
 
     @GET("pokemon/{name}")
-    suspend fun getPokemonImage(
+    suspend fun getPokemonDetails(
         @Path("name")name:String):Response<Map<String, *>>
 }

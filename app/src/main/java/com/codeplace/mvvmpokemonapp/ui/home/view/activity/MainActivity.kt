@@ -35,7 +35,6 @@ class MainActivity : AppCompatActivity() {
         binding.bottomNavigationView.setOnNavigationItemSelectedListener {
             when (it.itemId) {
                 R.id.listPokemonFragment -> {
-
                     val action = ListFavoritesPokemonFragmentDirections.actionFavoritesPokemonFragmentToListPokemonFragment()
                     navController.navigate(action)
                     return@setOnNavigationItemSelectedListener true
@@ -53,7 +52,6 @@ class MainActivity : AppCompatActivity() {
             navController.popBackStack(item.itemId, false)
         }))
     }
-
 }
 
 

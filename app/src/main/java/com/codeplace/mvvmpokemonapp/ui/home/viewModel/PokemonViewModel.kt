@@ -8,7 +8,6 @@ import com.codeplace.mvvmpokemonapp.ui.base.baseViewModel.BaseViewModel
 import com.codeplace.mvvmpokemonapp.ui.home.view.models.Pokemon
 import com.codeplace.mvvmpokemonapp.ui.home.view.models.PokemonDetails
 import org.json.JSONObject
-import java.util.concurrent.Executors
 
 class PokemonViewModel(private val pokemonRepository: PokemonRepository) : BaseViewModel() {
 
@@ -36,14 +35,13 @@ class PokemonViewModel(private val pokemonRepository: PokemonRepository) : BaseV
                 pokemonRepository.getPokemonList()
             }
 
-    fun initPokemonImages() {
+    fun initPokemonDetails() {
         listPokemonNames.forEach {
             getPokemonDetails(it.name)
         }
     }
-    private fun getPokemonDetails(name: String) =
-            fetchData(pokemonDetails) {
-                pokemonRepository.getPokemonImage(name)
+    private fun getPokemonDetails(name: String) = fetchData(pokemonDetails) {
+                pokemonRepository.getPokemonDetails(name)
             }
 
      fun fillListPokemonNames(result: JSONObject) {
@@ -71,7 +69,6 @@ class PokemonViewModel(private val pokemonRepository: PokemonRepository) : BaseV
         val name = forms.getJSONObject(0).getString("name")
         val urlImage = images.getString("front_default")
         val moveName = move.getString("name")
-
         listPokemonDetails.add(PokemonDetails(name,urlImage,typeName, moveName))
     }
 }

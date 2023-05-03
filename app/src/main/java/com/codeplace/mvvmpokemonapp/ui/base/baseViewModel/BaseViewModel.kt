@@ -11,8 +11,6 @@ package com.codeplace.mvvmpokemonapp.ui.base.baseViewModel
 
 
 open class BaseViewModel : ViewModel() {
-
-
     fun fetchData(
         liveData: MutableLiveData<StateFlow>,
         service: suspend () -> Response<*>) {

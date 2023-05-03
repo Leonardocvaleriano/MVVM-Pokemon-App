@@ -49,31 +49,30 @@ class ListPokemonFragment: Fragment(), RecyclerViewClickListener {
         viewModel.pokemonListNames.observe(viewLifecycleOwner) {
             when(it){
                 is StateFlow.Loading -> (loading(it.loading))
-                is StateFlow.Success<*> -> (fillListPokemonInfo(it.data as JSONObject))
+                is StateFlow.Success<*> -> (fillListPokemonName(it.data as JSONObject))
                 is StateFlow.Error -> (errorMessage(it.errorMessage))
             }
         }
         viewModel.pokemonDetails.observe(viewLifecycleOwner) {
             when(it){
                 is StateFlow.Loading -> (loading(it.loading))
-                is StateFlow.Success<*> -> (fillListPokemonImage(it.data as JSONObject))
+                is StateFlow.Success<*> -> (fillListPokemonDetails(it.data as JSONObject))
                 is StateFlow.Error -> (errorMessage(it.errorMessage))
             }
         }
     }
-   private fun fillListPokemonInfo(result: JSONObject){
+   private fun fillListPokemonName(result: JSONObject){
        viewModel.fillListPokemonNames(result)
-       viewModel.initPokemonImages()
+       viewModel.initPokemonDetails()
    }
 
-    private fun fillListPokemonImage(result: JSONObject){
+    private fun fillListPokemonDetails(result: JSONObject){
         viewModel.fillListPokemonDetails(result)
         if(viewModel.listPokemonDetails.size >= viewModel.listPokemonNames.size){
             initRecyclerAdapter()
         }
     }
     private fun initRecyclerAdapter() {
-
             with(binding){
                 adapter = FragmentListPokemonAdapter(viewModel.listPokemonNames, viewModel.listPokemonDetails,this@ListPokemonFragment)
                 recyclerView.layoutManager = LinearLayoutManager(activity)
@@ -91,7 +90,6 @@ class ListPokemonFragment: Fragment(), RecyclerViewClickListener {
     override fun onRecyclerViewIcFavoriteCard(view: View, pokemon: PokemonDetails) {
         when(view.id){
             R.id.icFavoriteCard -> {
-
             }
         }
     }

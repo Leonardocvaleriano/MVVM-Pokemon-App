@@ -51,7 +51,7 @@ w     * previously created inside the pokemon_items.xml
           txtPokemonName.text = capitalize(listPokemonNames[position].name)
           txtPokemonType.text = capitalize(typeName?.typeName)
           txtPokemonMove.text = capitalize(moveName?.moveName)
-          txtPokemonAbility.text = "Test"
+         // txtPokemonAbility.text = "Test"
 
             Glide.
                 with(holder.itemView.context)
