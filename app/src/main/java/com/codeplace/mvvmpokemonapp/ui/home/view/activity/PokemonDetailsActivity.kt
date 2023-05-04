@@ -13,8 +13,5 @@ class PokemonDetailsActivity : AppCompatActivity() {
         binding = ActivityPokemonDetailsBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-
     }
-
-
 }

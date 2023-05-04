@@ -1,20 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/pokemon_nav_graph"
     app:startDestination="@id/listPokemonFragment">
+
+    <action android:id="@+id/navigateToListFavoritesPokemonFragment"
+        app:destination="@id/ListFavoritesPokemonFragment"
+        app:enterAnim="@anim/from_right"
+        app:exitAnim="@anim/to_left"
+        app:popEnterAnim="@anim/from_left"
+        app:popExitAnim="@anim/to_right"
+        />
 
     <fragment
         android:id="@+id/listPokemonFragment"
         android:name="com.codeplace.mvvmpokemonapp.ui.home.view.fragments.ListPokemonFragment"
         android:label="ListPokemonFragment" >
         <action
-            android:id="@+id/action_listPokemonFragment_to_favoritesFragment"
-            app:destination="@id/ListFavoritesPokemonFragment"
-            app:enterAnim="@anim/from_right"
-            app:exitAnim="@anim/to_left"
-            app:popEnterAnim="@anim/from_left"
-            app:popExitAnim="@anim/to_right" />
+            android:id="@+id/navigateToPokemonDetail"
+            app:destination="@id/pokemonDetailsFragment"
+            app:popExitAnim="@android:anim/overshoot_interpolator" />
     </fragment>
 
     <fragment
@@ -22,11 +28,20 @@
         android:name="com.codeplace.mvvmpokemonapp.ui.home.view.fragments.ListFavoritesPokemonFragment"
         android:label="FavoritesPokemonFragment" >
         <action
-            android:id="@+id/action_favoritesPokemonFragment_to_listPokemonFragment"
+            android:id="@+id/navigateToListPokemonFragment"
             app:destination="@id/listPokemonFragment"
             app:enterAnim="@anim/from_left"
             app:exitAnim="@anim/to_right"
             app:popEnterAnim="@anim/from_right"
             app:popExitAnim="@anim/to_left" />
     </fragment>
+    <fragment
+        android:id="@+id/pokemonDetailsFragment"
+        android:name="com.codeplace.mvvmpokemonapp.ui.home.view.fragments.PokemonDetailsFragment"
+        android:label="fragment_pokemon_details"
+        tools:layout="@layout/fragment_pokemon_details" />
+
+
+
+
 </navigation>

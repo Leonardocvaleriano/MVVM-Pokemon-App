@@ -1,20 +1,27 @@
 package com.codeplace.mvvmpokemonapp.ui.home.view.adapter
 
-import RecyclerViewClickListener
-import android.view.LayoutInflater
+ import android.content.Intent
+ import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.recyclerview.widget.RecyclerView
+ import androidx.navigation.NavDirections
+ import androidx.navigation.Navigation
+ import androidx.navigation.fragment.NavHostFragment
+ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.codeplace.mvvmpokemonapp.databinding.PokemonItemsBinding
-import com.codeplace.mvvmpokemonapp.ui.home.view.models.Pokemon
+ import com.codeplace.mvvmpokemonapp.R
+ import com.codeplace.mvvmpokemonapp.databinding.FragmentPokemonDetailsBinding
+ import com.codeplace.mvvmpokemonapp.databinding.PokemonItemsBinding
+ import com.codeplace.mvvmpokemonapp.ui.home.view.fragments.ListPokemonFragment
+ import com.codeplace.mvvmpokemonapp.ui.home.view.fragments.ListPokemonFragmentDirections
+ import com.codeplace.mvvmpokemonapp.ui.home.view.fragments.PokemonDetailsFragment
+ import com.codeplace.mvvmpokemonapp.ui.home.view.models.Pokemon
 import com.codeplace.mvvmpokemonapp.ui.home.view.models.PokemonDetails
 import com.codeplace.mvvmpokemonapp.util.capitalize
 
 class FragmentListPokemonAdapter(
     private var listPokemonNames: List<Pokemon>,
     private var listPokemonDetails: List<PokemonDetails>,
-    private val listener: RecyclerViewClickListener
- ): RecyclerView.Adapter<FragmentListPokemonAdapter.FragmentListPokemonHolder>(){
+  ): RecyclerView.Adapter<FragmentListPokemonAdapter.FragmentListPokemonHolder>(){
 
     /**
      * This view holder class is used to hold the whole view of our recyclerView, which in this case contain all the views
@@ -59,13 +66,11 @@ w     * previously created inside the pokemon_items.xml
                     .load(urlImage?.urlImage)
                     .into(imgPokemon)
 
-          icFavoriteCard.setOnClickListener {
-              listener.onRecyclerViewIcFavoriteCard(icFavoriteCard, listPokemonDetails[position])
+          cvPokemonMoreInfo.setOnClickListener {
+              val navController = Navigation.findNavController(holder.itemView)
+              navController.navigate(R.id.navigateToPokemonDetail)
           }
 
-          cvPokemonMoreInfo.setOnClickListener {
-              listener.onRecyclerViewIcMoreInfo(cvPokemonMoreInfo, listPokemonDetails[position])
-          }
       }
     }
 

@@ -1,9 +1,7 @@
 package com.codeplace.mvvmpokemonapp.ui.home.view.fragments
 
 import com.codeplace.mvvmpokemonapp.ui.home.view.adapter.FragmentListPokemonAdapter
-import RecyclerViewClickListener
-import android.content.Intent
-import android.os.Bundle
+ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.View.GONE
@@ -22,7 +20,7 @@ import org.json.JSONObject
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
-class ListPokemonFragment: Fragment(), RecyclerViewClickListener {
+class ListPokemonFragment: Fragment() {
 
     private lateinit var binding: FragmentListPokemonBinding
     private lateinit var adapter: FragmentListPokemonAdapter
@@ -40,8 +38,6 @@ class ListPokemonFragment: Fragment(), RecyclerViewClickListener {
 
         return binding.root
     }
-
-
 
 
     private fun initValues() {
@@ -82,8 +78,7 @@ class ListPokemonFragment: Fragment(), RecyclerViewClickListener {
             adapter = FragmentListPokemonAdapter(
                 viewModel.listPokemonNames,
                 viewModel.listPokemonDetails,
-                this@ListPokemonFragment
-            )
+             )
             recyclerView.layoutManager = LinearLayoutManager(activity)
             recyclerView.adapter = adapter
         }
@@ -97,26 +92,6 @@ class ListPokemonFragment: Fragment(), RecyclerViewClickListener {
         Toast.makeText(activity, message, Toast.LENGTH_SHORT).show()
     }
 
-
-
-
-
-    override fun onRecyclerViewIcFavoriteCard(view: View, pokemon: PokemonDetails) {
-        when (view.id) {
-            R.id.icFavoriteCard -> {
-            }
-        }
-    }
-
-    override fun onRecyclerViewIcMoreInfo(view: View, pokemon: PokemonDetails) {
-        when (view.id) {
-            R.id.cvPokemonMoreInfo -> {
-                Intent(activity, PokemonDetailsActivity::class.java).also {
-                    startActivity(it)
-                }
-            }
-         }
-    }
 
 }
 
