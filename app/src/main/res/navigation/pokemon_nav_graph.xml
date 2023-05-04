@@ -20,7 +20,7 @@
         <action
             android:id="@+id/navigateToPokemonDetail"
             app:destination="@id/pokemonDetailsFragment"
-            app:popExitAnim="@android:anim/overshoot_interpolator" />
+             />
     </fragment>
 
     <fragment
@@ -40,8 +40,5 @@
         android:name="com.codeplace.mvvmpokemonapp.ui.home.view.fragments.PokemonDetailsFragment"
         android:label="fragment_pokemon_details"
         tools:layout="@layout/fragment_pokemon_details" />
-
-
-
 
 </navigation>

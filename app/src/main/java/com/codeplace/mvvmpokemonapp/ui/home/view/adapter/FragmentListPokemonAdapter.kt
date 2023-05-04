@@ -1,22 +1,15 @@
 package com.codeplace.mvvmpokemonapp.ui.home.view.adapter
 
- import android.content.Intent
  import android.view.LayoutInflater
-import android.view.ViewGroup
- import androidx.navigation.NavDirections
+ import android.view.ViewGroup
  import androidx.navigation.Navigation
- import androidx.navigation.fragment.NavHostFragment
  import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
+ import com.bumptech.glide.Glide
  import com.codeplace.mvvmpokemonapp.R
- import com.codeplace.mvvmpokemonapp.databinding.FragmentPokemonDetailsBinding
  import com.codeplace.mvvmpokemonapp.databinding.PokemonItemsBinding
- import com.codeplace.mvvmpokemonapp.ui.home.view.fragments.ListPokemonFragment
- import com.codeplace.mvvmpokemonapp.ui.home.view.fragments.ListPokemonFragmentDirections
- import com.codeplace.mvvmpokemonapp.ui.home.view.fragments.PokemonDetailsFragment
  import com.codeplace.mvvmpokemonapp.ui.home.view.models.Pokemon
-import com.codeplace.mvvmpokemonapp.ui.home.view.models.PokemonDetails
-import com.codeplace.mvvmpokemonapp.util.capitalize
+ import com.codeplace.mvvmpokemonapp.ui.home.view.models.PokemonDetails
+ import com.codeplace.mvvmpokemonapp.util.capitalize
 
 class FragmentListPokemonAdapter(
     private var listPokemonNames: List<Pokemon>,
@@ -69,8 +62,8 @@ w     * previously created inside the pokemon_items.xml
           cvPokemonMoreInfo.setOnClickListener {
               val navController = Navigation.findNavController(holder.itemView)
               navController.navigate(R.id.navigateToPokemonDetail)
-          }
 
+          }
       }
     }
 
