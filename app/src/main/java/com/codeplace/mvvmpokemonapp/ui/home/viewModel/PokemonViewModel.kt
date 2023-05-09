@@ -57,21 +57,23 @@ class PokemonViewModel(private val pokemonRepository: PokemonRepository) : BaseV
     fun fillListPokemonDetails(result: JSONObject) {
 
         val forms = result.getJSONArray("forms")
+        val name = forms.getJSONObject(0).getString("name")
+
         val images = result.getJSONObject("sprites")
+        val urlImage = images.getString("front_default")
+
         val types = result.getJSONArray("types")
         val slot = types.getJSONObject(0)
         val type = slot.getJSONObject("type")
+        val typeName = type.getString("name")
 
         val moves = result.getJSONArray("moves")
         val move = moves.getJSONObject(0).getJSONObject("move")
+        val moveName = move.getString("name")
+
 
         val abilities = result.getJSONArray("abilities")
         val ability = abilities.getJSONObject(0).getJSONObject("ability")
-
-        val typeName = type.getString("name")
-        val name = forms.getJSONObject(0).getString("name")
-        val urlImage = images.getString("front_default")
-        val moveName = move.getString("name")
         val abilityName = ability.getString("name")
 
         listPokemonDetails.add(PokemonDetails(name,urlImage,typeName, moveName,abilityName))
