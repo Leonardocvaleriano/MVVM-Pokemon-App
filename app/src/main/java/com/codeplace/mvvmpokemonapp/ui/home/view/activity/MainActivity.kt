@@ -29,14 +29,12 @@ class MainActivity : AppCompatActivity() {
         binding.bottomNavigationView.setOnNavigationItemSelectedListener {
             when (it.itemId) {
                 R.id.listPokemonFragment -> {
-                    //val action = ListFavoritesPokemonFragmentDirections.
-                    val action = PokemonNavGraphDirections.globalActionNavigateToNestedGraph()
+                     val action = PokemonNavGraphDirections.globalActionNavigateToNestedGraph()
                     navController.navigate(action)
                     return@setOnNavigationItemSelectedListener true
                  }
                 R.id.ListFavoritesPokemonFragment -> {
-                    //val action = ListPokemonFragmentDirections.
-                    val action = PokemonNavGraphDirections.globalActionNavigateToFavoritesFragment()
+                     val action = PokemonNavGraphDirections.globalActionNavigateToFavoritesFragment()
                     navController.navigate(action)
                     return@setOnNavigationItemSelectedListener true
                 }

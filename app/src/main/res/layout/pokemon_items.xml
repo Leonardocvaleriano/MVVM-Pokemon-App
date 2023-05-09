@@ -5,14 +5,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/cardView"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="200dp"
     android:backgroundTint="@color/beige"
     app:cardCornerRadius="10dp"
     app:strokeColor="@color/black"
     app:strokeWidth="@dimen/cardview_compat_inset_shadow"
     app:cardElevation="5dp"
     app:cardUseCompatPadding="true"
-    app:layout_constraintEnd_toEndOf="parent"
+     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintTop_toTopOf="parent">
 
@@ -33,24 +33,24 @@
             tools:src="@drawable/img_pokemon"></ImageView>
 
         <TextView
+            android:layout_marginTop="15dp"
             android:id="@+id/txtPokemonName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="3dp"
-            android:layout_marginTop="3dp"
+            android:layout_marginStart="8dp"
             android:fontFamily="@font/baloo"
             android:textColor="@color/black"
-            android:textSize="20sp"
+            android:textSize="25sp"
             android:textStyle="bold"
             app:layout_constraintStart_toEndOf="@+id/imgPokemon"
-            app:layout_constraintTop_toTopOf="@+id/imgPokemon"
+            app:layout_constraintTop_toTopOf="parent"
             tools:text="Pokemon Name" />
 
         <ImageView
             android:id="@+id/icFavoriteCard"
             android:layout_width="45dp"
             android:layout_height="45dp"
-            android:layout_marginTop="5dp"
+            android:layout_marginTop="6dp"
             android:layout_marginEnd="10dp"
             android:contentDescription="@string/favorites_icon"
             android:src="@drawable/ic_favorite"
@@ -61,10 +61,11 @@
         <androidx.cardview.widget.CardView
             android:id="@+id/cvPokemonAbility"
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:backgroundTint="@color/navy"
             app:cardCornerRadius="10dp"
-            android:layout_marginTop="15dp"
+             android:layout_marginTop="10dp"
+            android:layout_marginStart="10dp"
             android:layout_marginEnd="4dp"
             android:layout_marginBottom="20dp"
              app:cardElevation="5dp"
@@ -80,9 +81,9 @@
                 android:layout_height="match_parent"
                 android:layout_gravity="center"
                 android:fontFamily="@font/baloo"
-                android:padding="5dp"
+                android:padding="7dp"
                 android:textColor="@color/white"
-                android:textSize="15sp"
+                android:textSize="17sp"
                 tools:text="Ability" />
         </androidx.cardview.widget.CardView>
 
@@ -90,10 +91,10 @@
             android:id="@+id/cvPokemonType"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-             android:backgroundTint="@color/purple"
+            android:backgroundTint="@color/purple"
             app:cardCornerRadius="10dp"
+            android:layout_marginStart="5dp"
             app:cardElevation="5dp"
-            app:layout_constraintEnd_toStartOf="@+id/cvPokemonMovement"
             app:layout_constraintStart_toEndOf="@+id/cvPokemonAbility"
             app:layout_constraintTop_toTopOf="@+id/cvPokemonAbility">
 
@@ -103,22 +104,22 @@
                 android:layout_height="match_parent"
                 android:layout_gravity="center"
                 android:fontFamily="@font/baloo"
-                android:padding="5dp"
+                android:padding="7dp"
                 android:textColor="@color/white"
-                android:textSize="15sp"
+                android:textSize="17sp"
                 tools:text="Type" />
         </androidx.cardview.widget.CardView>
 
         <androidx.cardview.widget.CardView
-            android:layout_marginStart="4dp"
             android:id="@+id/cvPokemonMovement"
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
+            android:layout_marginTop="5dp"
+            android:layout_height="wrap_content"
             android:backgroundTint="#D64315"
             app:cardCornerRadius="10dp"
             app:cardElevation="5dp"
-            app:layout_constraintStart_toEndOf="@+id/cvPokemonType"
-            app:layout_constraintTop_toTopOf="@+id/cvPokemonType">
+            app:layout_constraintStart_toStartOf="@+id/cvPokemonAbility"
+            app:layout_constraintTop_toBottomOf="@+id/cvPokemonAbility">
 
             <TextView
                 android:id="@+id/txtPokemonMove"
@@ -127,9 +128,9 @@
                 android:layout_gravity="center"
                 android:fontFamily="@font/baloo"
                 android:gravity="center"
-                android:padding="5dp"
+                android:padding="7dp"
                 android:textColor="@color/white"
-                android:textSize="15sp"
+                android:textSize="17sp"
                 tools:text="Move" />
         </androidx.cardview.widget.CardView>
 
@@ -137,13 +138,12 @@
             android:id="@+id/cvPokemonMoreInfo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="6dp"
-             android:layout_marginBottom="6dp"
+            android:layout_marginBottom="6dp"
             android:backgroundTint="#5E5D5D"
             app:cardCornerRadius="10dp"
             app:cardElevation="5dp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/icFavoriteCard"
             app:strokeColor="@color/black"
             app:strokeWidth="@dimen/cardview_compat_inset_shadow">
 
@@ -153,10 +153,10 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:fontFamily="@font/baloo"
-                android:padding="5dp"
+                android:padding="7dp"
                 android:text="@string/more_info"
-                android:textColor="#FFFFFF"
-                android:textSize="15sp" />
+                android:textColor="@color/white"
+                android:textSize="17sp" />
         </com.google.android.material.card.MaterialCardView>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </com.google.android.material.card.MaterialCardView>

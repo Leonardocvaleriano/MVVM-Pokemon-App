@@ -58,8 +58,7 @@ class PokemonViewModel(private val pokemonRepository: PokemonRepository) : BaseV
 
         val forms = result.getJSONArray("forms")
         val name = forms.getJSONObject(0).getString("name")
-
-        val images = result.getJSONObject("sprites")
+        val images = result.getJSONObject("sprites").getJSONObject("other").getJSONObject("home")
         val urlImage = images.getString("front_default")
 
         val types = result.getJSONArray("types")
@@ -70,7 +69,6 @@ class PokemonViewModel(private val pokemonRepository: PokemonRepository) : BaseV
         val moves = result.getJSONArray("moves")
         val move = moves.getJSONObject(0).getJSONObject("move")
         val moveName = move.getString("name")
-
 
         val abilities = result.getJSONArray("abilities")
         val ability = abilities.getJSONObject(0).getJSONObject("ability")

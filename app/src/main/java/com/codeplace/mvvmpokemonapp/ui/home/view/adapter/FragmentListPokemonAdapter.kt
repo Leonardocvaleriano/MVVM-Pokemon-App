@@ -5,10 +5,8 @@ package com.codeplace.mvvmpokemonapp.ui.home.view.adapter
  import androidx.navigation.Navigation
  import androidx.recyclerview.widget.RecyclerView
  import com.bumptech.glide.Glide
- import com.codeplace.mvvmpokemonapp.R
  import com.codeplace.mvvmpokemonapp.databinding.PokemonItemsBinding
  import com.codeplace.mvvmpokemonapp.ui.home.view.fragments.ListPokemonFragmentDirections
- import com.codeplace.mvvmpokemonapp.ui.home.view.fragments.PokemonDetailsFragmentDirections
  import com.codeplace.mvvmpokemonapp.ui.home.view.models.Pokemon
  import com.codeplace.mvvmpokemonapp.ui.home.view.models.PokemonDetails
  import com.codeplace.mvvmpokemonapp.util.capitalize
@@ -46,30 +44,29 @@ w     * previously created inside the pokemon_items.xml
     override fun onBindViewHolder(holder: FragmentListPokemonHolder, position: Int) {
       with(holder.binding){
 
-          val urlImage = listPokemonDetails.firstOrNull { it.name == listPokemonNames[position].name}
-          val typeName = listPokemonDetails.firstOrNull{ it.name == listPokemonNames[position].name}
-          val moveName = listPokemonDetails.firstOrNull{it.name == listPokemonNames[position].name}
-          val abilityName = listPokemonDetails.firstOrNull{it.name == listPokemonNames[position].name}
+          val pokemonName = listPokemonNames[position].name
+          val urlPokemonImage = listPokemonDetails.firstOrNull { it.name == listPokemonNames[position].name}
+          val pokemonTypeName = listPokemonDetails.firstOrNull{ it.name == listPokemonNames[position].name}
+          val pokemonMoveName = listPokemonDetails.firstOrNull{it.name == listPokemonNames[position].name}
+          val pokemonAbilityName = listPokemonDetails.firstOrNull{it.name == listPokemonNames[position].name}
 
           txtPokemonName.text = capitalize(listPokemonNames[position].name)
-          txtPokemonType.text = capitalize(typeName?.typeName)
-          txtPokemonMove.text = capitalize(moveName?.moveName)
-          txtPokemonAbility.text = capitalize(abilityName?.abilityName)
+          txtPokemonType.text = capitalize(pokemonTypeName?.typeName)
+          txtPokemonMove.text = capitalize(pokemonMoveName?.moveName)
+          txtPokemonAbility.text = capitalize(pokemonAbilityName?.abilityName)
 
-            Glide.
-                with(holder.itemView.context)
-                    .load(urlImage?.urlImage)
+            Glide.with(holder.itemView.context)
+                    .load(urlPokemonImage?.urlImage)
                     .into(imgPokemon)
 
           cvPokemonMoreInfo.setOnClickListener {
               val navController = Navigation.findNavController(holder.itemView)
-              val action = ListPokemonFragmentDirections.navigateToPokemonDetail()
+              val action = ListPokemonFragmentDirections.navigateToPokemonDetailsFragment(
+                  pokemonName, urlPokemonImage!!.urlImage)
               navController.navigate(action)
-
           }
       }
     }
-
 }
 
 
