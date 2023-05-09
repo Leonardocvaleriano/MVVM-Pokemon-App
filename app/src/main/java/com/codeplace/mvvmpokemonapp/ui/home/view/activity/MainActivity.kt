@@ -6,10 +6,9 @@ package com.codeplace.mvvmpokemonapp.ui.home.view.activity
  import androidx.appcompat.app.AppCompatActivity
  import androidx.navigation.fragment.NavHostFragment
  import androidx.navigation.ui.setupWithNavController
+ import com.codeplace.mvvmpokemonapp.PokemonNavGraphDirections
  import com.codeplace.mvvmpokemonapp.R
  import com.codeplace.mvvmpokemonapp.databinding.ActivityMainBinding
- import com.google.android.material.bottomnavigation.BottomNavigationView
-
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
@@ -30,20 +29,19 @@ class MainActivity : AppCompatActivity() {
         binding.bottomNavigationView.setOnNavigationItemSelectedListener {
             when (it.itemId) {
                 R.id.listPokemonFragment -> {
-                    val action = R.id.navigateToListPokemonFragment
+                    //val action = ListFavoritesPokemonFragmentDirections.
+                    val action = PokemonNavGraphDirections.globalActionNavigateToNestedGraph()
                     navController.navigate(action)
                     return@setOnNavigationItemSelectedListener true
-                }
+                 }
                 R.id.ListFavoritesPokemonFragment -> {
-                    val action = R.id.navigateToListFavoritesPokemonFragment
+                    //val action = ListPokemonFragmentDirections.
+                    val action = PokemonNavGraphDirections.globalActionNavigateToFavoritesFragment()
                     navController.navigate(action)
                     return@setOnNavigationItemSelectedListener true
                 }
                 else -> return@setOnNavigationItemSelectedListener false
             }
         }
-        binding.bottomNavigationView.setOnItemReselectedListener((BottomNavigationView.OnNavigationItemReselectedListener { item ->
-            navController.popBackStack(item.itemId, false)
-        }))
     }
 }

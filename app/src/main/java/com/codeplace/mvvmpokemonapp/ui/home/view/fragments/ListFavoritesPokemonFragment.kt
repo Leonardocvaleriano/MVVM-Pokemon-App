@@ -26,7 +26,6 @@ class ListFavoritesPokemonFragment: Fragment(){
         initValues(pokemonName)
 
     }
-
     private fun initValues(pokemonName:String?) {
         viewModel.listPokemonNames
     }

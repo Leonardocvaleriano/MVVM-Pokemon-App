@@ -13,13 +13,35 @@
                       <LayoutPositions>
                         <option name="myPosition">
                           <Point>
-                            <option name="x" value="271" />
-                            <option name="y" value="361" />
+                            <option name="x" value="-33" />
+                            <option name="y" value="31" />
+                          </Point>
+                        </option>
+                      </LayoutPositions>
+                    </value>
+                  </entry>
+                  <entry key="globalActionNavigateToFavoritesFragment">
+                    <value>
+                      <LayoutPositions />
+                    </value>
+                  </entry>
+                  <entry key="globalActionNavigateToNestedGraph">
+                    <value>
+                      <LayoutPositions />
+                    </value>
+                  </entry>
+                  <entry key="listPokemonFragment">
+                    <value>
+                      <LayoutPositions>
+                        <option name="myPosition">
+                          <Point>
+                            <option name="x" value="-231" />
+                            <option name="y" value="138" />
                           </Point>
                         </option>
                         <option name="myPositions">
                           <map>
-                            <entry key="action_favoritesPokemonFragment_to_listPokemonFragment">
+                            <entry key="listPokemonFragmentHome">
                               <value>
                                 <LayoutPositions>
                                   <option name="myPosition">
@@ -28,48 +50,31 @@
                                       <option name="y" value="12" />
                                     </Point>
                                   </option>
+                                  <option name="myPositions">
+                                    <map>
+                                      <entry key="navigateToPokemonDetail">
+                                        <value>
+                                          <LayoutPositions />
+                                        </value>
+                                      </entry>
+                                    </map>
+                                  </option>
+                                </LayoutPositions>
+                              </value>
+                            </entry>
+                            <entry key="pokemonDetailsFragment">
+                              <value>
+                                <LayoutPositions>
+                                  <option name="myPosition">
+                                    <Point>
+                                      <option name="x" value="256" />
+                                      <option name="y" value="12" />
+                                    </Point>
+                                  </option>
                                 </LayoutPositions>
                               </value>
                             </entry>
                           </map>
-                        </option>
-                      </LayoutPositions>
-                    </value>
-                  </entry>
-                  <entry key="listPokemonFragment">
-                    <value>
-                      <LayoutPositions>
-                        <option name="myPosition">
-                          <Point>
-                            <option name="x" value="-96" />
-                            <option name="y" value="170" />
-                          </Point>
-                        </option>
-                        <option name="myPositions">
-                          <map>
-                            <entry key="navigateToPokemonDetail">
-                              <value>
-                                <LayoutPositions />
-                              </value>
-                            </entry>
-                          </map>
-                        </option>
-                      </LayoutPositions>
-                    </value>
-                  </entry>
-                  <entry key="navigateToListFavoritesPokemonFragment">
-                    <value>
-                      <LayoutPositions />
-                    </value>
-                  </entry>
-                  <entry key="pokemonDetailsFragment">
-                    <value>
-                      <LayoutPositions>
-                        <option name="myPosition">
-                          <Point>
-                            <option name="x" value="258" />
-                            <option name="y" value="-83" />
-                          </Point>
                         </option>
                       </LayoutPositions>
                     </value>

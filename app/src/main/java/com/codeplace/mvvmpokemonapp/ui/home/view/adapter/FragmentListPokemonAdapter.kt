@@ -7,6 +7,8 @@ package com.codeplace.mvvmpokemonapp.ui.home.view.adapter
  import com.bumptech.glide.Glide
  import com.codeplace.mvvmpokemonapp.R
  import com.codeplace.mvvmpokemonapp.databinding.PokemonItemsBinding
+ import com.codeplace.mvvmpokemonapp.ui.home.view.fragments.ListPokemonFragmentDirections
+ import com.codeplace.mvvmpokemonapp.ui.home.view.fragments.PokemonDetailsFragmentDirections
  import com.codeplace.mvvmpokemonapp.ui.home.view.models.Pokemon
  import com.codeplace.mvvmpokemonapp.ui.home.view.models.PokemonDetails
  import com.codeplace.mvvmpokemonapp.util.capitalize
@@ -61,7 +63,8 @@ w     * previously created inside the pokemon_items.xml
 
           cvPokemonMoreInfo.setOnClickListener {
               val navController = Navigation.findNavController(holder.itemView)
-              navController.navigate(R.id.navigateToPokemonDetail)
+              val action = ListPokemonFragmentDirections.navigateToPokemonDetail()
+              navController.navigate(action)
 
           }
       }

@@ -10,6 +10,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.setupWithNavController
 import com.codeplace.mvvmpokemonapp.R
 import com.codeplace.mvvmpokemonapp.databinding.FragmentPokemonDetailsBinding
+import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class PokemonDetailsFragment : Fragment() {
 
