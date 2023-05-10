@@ -10,10 +10,20 @@
     <color name="grey">#C7C7C7</color>
     <color name="beige">#F9E2AF</color>
     <color name="purple">#77037B</color>
-    <color name="navy">#210062</color>
-    <color name="blue">#009FBD</color>
-    <color name="bluelight">#7CEAFF</color>
+    <color name="bluelight">#2196F3</color>
     <color name="orange">#D64618</color>
+    <color name="red">#E44141</color>
+    <color name="blue">#0F205C</color>
+    <color name="navy">#1A0A3A</color>
+
+
+    <color name="bluePokeOriginal">#009FBD</color>
+    <color name="bluePoke"> #003a70</color>
+    <color name="blueLightPoke">#3d7dca</color>
+    <color name="yellowPoke"> #ffcb05</color>
+
+
+
 
 
 </resources>

@@ -7,11 +7,12 @@
     android:background="@color/blue">
 
     <androidx.recyclerview.widget.RecyclerView
-         android:id="@+id/recyclerView"
+        android:id="@+id/recyclerView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         tools:listitem="@layout/pokemon_items"></androidx.recyclerview.widget.RecyclerView>
 

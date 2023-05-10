@@ -59,7 +59,7 @@ w     * previously created inside the pokemon_items.xml
                     .load(urlPokemonImage?.urlImage)
                     .into(imgPokemon)
 
-          cvPokemonMoreInfo.setOnClickListener {
+          icArrowMoreInfo.setOnClickListener {
               val navController = Navigation.findNavController(holder.itemView)
               val action = ListPokemonFragmentDirections.navigateToPokemonDetailsFragment(
                   pokemonName, urlPokemonImage!!.urlImage)
