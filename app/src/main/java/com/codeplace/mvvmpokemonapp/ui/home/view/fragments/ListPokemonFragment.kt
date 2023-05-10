@@ -89,6 +89,5 @@ class ListPokemonFragment: Fragment() {
         Toast.makeText(activity, message, Toast.LENGTH_SHORT).show()
     }
 
-
 }
 

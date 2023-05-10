@@ -30,8 +30,11 @@ class PokemonDetailsFragment : Fragment() {
                     .load(args.urlPokemonImage)
                      .fitCenter()
                     .into(imgPokemon)
+            txtPokemonName.text = capitalize(args.pokemonName)
+            txtPokemonAbility.text = capitalize(args.pokemonAbilityName)
+            txtPokemonType.text = capitalize(args.pokemonTypeName)
+            txtPokemonMove.text = capitalize(args.pokemonMoveName)
         }
-
 
         return binding.root
 

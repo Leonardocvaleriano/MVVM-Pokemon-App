@@ -62,11 +62,14 @@ w     * previously created inside the pokemon_items.xml
           icArrowMoreInfo.setOnClickListener {
               val navController = Navigation.findNavController(holder.itemView)
               val action = ListPokemonFragmentDirections.navigateToPokemonDetailsFragment(
-                  pokemonName, urlPokemonImage!!.urlImage)
+                  pokemonName,
+                  urlPokemonImage!!.urlImage,
+                  pokemonAbilityName!!.abilityName,
+                  pokemonTypeName!!.typeName,
+                  pokemonMoveName!!.moveName
+                  )
               navController.navigate(action)
           }
       }
     }
 }
-
-

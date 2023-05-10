@@ -25,12 +25,23 @@
             <argument
                 android:name="pokemonName"
                 app:argType="string"
-                android:defaultValue="Name" />
+                android:defaultValue="Name"/>
             <argument
                 android:name="urlPokemonImage"
                 app:argType="string"
-                android:defaultValue="Name" />
-
+                android:defaultValue="Image"/>
+            <argument
+                android:name="pokemonAbilityName"
+                app:argType="string"
+                android:defaultValue="Type"/>
+            <argument
+                android:name="pokemonTypeName"
+                app:argType="string"
+                android:defaultValue="Move"/>
+            <argument
+                android:name="pokemonMoveName"
+                app:argType="string"
+                android:defaultValue="Ability" />
         </fragment>
 
     </navigation>
