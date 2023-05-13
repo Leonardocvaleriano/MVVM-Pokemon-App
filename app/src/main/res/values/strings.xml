@@ -101,4 +101,11 @@
         "when a user tries to pick up one of cards.\n\n"
     </string>
     <string name="pokemons">Pokemons</string>
+    <string name="generation">Generation</string>
+    <string name="genre">Genre</string>
+    <string name="genter">Genter</string>
+    <string name="region">Region</string>
+    <string name="location">Location</string>
+    <string name="habitat">Habitat</string>
+    <string name="effects">Effects:</string>
 </resources>

@@ -35,12 +35,9 @@ class ListPokemonFragment: Fragment() {
 
         return binding.root
     }
-
-
     private fun initValues() {
         viewModel.getPokemonList()
     }
-
     private fun initObservables() {
         viewModel.pokemonListNames.observe(viewLifecycleOwner) {
             when (it) {
@@ -74,13 +71,12 @@ class ListPokemonFragment: Fragment() {
         with(binding) {
             adapter = FragmentListPokemonAdapter(
                 viewModel.listPokemonNames,
-                viewModel.listPokemonDetails,
+                viewModel.listPokemonDetails
              )
             recyclerView.layoutManager = LinearLayoutManager(activity)
             recyclerView.adapter = adapter
         }
     }
-
     private fun loading(loading: Boolean) {
         binding.progressBar.visibility = if (loading) VISIBLE else GONE
     }

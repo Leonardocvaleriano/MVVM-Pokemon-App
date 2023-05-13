@@ -45,6 +45,7 @@ w     * previously created inside the pokemon_items.xml
       with(holder.binding){
 
           val pokemonName = listPokemonNames[position].name
+          val pokemonUrl = listPokemonNames[position].url
           val urlPokemonImage = listPokemonDetails.firstOrNull { it.name == listPokemonNames[position].name}
           val pokemonTypeName = listPokemonDetails.firstOrNull{ it.name == listPokemonNames[position].name}
           val pokemonMoveName = listPokemonDetails.firstOrNull{it.name == listPokemonNames[position].name}
@@ -63,11 +64,12 @@ w     * previously created inside the pokemon_items.xml
               val navController = Navigation.findNavController(holder.itemView)
               val action = ListPokemonFragmentDirections.navigateToPokemonDetailsFragment(
                   pokemonName,
+                  pokemonUrl,
                   urlPokemonImage!!.urlImage,
                   pokemonAbilityName!!.abilityName,
                   pokemonTypeName!!.typeName,
                   pokemonMoveName!!.moveName
-                  )
+              )
               navController.navigate(action)
           }
       }

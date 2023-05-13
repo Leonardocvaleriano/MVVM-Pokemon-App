@@ -27,6 +27,10 @@
                 app:argType="string"
                 android:defaultValue="Name"/>
             <argument
+                android:name="pokemonUrl"
+                app:argType="string"
+                android:defaultValue="pokemonUrl"/>
+            <argument
                 android:name="urlPokemonImage"
                 app:argType="string"
                 android:defaultValue="Image"/>

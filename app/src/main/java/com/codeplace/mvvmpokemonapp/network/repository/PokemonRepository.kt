@@ -9,8 +9,22 @@ class PokemonRepository (private val baseUrl: String) {
             val api = RetrofitInstance.getRetrofit(baseUrl)
             return@withContext api.getPokemonList()
         }
-         suspend fun getPokemonDetails(name: String) = withContext(Dispatchers.IO){
+         suspend fun getPokemonDetails(pokemonName: String) = withContext(Dispatchers.IO){
              val api = RetrofitInstance.getRetrofit(baseUrl)
-             return@withContext api.getPokemonDetails(name)
+             return@withContext api.getPokemonDetails(pokemonName)
     }
+        suspend fun getPokemonEffects(pokemonId:Int) = withContext(Dispatchers.IO){
+            val api = RetrofitInstance.getRetrofit(baseUrl)
+            return@withContext api.getPokemonEffect(pokemonId)
+        }
+        suspend fun getPokemonLocation(pokemonId:Int) = withContext(Dispatchers.IO){
+            val api = RetrofitInstance.getRetrofit(baseUrl)
+            return@withContext api.getPokemonLocation(pokemonId)
+    }
+
+        suspend fun getPokemonHabitat(pokemonId: Int) = withContext(Dispatchers.IO){
+            val api = RetrofitInstance.getRetrofit(baseUrl)
+            return@withContext api.getPokemonHabitat(pokemonId)
+        }
 }
+

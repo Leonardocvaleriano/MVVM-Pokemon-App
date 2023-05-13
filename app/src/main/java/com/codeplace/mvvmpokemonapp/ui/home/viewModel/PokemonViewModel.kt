@@ -18,6 +18,9 @@ class PokemonViewModel(private val pokemonRepository: PokemonRepository) : BaseV
      */
     val pokemonListNames = MutableLiveData<StateFlow>()
     val pokemonDetails = MutableLiveData<StateFlow>()
+    val pokemonEffects  = MutableLiveData<StateFlow>()
+    val pokemonLocation = MutableLiveData<StateFlow>()
+    val pokemonHabitat = MutableLiveData<StateFlow>()
 
     val listPokemonNames = ArrayList<Pokemon>()
     val listPokemonDetails = ArrayList<PokemonDetails>()
@@ -30,21 +33,30 @@ class PokemonViewModel(private val pokemonRepository: PokemonRepository) : BaseV
      */
 
     fun getPokemonList() = fetchData(pokemonListNames) {
-                listPokemonNames.clear()
-                listPokemonDetails.clear()
-                pokemonRepository.getPokemonList()
-            }
+        listPokemonNames.clear()
+        listPokemonDetails.clear()
+        pokemonRepository.getPokemonList()
+    }
 
     fun initPokemonDetails() {
         listPokemonNames.forEach {
             getPokemonDetails(it.name)
         }
     }
-    private fun getPokemonDetails(name: String) = fetchData(pokemonDetails) {
-                pokemonRepository.getPokemonDetails(name)
-            }
+    fun getPokemonDetails(pokemonName: String) = fetchData(pokemonDetails) {
+        pokemonRepository.getPokemonDetails(pokemonName)
+    }
+    fun getPokemonEffects(pokemonId:Int) = fetchData(pokemonEffects){
+        pokemonRepository.getPokemonEffects(pokemonId)
+    }
+    fun getPokemonLocation(pokemonId:Int) = fetchData(pokemonLocation){
+        pokemonRepository.getPokemonLocation(pokemonId)
+    }
 
-     fun fillListPokemonNames(result: JSONObject) {
+    fun getPokemonHabitat(pokemonId: Int) = fetchData(pokemonHabitat){
+        pokemonRepository.getPokemonHabitat(pokemonId)
+    }
+    fun fillListPokemonNames(result: JSONObject) {
         val resultJSONArray = result.getJSONArray("results")
         (0 until resultJSONArray.length())
             .map { resultJSONArray.getJSONObject(it) }
@@ -52,7 +64,6 @@ class PokemonViewModel(private val pokemonRepository: PokemonRepository) : BaseV
                 listPokemonNames += Pokemon(it)
             }
     }
-
     @SuppressLint("SuspiciousIndentation")
     fun fillListPokemonDetails(result: JSONObject) {
 
@@ -73,7 +84,7 @@ class PokemonViewModel(private val pokemonRepository: PokemonRepository) : BaseV
         val abilities = result.getJSONArray("abilities")
         val ability = abilities.getJSONObject(0).getJSONObject("ability")
         val abilityName = ability.getString("name")
-
-        listPokemonDetails.add(PokemonDetails(name,urlImage,typeName, moveName,abilityName))
+        listPokemonDetails.add(PokemonDetails(name,urlImage,typeName, moveName, abilityName))
     }
+
 }

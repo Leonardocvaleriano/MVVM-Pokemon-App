@@ -16,39 +16,33 @@ open class BaseViewModel : ViewModel() {
         service: suspend () -> Response<*>) {
 
         viewModelScope.launch {
-                liveData.value = StateFlow.Loading(true)
-                // try catch below to no crash the app when there is no connection.
-                try{
-                    val response = service()
+            liveData.value = StateFlow.Loading(true)
+            // try catch below to no crash the app when there is no connection.
+            try {
+                val response = service()
+                liveData.value = StateFlow.Loading(false)
+                if (response.isSuccessful) {
+
                     val jsonResponse = JSONObject(response.body()!! as Map<*, *>)
-                    if (response.isSuccessful) {
-                        liveData.value = StateFlow.Loading(false)
                         liveData.value = StateFlow.Success(jsonResponse)
-                    } else {
-                        liveData.value =
-                            StateFlow.Error(response.errorBody()!!.toString(), null, null, null)
-                    }
+                } else if(response.code() == 504) {
+                    liveData.value = StateFlow.Error(
+                        "An Error occurred when tried to call the service, please try again.",
+                        null,
+                        null,
+                        null
+                    )
+                } else {
+                    liveData.value = StateFlow.Error(response.errorBody()!!.string(), null,null,null)
                 }
-                catch (e: Exception) {
+
+                } catch (e: Exception) {
                     Log.e("VmViewModel", Log.getStackTraceString(e))
                     liveData.value = StateFlow.Loading(false)
                     liveData.value = StateFlow.Error(e.message!!, null, null, null)
-
                 }
-
             }
     }
-
-//    private fun JSONObject.getIgnoreCase(key: String): String {
-//        keys().forEach {
-//            if (it.equals(key, true)) {
-//                return getString(it)
-//            }
-//        }
-//        return ""
-//    }
-
-
 
 }
 
