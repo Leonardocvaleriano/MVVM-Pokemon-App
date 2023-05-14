@@ -13,6 +13,8 @@ import com.codeplace.mvvmpokemonapp.databinding.FragmentPokemonDetailsBinding
 import com.codeplace.mvvmpokemonapp.stateFlow.StateFlow
 import com.codeplace.mvvmpokemonapp.ui.home.viewModel.PokemonViewModel
 import com.codeplace.mvvmpokemonapp.util.capitalize
+import com.codeplace.mvvmpokemonapp.util.convertDecimetersToMeters
+import com.codeplace.mvvmpokemonapp.util.convertHectogramsToKg
 import org.json.JSONObject
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -55,8 +57,7 @@ class PokemonDetailsFragment : Fragment() {
 
     private fun initValues(pokemonName: String, pokemonId: Int) {
         viewModel.getPokemonDetails(pokemonName)
-        viewModel.getPokemonLocation(pokemonId)
-        viewModel.getPokemonHabitat(pokemonId)
+        viewModel.getPokemonSpecies(pokemonId)
         viewModel.getPokemonEffects(pokemonId)
 
     }
@@ -70,14 +71,14 @@ class PokemonDetailsFragment : Fragment() {
             }
         }
 
-        viewModel.pokemonLocation.observe(viewLifecycleOwner){
+        viewModel.pokemonSpecies.observe(viewLifecycleOwner){
             when(it){
                 is StateFlow.Loading -> (loading(it.loading))
-                is StateFlow.Success<*> -> (fillCharacteristicsPokemonLocation(it.data as JSONObject))
+                is StateFlow.Success<*> -> (fillCharacteristicsPokemonGrowthRate(it.data as JSONObject))
                 is StateFlow.Error -> (errorMessage(it.errorMessage))
             }
         }
-        viewModel.pokemonHabitat.observe(viewLifecycleOwner){
+        viewModel.pokemonSpecies.observe(viewLifecycleOwner){
             when(it){
                 is StateFlow.Loading -> (loading(it.loading))
                 is StateFlow.Success<*> -> (fillCharacteristicsPokemonHabitat(it.data as JSONObject))
@@ -95,20 +96,20 @@ class PokemonDetailsFragment : Fragment() {
 
     private fun fillCharacteristicsHeightWeight(result: JSONObject?) {
         with(binding) {
-            txtHeight.text = result?.getInt("height").toString()
-            txtWeight.text = result?.getInt("weight").toString()
+            txtHeight.text = convertDecimetersToMeters(result!!.getInt("height").toDouble()).toString()
+            txtWeight.text = convertHectogramsToKg(result.getInt("weight").toDouble()).toString()
+
         }
     }
 
-    private fun fillCharacteristicsPokemonLocation(result: JSONObject) {
+    private fun fillCharacteristicsPokemonGrowthRate(result: JSONObject) {
         with(binding){
-            txtLocation.text = capitalize(result.getString("name"))
+            txtGrowthRate.text = capitalize(result.getJSONObject("growth_rate").getString("name"))
         }
     }
     private fun fillCharacteristicsPokemonHabitat(result: JSONObject) {
         with(binding){
-            txtHabitat.text = capitalize(result.getString("name"))
-
+            txtHabitat.text = capitalize(result.getJSONObject("habitat").getString("name"))
         }
 
     }

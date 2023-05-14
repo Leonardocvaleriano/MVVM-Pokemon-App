@@ -11,14 +11,11 @@ interface API {
     @GET("pokemon/{pokemonName}")
     suspend fun getPokemonDetails(
         @Path("pokemonName")pokemonName:String):Response<Map<String, *>>
+    @GET("pokemon-species/{pokemonId}")
+    suspend fun getPokemonSpecies(
+        @Path("pokemonId")pokemonId:Int):Response<Map<String, *>>
     @GET("ability/{pokemonId}")
     suspend fun getPokemonEffect(
-        @Path("pokemonId")pokemonId:Int):Response<Map<String, *>>
-    @GET("location/{pokemonId}")
-    suspend fun getPokemonLocation(
-        @Path("pokemonId")pokemonId:Int):Response<Map<String, *>>
-    @GET("pokemon-habitat/{pokemonId}")
-    suspend fun getPokemonHabitat(
         @Path("pokemonId")pokemonId:Int):Response<Map<String, *>>
 
 }

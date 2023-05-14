@@ -108,4 +108,7 @@
     <string name="location">Location</string>
     <string name="habitat">Habitat</string>
     <string name="effects">Effects:</string>
+    <string name="growth_rate">Growth-Rate</string>
+    <string name="meterMeasurement">m</string>
+    <string name="kgMeasurement">kg</string>
 </resources>

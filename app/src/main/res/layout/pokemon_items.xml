@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/cardView"
     android:layout_width="match_parent"
-    android:layout_height="200dp"
+    android:layout_height="220dp"
     android:backgroundTint="@color/beige"
     app:cardCornerRadius="10dp"
     app:strokeColor="@color/black"
@@ -117,6 +117,7 @@
             android:backgroundTint="#D64315"
             app:cardCornerRadius="10dp"
             app:cardElevation="5dp"
+            app:layout_constraintBottom_toBottomOf="@+id/cvPokemonType"
             app:layout_constraintStart_toEndOf="@+id/cvPokemonType"
             app:layout_constraintTop_toTopOf="@+id/cvPokemonType">
 
@@ -135,15 +136,14 @@
 
 
         <ImageView
-
-             android:id="@+id/icArrowMoreInfo"
+            android:id="@+id/icArrowMoreInfo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:fontFamily="@font/baloo"
             android:layout_margin="5dp"
+            android:layout_marginBottom="4dp"
+            android:fontFamily="@font/baloo"
             android:src="@drawable/ic_arrow_circle_right"
-            android:textSize="17sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent" />
 

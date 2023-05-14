@@ -17,14 +17,10 @@ class PokemonRepository (private val baseUrl: String) {
             val api = RetrofitInstance.getRetrofit(baseUrl)
             return@withContext api.getPokemonEffect(pokemonId)
         }
-        suspend fun getPokemonLocation(pokemonId:Int) = withContext(Dispatchers.IO){
-            val api = RetrofitInstance.getRetrofit(baseUrl)
-            return@withContext api.getPokemonLocation(pokemonId)
-    }
 
-        suspend fun getPokemonHabitat(pokemonId: Int) = withContext(Dispatchers.IO){
+        suspend fun getPokemonSpecies(pokemonId: Int) = withContext(Dispatchers.IO){
             val api = RetrofitInstance.getRetrofit(baseUrl)
-            return@withContext api.getPokemonHabitat(pokemonId)
+            return@withContext api.getPokemonSpecies(pokemonId)
         }
 }
 

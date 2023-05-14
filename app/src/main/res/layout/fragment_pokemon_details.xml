@@ -71,7 +71,7 @@
                 android:id="@+id/cvPokemonAbility"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="50dp"
+                android:layout_marginTop="30dp"
                 android:backgroundTint="@color/navy"
                 app:cardCornerRadius="20dp"
                 app:cardElevation="5dp"
@@ -144,27 +144,26 @@
                 android:id="@+id/txtCharacterTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
-                android:layout_marginTop="30dp"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="28dp"
                 android:fontFamily="@font/baloo"
                 android:text="@string/characteristics"
                 android:textColor="@color/black"
-                android:textSize="30sp"
+                android:textSize="28sp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="@id/viewPokemonInfo"
-                app:layout_constraintTop_toBottomOf="@id/cvPokemonAbility"/>
+                app:layout_constraintTop_toBottomOf="@id/cvPokemonAbility" />
 
             <TextView
                 android:id="@+id/txtHeightTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
                 android:fontFamily="@font/baloo"
                 android:text="@string/height"
                 android:textColor="@color/black"
-                android:textSize="25sp"
+                android:textSize="20sp"
                 android:textStyle="bold"
-                app:layout_constraintBottom_toTopOf="@+id/txtLocationTitle"
+                android:layout_marginTop="10dp"
                 app:layout_constraintEnd_toStartOf="@+id/txtWeightTitle"
                 app:layout_constraintHorizontal_chainStyle="spread"
                 app:layout_constraintStart_toStartOf="@id/viewPokemonInfo"
@@ -174,15 +173,28 @@
             <TextView
                 android:id="@+id/txtHeight"
                 android:layout_width="wrap_content"
-                android:textColor="@color/black"
-                android:textStyle="normal"
-                android:textSize="18sp"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
                 android:fontFamily="@font/baloo"
-                app:layout_constraintEnd_toEndOf="@+id/txtHeightTitle"
+                android:textColor="@color/black"
+                android:textSize="22sp"
+                android:textStyle="normal"
                 app:layout_constraintStart_toStartOf="@+id/txtHeightTitle"
                 app:layout_constraintTop_toBottomOf="@id/txtHeightTitle"
                 tools:text="1.90" />
+
+            <TextView
+                android:id="@+id/txtMeter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="3dp"
+                android:text="@string/meterMeasurement"
+                android:textColor="@color/black"
+                android:textSize="22sp"
+                android:textStyle="normal"
+                app:layout_constraintBottom_toBottomOf="@+id/txtHeight"
+                app:layout_constraintStart_toEndOf="@+id/txtHeight"
+                app:layout_constraintTop_toBottomOf="@+id/txtHeightTitle" />
 
             <TextView
                 android:id="@+id/txtWeightTitle"
@@ -192,7 +204,7 @@
                 android:fontFamily="@font/baloo"
                 android:text="@string/weight"
                 android:textColor="@color/black"
-                android:textSize="25sp"
+                android:textSize="20sp"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="@+id/txtHeightTitle"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -201,43 +213,56 @@
 
             <TextView
                 android:id="@+id/txtWeight"
-                android:textColor="@color/black"
-                android:textStyle="normal"
-                android:textSize="18sp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
                 android:fontFamily="@font/baloo"
-                app:layout_constraintEnd_toEndOf="@+id/txtWeightTitle"
+                android:textColor="@color/black"
+                android:textSize="22sp"
+                android:textStyle="normal"
                 app:layout_constraintStart_toStartOf="@+id/txtWeightTitle"
                 app:layout_constraintTop_toBottomOf="@+id/txtWeightTitle"
-                tools:text="90"/>
+                tools:text="90.00" />
 
             <TextView
-                android:id="@+id/txtLocationTitle"
+                android:id="@+id/txtKg"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="3dp"
+                android:text="@string/kgMeasurement"
+                android:textColor="@color/black"
+                android:textSize="22sp"
+                android:textStyle="normal"
+                app:layout_constraintBottom_toBottomOf="@+id/txtWeight"
+                app:layout_constraintStart_toEndOf="@+id/txtWeight"
+                app:layout_constraintTop_toTopOf="@+id/txtWeight" />
+
+            <TextView
+                android:id="@+id/txtGrowthRateTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="40dp"
                 android:fontFamily="@font/baloo"
-                android:text="@string/location"
+                android:text="@string/growth_rate"
                 android:textColor="@color/black"
-                android:textSize="25sp"
+                android:textSize="20sp"
                 android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="@+id/txtHeightTitle"
+                app:layout_constraintEnd_toEndOf="@+id/txtWeightTitle"
                 app:layout_constraintHorizontal_chainStyle="spread"
-                app:layout_constraintStart_toStartOf="@+id/txtHeightTitle"
-                app:layout_constraintTop_toBottomOf="@+id/txtHeightTitle" />
+                app:layout_constraintStart_toStartOf="@+id/txtWeightTitle"
+                app:layout_constraintTop_toBottomOf="@+id/txtWeightTitle" />
 
             <TextView
-                android:id="@+id/txtLocation"
-                android:textSize="18sp"
+                android:id="@+id/txtGrowthRate"
+                android:textSize="22sp"
                 android:textColor="@color/black"
                 android:textStyle="normal"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/baloo"
-                app:layout_constraintEnd_toEndOf="@+id/txtLocationTitle"
-                app:layout_constraintStart_toStartOf="@+id/txtLocationTitle"
-                app:layout_constraintTop_toBottomOf="@+id/txtLocationTitle"
+                app:layout_constraintEnd_toEndOf="@+id/txtGrowthRateTitle"
+                app:layout_constraintStart_toStartOf="@+id/txtGrowthRateTitle"
+                app:layout_constraintTop_toBottomOf="@+id/txtGrowthRateTitle"
                 tools:text="Sunyshore-city" />
 
             <TextView
@@ -247,13 +272,12 @@
                 android:fontFamily="@font/baloo"
                 android:text="@string/habitat"
                 android:textColor="@color/black"
-                android:textSize="25sp"
+                android:textSize="20sp"
                 android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="@+id/txtLocationTitle"
-                app:layout_constraintEnd_toEndOf="@+id/txtWeightTitle"
-                app:layout_constraintStart_toStartOf="@+id/txtWeightTitle"
-                app:layout_constraintTop_toTopOf="@+id/txtLocationTitle"
-                />
+                app:layout_constraintBottom_toBottomOf="@+id/txtGrowthRateTitle"
+                app:layout_constraintEnd_toEndOf="@+id/txtHeightTitle"
+                app:layout_constraintStart_toStartOf="@+id/txtHeightTitle"
+                app:layout_constraintTop_toTopOf="@+id/txtGrowthRateTitle" />
 
             <TextView
                 android:id="@+id/txtHabitat"
@@ -261,18 +285,18 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/baloo"
                 android:textColor="@color/black"
+                android:textSize="22sp"
                 android:textStyle="normal"
-                android:textSize="18sp"
                 app:layout_constraintEnd_toEndOf="@+id/txtHabitatTitle"
                 app:layout_constraintStart_toStartOf="@+id/txtHabitatTitle"
-                app:layout_constraintTop_toBottomOf="@+id/txtHabitatTitle"
-                tools:text="Moon-Stone" />
+                app:layout_constraintTop_toBottomOf="@+id/txtGrowthRateTitle"
+                tools:text="Mountain" />
 
             <TextView
                 android:id="@+id/txtEffectTitle"
                 android:text="@string/effects"
                 app:layout_constraintStart_toStartOf="@+id/txtCharacterTitle"
-                app:layout_constraintTop_toBottomOf="@+id/txtLocation"
+                app:layout_constraintTop_toBottomOf="@+id/txtGrowthRate"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
@@ -303,13 +327,9 @@
                     android:id="@+id/txtPokemonEffect"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:paddingStart="15dp"
-                    android:paddingTop="5dp"
-                    android:paddingEnd="5dp"
-                    android:paddingBottom="5dp"
-                    android:textAlignment="textStart"
-                    android:textColor="@color/black"
-                    android:textSize="18sp"
+                    android:padding="10dp"
+                     android:textColor="@color/black"
+                    android:textSize="20sp"
                     android:textStyle="normal"
                     app:layout_constraintTop_toBottomOf="@+id/txtEffectTitle"
                     tools:text="@string/large_text" />

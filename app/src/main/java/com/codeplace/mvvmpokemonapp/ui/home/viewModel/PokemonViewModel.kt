@@ -13,22 +13,21 @@ class PokemonViewModel(private val pokemonRepository: PokemonRepository) : BaseV
 
 
     /**
-     * This pokemonList of type MutableLiveData will hold the current data defined to the BaseViewModel,
+     * This pokemonList of type MutableLiveData will hold the current data defined in the BaseViewModel,
      * to set it to the activity, fragment or whoever be connected with it.
      */
     val pokemonListNames = MutableLiveData<StateFlow>()
     val pokemonDetails = MutableLiveData<StateFlow>()
     val pokemonEffects  = MutableLiveData<StateFlow>()
-    val pokemonLocation = MutableLiveData<StateFlow>()
-    val pokemonHabitat = MutableLiveData<StateFlow>()
+    val pokemonSpecies = MutableLiveData<StateFlow>()
 
     val listPokemonNames = ArrayList<Pokemon>()
     val listPokemonDetails = ArrayList<PokemonDetails>()
 
 
     /**
-     * 1. Sending the pokemonlist to the BaseViewModel, because when the API be called, the currrent data return
-     * will be added to the property pokemonlist
+     * 1. Sending the pokemonlist, pokemonDetails & etc to the BaseViewModel, because when the API be called, the currrent data return
+     * will be added to the property sent previously
      * 2. Sending the intended repository with the fun configured to call the API.
      */
 
@@ -49,12 +48,9 @@ class PokemonViewModel(private val pokemonRepository: PokemonRepository) : BaseV
     fun getPokemonEffects(pokemonId:Int) = fetchData(pokemonEffects){
         pokemonRepository.getPokemonEffects(pokemonId)
     }
-    fun getPokemonLocation(pokemonId:Int) = fetchData(pokemonLocation){
-        pokemonRepository.getPokemonLocation(pokemonId)
-    }
 
-    fun getPokemonHabitat(pokemonId: Int) = fetchData(pokemonHabitat){
-        pokemonRepository.getPokemonHabitat(pokemonId)
+    fun getPokemonSpecies(pokemonId: Int) = fetchData(pokemonSpecies){
+        pokemonRepository.getPokemonSpecies(pokemonId)
     }
     fun fillListPokemonNames(result: JSONObject) {
         val resultJSONArray = result.getJSONArray("results")
