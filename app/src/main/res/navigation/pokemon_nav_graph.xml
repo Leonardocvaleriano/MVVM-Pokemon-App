@@ -17,7 +17,8 @@
                 android:id="@+id/navigateToPokemonDetailsFragment"
                 app:destination="@id/pokemonDetailsFragment"
                 app:enterAnim="@anim/from_right"
-                 />
+                app:exitAnim="@anim/from_left"
+                app:popExitAnim="@anim/from_left" />
         </fragment>
         <fragment
             android:id="@+id/pokemonDetailsFragment"
@@ -64,12 +65,12 @@
         app:enterAnim="@anim/from_left"
 
 
-        />
+        app:popExitAnim="@anim/from_right" />
 
     <action
         android:id="@+id/globalActionNavigateToFavoritesFragment"
         app:destination="@id/ListFavoritesPokemonFragment"
         app:enterAnim="@anim/from_right"
 
-        />
+        app:popExitAnim="@anim/from_left" />
 </navigation>

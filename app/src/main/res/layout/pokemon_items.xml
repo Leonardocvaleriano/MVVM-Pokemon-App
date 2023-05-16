@@ -26,11 +26,12 @@
             android:layout_height="120dp"
             android:contentDescription="@string/pokemon_image"
             android:padding="3dp"
+            android:layout_marginStart="3dp"
             android:scaleType="centerCrop"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            tools:src="@drawable/img_pokemon"></ImageView>
+            tools:src="@drawable/img_pokemon"/>
 
         <TextView
             android:layout_marginTop="15dp"
@@ -38,20 +39,19 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
-            android:fontFamily="@font/baloo"
+            android:fontFamily="@font/latobold"
             android:textColor="@color/black"
             android:textSize="25sp"
-            android:textStyle="bold"
-            app:layout_constraintStart_toEndOf="@+id/imgPokemon"
+             app:layout_constraintStart_toEndOf="@+id/imgPokemon"
             app:layout_constraintTop_toTopOf="parent"
             tools:text="Pokemon Name" />
 
         <ImageView
             android:id="@+id/icFavoriteCard"
-            android:layout_width="45dp"
-            android:layout_height="45dp"
-            android:layout_marginTop="6dp"
-             android:layout_marginEnd="10dp"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="15dp"
             android:contentDescription="@string/favorites_icon"
             android:src="@drawable/ic_favorite"
             app:layout_constraintEnd_toEndOf="parent"
@@ -63,13 +63,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginEnd="4dp"
+            android:layout_marginTop="20dp"
             android:backgroundTint="@color/navy"
             app:cardCornerRadius="10dp"
             app:cardElevation="5dp"
-            app:layout_constraintBottom_toTopOf="@+id/icArrowMoreInfo"
-            app:layout_constraintEnd_toStartOf="@+id/cvPokemonType"
             app:layout_constraintHorizontal_chainStyle="packed"
             app:layout_constraintStart_toEndOf="@+id/imgPokemon"
             app:layout_constraintTop_toBottomOf="@+id/txtPokemonName">
@@ -79,11 +76,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_gravity="center"
-                android:fontFamily="@font/baloo"
+                android:fontFamily="@font/latoregular"
                 android:padding="7dp"
                 android:textColor="@color/white"
                 android:textSize="15sp"
-                tools:text="Ability" />
+                tools:text="Run-away" />
         </androidx.cardview.widget.CardView>
 
         <androidx.cardview.widget.CardView
@@ -102,7 +99,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_gravity="center"
-                android:fontFamily="@font/baloo"
+                android:fontFamily="@font/latoregular"
                 android:padding="7dp"
                 android:textColor="@color/white"
                 android:textSize="15sp"
@@ -113,25 +110,24 @@
             android:id="@+id/cvPokemonMovement"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="5dp"
-            android:backgroundTint="#D64315"
+            android:backgroundTint="@color/orange"
             app:cardCornerRadius="10dp"
+            android:layout_marginTop="5dp"
             app:cardElevation="5dp"
-            app:layout_constraintBottom_toBottomOf="@+id/cvPokemonType"
-            app:layout_constraintStart_toEndOf="@+id/cvPokemonType"
-            app:layout_constraintTop_toTopOf="@+id/cvPokemonType">
+            app:layout_constraintStart_toStartOf="@+id/cvPokemonAbility"
+            app:layout_constraintTop_toBottomOf="@+id/cvPokemonAbility">
 
             <TextView
                 android:id="@+id/txtPokemonMove"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_gravity="center"
-                android:fontFamily="@font/baloo"
+                android:fontFamily="@font/latoregular"
                 android:gravity="center"
                 android:padding="7dp"
                 android:textColor="@color/white"
                 android:textSize="15sp"
-                tools:text="Move" />
+                tools:text="movement-razor" />
         </androidx.cardview.widget.CardView>
 
 
@@ -141,9 +137,9 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_margin="5dp"
+            android:contentDescription="@string/pokemon_details"
             android:layout_marginBottom="4dp"
-            android:fontFamily="@font/baloo"
-            android:src="@drawable/ic_arrow_circle_right"
+             android:src="@drawable/ic_arrow_circle_right"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent" />
 

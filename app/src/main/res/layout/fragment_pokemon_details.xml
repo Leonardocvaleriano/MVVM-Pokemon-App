@@ -9,11 +9,11 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".ui.home.view.fragments.PokemonDetailsFragment">
 
-    <androidx.core.widget.NestedScrollView
+    <ScrollView
+        android:fillViewport="true"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/navy">
-
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
@@ -26,16 +26,6 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <View
-                android:id="@+id/viewPokemonInfo"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_marginTop="60dp"
-                android:background="@drawable/shape_view_pokemon_info"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/viewBackGround" />
 
             <TextView
                 android:id="@+id/txtPokemonName"
@@ -43,29 +33,38 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="60dp"
                 android:layout_marginBottom="30dp"
-                android:fontFamily="@font/baloo"
+                android:fontFamily="@font/latobold"
                 android:padding="4dp"
                 android:textAlignment="center"
                 android:textColor="@color/white"
                 android:textSize="40sp"
-                android:textStyle="bold"
-                app:layout_constraintBottom_toTopOf="@+id/imgPokemon"
+                 app:layout_constraintBottom_toTopOf="@+id/imgPokemon"
                 app:layout_constraintEnd_toEndOf="@+id/imgPokemon"
                 app:layout_constraintStart_toStartOf="@+id/imgPokemon"
                 app:layout_constraintTop_toTopOf="@+id/viewBackGround"
                 tools:text="Pokemon" />
 
+            <View
+                android:id="@+id/viewPokemonCharacteristics"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginTop="80dp"
+                android:background="@drawable/shape_view_pokemon_info"
+                app:layout_constraintTop_toBottomOf="@+id/viewBackGround"
+                app:layout_constraintBottom_toBottomOf="parent"/>
+
             <ImageView
                 android:id="@+id/imgPokemon"
                 android:layout_width="200dp"
                 android:layout_height="200dp"
+                android:contentDescription="@string/pokemon_image"
                 android:scaleType="fitXY"
                 android:src="@drawable/img_pokemon"
-                app:layout_constraintBottom_toTopOf="@id/viewPokemonInfo"
+                app:layout_constraintBottom_toTopOf="@+id/viewPokemonCharacteristics"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/viewBackGround"
-                android:contentDescription="@string/pokemon_image" />
+                app:layout_constraintTop_toBottomOf="@id/viewBackGround" />
+
 
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/cvPokemonAbility"
@@ -80,12 +79,14 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/imgPokemon">
 
-                <TextView
+
+
+            <TextView
                     android:id="@+id/txtPokemonAbility"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_gravity="center"
-                    android:fontFamily="@font/baloo"
+                    android:fontFamily="@font/latoregular"
                     android:padding="10dp"
                     android:textColor="@color/white"
                     android:textSize="20sp"
@@ -109,7 +110,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:fontFamily="@font/baloo"
+                    android:fontFamily="@font/latoregular"
                     android:padding="10dp"
                     android:textColor="@color/white"
                     android:textSize="20sp"
@@ -132,7 +133,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:fontFamily="@font/baloo"
+                    android:fontFamily="@font/latoregular"
                     android:padding="10dp"
                     android:textColor="@color/white"
                     android:textSize="20sp"
@@ -146,27 +147,27 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="24dp"
                 android:layout_marginTop="28dp"
-                android:fontFamily="@font/baloo"
+                android:fontFamily="@font/latobold"
                 android:text="@string/characteristics"
                 android:textColor="@color/black"
                 android:textSize="28sp"
-                android:textStyle="bold"
-                app:layout_constraintStart_toStartOf="@id/viewPokemonInfo"
+                 app:layout_constraintStart_toStartOf="@id/viewPokemonCharacteristics"
                 app:layout_constraintTop_toBottomOf="@id/cvPokemonAbility" />
 
             <TextView
                 android:id="@+id/txtHeightTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/baloo"
+                android:fontFamily="@font/latobold"
                 android:text="@string/height"
+
                 android:textColor="@color/black"
                 android:textSize="20sp"
                 android:textStyle="bold"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="28dp"
                 app:layout_constraintEnd_toStartOf="@+id/txtWeightTitle"
                 app:layout_constraintHorizontal_chainStyle="spread"
-                app:layout_constraintStart_toStartOf="@id/viewPokemonInfo"
+                app:layout_constraintStart_toStartOf="@id/viewPokemonCharacteristics"
                 app:layout_constraintTop_toBottomOf="@+id/txtCharacterTitle"
                 app:layout_constraintVertical_chainStyle="spread" />
 
@@ -175,7 +176,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="2dp"
-                android:fontFamily="@font/baloo"
+                android:fontFamily="@font/latoregular"
                 android:textColor="@color/black"
                 android:textSize="22sp"
                 android:textStyle="normal"
@@ -187,12 +188,13 @@
                 android:id="@+id/txtMeter"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="3dp"
-                android:text="@string/meterMeasurement"
+                 android:text="@string/meterMeasurement"
+                android:fontFamily="@font/latoregular"
                 android:textColor="@color/black"
                 android:textSize="22sp"
                 android:textStyle="normal"
                 app:layout_constraintBottom_toBottomOf="@+id/txtHeight"
+                app:layout_constraintEnd_toEndOf="@+id/txtHeightTitle"
                 app:layout_constraintStart_toEndOf="@+id/txtHeight"
                 app:layout_constraintTop_toBottomOf="@+id/txtHeightTitle" />
 
@@ -200,8 +202,8 @@
                 android:id="@+id/txtWeightTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                 android:fontFamily="@font/latobold"
                 android:layout_marginStart="60dp"
-                android:fontFamily="@font/baloo"
                 android:text="@string/weight"
                 android:textColor="@color/black"
                 android:textSize="20sp"
@@ -216,7 +218,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="2dp"
-                android:fontFamily="@font/baloo"
+                 android:fontFamily="@font/latoregular"
                 android:textColor="@color/black"
                 android:textSize="22sp"
                 android:textStyle="normal"
@@ -228,8 +230,9 @@
                 android:id="@+id/txtKg"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="3dp"
+                android:fontFamily="@font/latoregular"
                 android:text="@string/kgMeasurement"
+                android:layout_marginStart="2dp"
                 android:textColor="@color/black"
                 android:textSize="22sp"
                 android:textStyle="normal"
@@ -242,12 +245,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="40dp"
-                android:fontFamily="@font/baloo"
+                android:fontFamily="@font/latobold"
                 android:text="@string/growth_rate"
                 android:textColor="@color/black"
                 android:textSize="20sp"
-                android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="@+id/txtWeightTitle"
+                 app:layout_constraintEnd_toEndOf="@+id/txtWeightTitle"
                 app:layout_constraintHorizontal_chainStyle="spread"
                 app:layout_constraintStart_toStartOf="@+id/txtWeightTitle"
                 app:layout_constraintTop_toBottomOf="@+id/txtWeightTitle" />
@@ -259,7 +261,7 @@
                 android:textStyle="normal"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/baloo"
+                android:fontFamily="@font/latoregular"
                 app:layout_constraintEnd_toEndOf="@+id/txtGrowthRateTitle"
                 app:layout_constraintStart_toStartOf="@+id/txtGrowthRateTitle"
                 app:layout_constraintTop_toBottomOf="@+id/txtGrowthRateTitle"
@@ -269,7 +271,7 @@
                 android:id="@+id/txtHabitatTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/baloo"
+                android:fontFamily="@font/latobold"
                 android:text="@string/habitat"
                 android:textColor="@color/black"
                 android:textSize="20sp"
@@ -283,7 +285,7 @@
                 android:id="@+id/txtHabitat"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/baloo"
+                android:fontFamily="@font/latoregular"
                 android:textColor="@color/black"
                 android:textSize="22sp"
                 android:textStyle="normal"
@@ -292,34 +294,19 @@
                 app:layout_constraintTop_toBottomOf="@+id/txtGrowthRateTitle"
                 tools:text="Mountain" />
 
-            <TextView
-                android:id="@+id/txtEffectTitle"
-                android:text="@string/effects"
-                app:layout_constraintStart_toStartOf="@+id/txtCharacterTitle"
-                app:layout_constraintTop_toBottomOf="@+id/txtGrowthRate"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:fontFamily="@font/baloo"
-                android:textColor="@color/black"
-                android:textSize="25sp"
-                android:textStyle="italic"
-                />
-
-
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/materialCardViewPokemonEffect"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="3dp"
-                android:layout_marginBottom="20dp"
                 android:layout_marginStart="20dp"
+                android:layout_marginTop="28dp"
+                 android:layout_marginBottom="12dp"
                 android:layout_marginEnd="20dp"
                 android:backgroundTint="@color/beige"
-                app:layout_constraintBottom_toBottomOf="@+id/viewPokemonInfo"
-                app:layout_constraintEnd_toEndOf="@id/viewPokemonInfo"
-                app:layout_constraintStart_toStartOf="@id/viewPokemonInfo"
-                app:layout_constraintTop_toBottomOf="@+id/txtEffectTitle"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@id/viewPokemonCharacteristics"
+                app:layout_constraintStart_toStartOf="@id/txtCharacterTitle"
+                app:layout_constraintTop_toBottomOf="@+id/txtHabitat"
                 app:strokeColor="@color/black"
                 app:strokeWidth="@dimen/cardview_compat_inset_shadow">
 
@@ -327,17 +314,17 @@
                     android:id="@+id/txtPokemonEffect"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:fontFamily="@font/latoregular"
                     android:padding="10dp"
-                     android:textColor="@color/black"
-                    android:textSize="20sp"
+                    android:textAlignment="center"
+                    android:textColor="@color/black"
+                    android:textSize="22sp"
                     android:textStyle="normal"
                     app:layout_constraintTop_toBottomOf="@+id/txtEffectTitle"
-                    tools:text="@string/large_text" />
-
+                    tools:text="Small text" />
             </com.google.android.material.card.MaterialCardView>
-
         </androidx.constraintlayout.widget.ConstraintLayout>
-    </androidx.core.widget.NestedScrollView>
+    </ScrollView>
 
     <ProgressBar
         android:id="@+id/progressBar"
