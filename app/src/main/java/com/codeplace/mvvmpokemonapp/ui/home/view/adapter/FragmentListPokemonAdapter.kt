@@ -1,6 +1,7 @@
 package com.codeplace.mvvmpokemonapp.ui.home.view.adapter
 
  import android.view.LayoutInflater
+ import android.view.View.OnClickListener
  import android.view.ViewGroup
  import androidx.navigation.Navigation
  import androidx.recyclerview.widget.RecyclerView
@@ -14,7 +15,7 @@ package com.codeplace.mvvmpokemonapp.ui.home.view.adapter
 class FragmentListPokemonAdapter(
     private var listPokemonNames: List<Pokemon>,
     private var listPokemonDetails: List<PokemonDetails>,
-  ): RecyclerView.Adapter<FragmentListPokemonAdapter.FragmentListPokemonHolder>(){
+   ): RecyclerView.Adapter<FragmentListPokemonAdapter.FragmentListPokemonHolder>(){
 
     /**
      * This view holder class is used to hold the whole view of our recyclerView, which in this case contain all the views
@@ -28,7 +29,6 @@ w     * previously created inside the pokemon_items.xml
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FragmentListPokemonHolder {
         return FragmentListPokemonHolder(PokemonItemsBinding.inflate(LayoutInflater.from(parent.context), parent, false))
     }
-
     /**
      * Defines how many items the RecyclerView have.
      */
@@ -60,6 +60,7 @@ w     * previously created inside the pokemon_items.xml
                     .load(urlPokemonImage?.urlImage)
                     .into(imgPokemon)
 
+
           icArrowMoreInfo.setOnClickListener {
               val navController = Navigation.findNavController(holder.itemView)
               val action = ListPokemonFragmentDirections.navigateToPokemonDetailsFragment(
@@ -72,6 +73,22 @@ w     * previously created inside the pokemon_items.xml
               )
               navController.navigate(action)
           }
+
+          cardView.setOnClickListener {
+
+              val navController = Navigation.findNavController(holder.itemView)
+              val action = ListPokemonFragmentDirections.navigateToPokemonDetailsFragment(
+                  pokemonName,
+                  pokemonUrl,
+                  urlPokemonImage!!.urlImage,
+                  pokemonAbilityName!!.abilityName,
+                  pokemonTypeName!!.typeName,
+                  pokemonMoveName!!.moveName
+              )
+              navController.navigate(action)
+          }
+
+
       }
     }
 }

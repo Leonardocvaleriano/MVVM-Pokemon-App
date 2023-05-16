@@ -124,6 +124,25 @@ class PokemonDetailsFragment : Fragment() {
         Toast.makeText(activity, errorMessage , Toast.LENGTH_SHORT).show()
     }
     private fun loading(loading: Boolean) {
-        binding.progressBar.visibility = if (loading) VISIBLE else GONE
+        with(binding){
+
+            progressBar.visibility = if (loading) VISIBLE else GONE
+            viewBackGround.visibility = if (loading) GONE else VISIBLE
+            txtPokemonName.visibility =  if (loading) GONE else VISIBLE
+            imgPokemon.visibility =  if (loading) GONE else VISIBLE
+            txtPokemonType.visibility =  if (loading) GONE else VISIBLE
+            txtPokemonMove.visibility =  if (loading) GONE else VISIBLE
+            materialCardViewPokemonEffect.visibility =  if (loading) GONE else VISIBLE
+             txtPokemonAbility.visibility =  if (loading) GONE else VISIBLE
+             viewPokemonCharacteristics.visibility = if (loading) GONE else VISIBLE
+            txtCharacterTitle.visibility =  if (loading) GONE else VISIBLE
+            txtHeightTitle.visibility =  if (loading) GONE else VISIBLE
+            txtWeightTitle.visibility =  if (loading) GONE else VISIBLE
+            txtHabitatTitle.visibility =  if (loading) GONE else VISIBLE
+            txtGrowthRateTitle.visibility=  if (loading) GONE else VISIBLE
+
+        }
+
+
     }
 }
