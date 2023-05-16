@@ -133,8 +133,8 @@ class PokemonDetailsFragment : Fragment() {
             txtPokemonType.visibility =  if (loading) GONE else VISIBLE
             txtPokemonMove.visibility =  if (loading) GONE else VISIBLE
             materialCardViewPokemonEffect.visibility =  if (loading) GONE else VISIBLE
-             txtPokemonAbility.visibility =  if (loading) GONE else VISIBLE
-             viewPokemonCharacteristics.visibility = if (loading) GONE else VISIBLE
+            txtPokemonAbility.visibility =  if (loading) GONE else VISIBLE
+            viewPokemonCharacteristics.visibility = if (loading) GONE else VISIBLE
             txtCharacterTitle.visibility =  if (loading) GONE else VISIBLE
             txtHeightTitle.visibility =  if (loading) GONE else VISIBLE
             txtWeightTitle.visibility =  if (loading) GONE else VISIBLE
