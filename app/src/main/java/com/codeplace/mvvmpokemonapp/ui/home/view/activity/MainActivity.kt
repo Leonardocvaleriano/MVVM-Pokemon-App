@@ -52,9 +52,6 @@ class MainActivity : AppCompatActivity() {
                 else -> return@setOnNavigationItemSelectedListener false
             }
         }
-
-        supportActionBar!!.setTitle("List Pokemons")
-
     }
     override fun onSupportNavigateUp(): Boolean {
         return navController.navigateUp(appBarConfiguration)
