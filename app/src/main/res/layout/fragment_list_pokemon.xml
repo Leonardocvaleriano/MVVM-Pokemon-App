@@ -26,5 +26,4 @@
         app:layout_constraintTop_toTopOf="parent"
         android:visibility="gone">
     </ProgressBar>
-
 </androidx.constraintlayout.widget.ConstraintLayout>
