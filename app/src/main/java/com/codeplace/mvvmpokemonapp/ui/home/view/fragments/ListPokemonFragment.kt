@@ -10,14 +10,18 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.codeplace.mvvmpokemonapp.R
 import com.codeplace.mvvmpokemonapp.databinding.FragmentListPokemonBinding
+import com.codeplace.mvvmpokemonapp.db.model.PokemonDb
 import com.codeplace.mvvmpokemonapp.stateFlow.StateFlow
+import com.codeplace.mvvmpokemonapp.ui.home.view.adapter.RecyclerViewClickListener
+import com.codeplace.mvvmpokemonapp.ui.home.view.models.Pokemon
 import com.codeplace.mvvmpokemonapp.ui.home.viewModel.PokemonViewModel
 import org.json.JSONObject
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
-class ListPokemonFragment: Fragment() {
+class ListPokemonFragment: Fragment(), RecyclerViewClickListener {
 
     private lateinit var binding: FragmentListPokemonBinding
     private lateinit var adapter: FragmentListPokemonAdapter
@@ -32,8 +36,9 @@ class ListPokemonFragment: Fragment() {
 
         initValues()
         initObservables()
-
         return binding.root
+
+
     }
     private fun initValues() {
         viewModel.getPokemonList()
@@ -71,7 +76,7 @@ class ListPokemonFragment: Fragment() {
         with(binding) {
             adapter = FragmentListPokemonAdapter(
                 viewModel.listPokemonNames,
-                viewModel.listPokemonDetails
+                viewModel.listPokemonDetails, this@ListPokemonFragment
              )
             recyclerView.layoutManager = LinearLayoutManager(activity)
             recyclerView.adapter = adapter
@@ -83,6 +88,15 @@ class ListPokemonFragment: Fragment() {
 
     private fun errorMessage(message: String) {
         Toast.makeText(activity, message, Toast.LENGTH_SHORT).show()
+    }
+
+    override fun onRecyclerViewIcFavoriteClick(view: View, pokemon: Pokemon, pokemonDb:PokemonDb) {
+        when(view.id){
+            R.id.icFavoriteCard -> {
+                viewModel.addPokemonDb(pokemonDb)
+                Toast.makeText(activity, "Pokemon Added to the favorites", Toast.LENGTH_SHORT).show()
+            }
+        }
     }
 
 }

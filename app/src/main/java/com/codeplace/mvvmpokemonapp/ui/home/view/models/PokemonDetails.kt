@@ -6,9 +6,9 @@ import java.io.Serializable
 data class PokemonDetails(
     val name: String,
     val urlImage:String,
-    val typeName: String,
-    val moveName:String,
-    val abilityName:String
+    val type: String,
+    val move:String,
+    val ability:String
 
     ): Serializable {
     constructor(jsonObject: JSONObject):this(

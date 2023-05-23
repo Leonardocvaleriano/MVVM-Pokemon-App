@@ -1,36 +1,48 @@
 package com.codeplace.mvvmpokemonapp.ui.home.viewModel
 
 import android.annotation.SuppressLint
-import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.*
+import com.codeplace.mvvmpokemonapp.db.model.PokemonDb
 import com.codeplace.mvvmpokemonapp.network.repository.PokemonRepository
 import com.codeplace.mvvmpokemonapp.stateFlow.StateFlow
 import com.codeplace.mvvmpokemonapp.ui.base.baseViewModel.BaseViewModel
 import com.codeplace.mvvmpokemonapp.ui.home.view.models.Pokemon
 import com.codeplace.mvvmpokemonapp.ui.home.view.models.PokemonDetails
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.*
+import kotlinx.coroutines.launch
 import org.json.JSONObject
 
 class PokemonViewModel(private val pokemonRepository: PokemonRepository) : BaseViewModel() {
-
 
     /**
      * This pokemonList of type MutableLiveData will hold the current data defined in the BaseViewModel,
      * to set it to the activity, fragment or whoever be connected with it.
      */
+
+    // Network liveData
     val pokemonListNames = MutableLiveData<StateFlow>()
     val pokemonDetails = MutableLiveData<StateFlow>()
     val pokemonEffects  = MutableLiveData<StateFlow>()
     val pokemonSpecies = MutableLiveData<StateFlow>()
 
+    // Database liveData
+    val favoritePokemons = MutableLiveData<StateFlow>()
+
+
     val listPokemonNames = ArrayList<Pokemon>()
     val listPokemonDetails = ArrayList<PokemonDetails>()
+    val listFavoritePokemons = ArrayList<PokemonDb>()
 
-
-    /**
+     /**
      * 1. Sending the pokemonlist, pokemonDetails & etc to the BaseViewModel, because when the API be called, the currrent data return
      * will be added to the property sent previously
      * 2. Sending the intended repository with the fun configured to call the API.
      */
 
+    fun addPokemonDb(pokemonsDb: PokemonDb) = viewModelScope.launch(Dispatchers.IO) {
+        pokemonRepository.addPokemonToDb(pokemonsDb)
+    }
     fun getPokemonList() = fetchData(pokemonListNames) {
         listPokemonNames.clear()
         listPokemonDetails.clear()
@@ -42,6 +54,10 @@ class PokemonViewModel(private val pokemonRepository: PokemonRepository) : BaseV
             getPokemonDetails(it.name)
         }
     }
+    fun getAllFavoritesPokemon() = getAllFavoritePokemons(favoritePokemons){
+       pokemonRepository.getAllFavoritePokemons()
+    }
+
     fun getPokemonDetails(pokemonName: String) = fetchData(pokemonDetails) {
         pokemonRepository.getPokemonDetails(pokemonName)
     }
@@ -82,5 +98,11 @@ class PokemonViewModel(private val pokemonRepository: PokemonRepository) : BaseV
         val abilityName = ability.getString("name")
         listPokemonDetails.add(PokemonDetails(name,urlImage,typeName, moveName, abilityName))
     }
+    fun fillListFavoritePokemons(result: List<PokemonDb>){
+        result.forEach {
+            listFavoritePokemons.add(PokemonDb(it.pokemonName, it.pokemonAbility, it.pokemonType,it.pokemonMove,it.pokemonImg))
+        }
 
+    }
 }
+

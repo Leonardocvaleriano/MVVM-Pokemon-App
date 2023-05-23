@@ -1,12 +1,12 @@
 package com.codeplace.mvvmpokemonapp.ui.home.view.adapter
 
  import android.view.LayoutInflater
- import android.view.View.OnClickListener
  import android.view.ViewGroup
  import androidx.navigation.Navigation
  import androidx.recyclerview.widget.RecyclerView
  import com.bumptech.glide.Glide
  import com.codeplace.mvvmpokemonapp.databinding.PokemonItemsBinding
+ import com.codeplace.mvvmpokemonapp.db.model.PokemonDb
  import com.codeplace.mvvmpokemonapp.ui.home.view.fragments.ListPokemonFragmentDirections
  import com.codeplace.mvvmpokemonapp.ui.home.view.models.Pokemon
  import com.codeplace.mvvmpokemonapp.ui.home.view.models.PokemonDetails
@@ -15,6 +15,7 @@ package com.codeplace.mvvmpokemonapp.ui.home.view.adapter
 class FragmentListPokemonAdapter(
     private var listPokemonNames: List<Pokemon>,
     private var listPokemonDetails: List<PokemonDetails>,
+    private val listener: RecyclerViewClickListener
    ): RecyclerView.Adapter<FragmentListPokemonAdapter.FragmentListPokemonHolder>(){
 
     /**
@@ -44,17 +45,18 @@ w     * previously created inside the pokemon_items.xml
     override fun onBindViewHolder(holder: FragmentListPokemonHolder, position: Int) {
       with(holder.binding){
 
-          val pokemonName = listPokemonNames[position].name
+          val pokemonCardPosition = listPokemonNames[position]
+          val name = listPokemonNames[position].name
           val pokemonUrl = listPokemonNames[position].url
           val urlPokemonImage = listPokemonDetails.firstOrNull { it.name == listPokemonNames[position].name}
-          val pokemonTypeName = listPokemonDetails.firstOrNull{ it.name == listPokemonNames[position].name}
-          val pokemonMoveName = listPokemonDetails.firstOrNull{it.name == listPokemonNames[position].name}
-          val pokemonAbilityName = listPokemonDetails.firstOrNull{it.name == listPokemonNames[position].name}
+          val type = listPokemonDetails.firstOrNull{ it.name == listPokemonNames[position].name}
+          val move = listPokemonDetails.firstOrNull{it.name == listPokemonNames[position].name}
+          val ability = listPokemonDetails.firstOrNull{it.name == listPokemonNames[position].name}
 
           txtPokemonName.text = capitalize(listPokemonNames[position].name)
-          txtPokemonType.text = capitalize(pokemonTypeName?.typeName)
-          txtPokemonMove.text = capitalize(pokemonMoveName?.moveName)
-          txtPokemonAbility.text = capitalize(pokemonAbilityName?.abilityName)
+          txtPokemonType.text = capitalize(type?.type)
+          txtPokemonMove.text = capitalize(move?.move)
+          txtPokemonAbility.text = capitalize(ability?.ability)
 
             Glide.with(holder.itemView.context)
                     .load(urlPokemonImage?.urlImage)
@@ -64,30 +66,25 @@ w     * previously created inside the pokemon_items.xml
           icArrowMoreInfo.setOnClickListener {
               val navController = Navigation.findNavController(holder.itemView)
               val action = ListPokemonFragmentDirections.navigateToPokemonDetailsFragment(
-                  pokemonName,
+                  name,
                   pokemonUrl,
                   urlPokemonImage!!.urlImage,
-                  pokemonAbilityName!!.abilityName,
-                  pokemonTypeName!!.typeName,
-                  pokemonMoveName!!.moveName
+                  ability!!.ability,
+                  type!!.type,
+                  move!!.move
               )
               navController.navigate(action)
           }
 
-          cardView.setOnClickListener {
-
-              val navController = Navigation.findNavController(holder.itemView)
-              val action = ListPokemonFragmentDirections.navigateToPokemonDetailsFragment(
-                  pokemonName,
-                  pokemonUrl,
-                  urlPokemonImage!!.urlImage,
-                  pokemonAbilityName!!.abilityName,
-                  pokemonTypeName!!.typeName,
-                  pokemonMoveName!!.moveName
+          icFavoriteCard.setOnClickListener {
+              val pokemon = PokemonDb(name,
+                  ability!!.ability,
+                  type!!.type,
+                  move!!.move,
+                  urlPokemonImage!!.urlImage
               )
-              navController.navigate(action)
+              listener.onRecyclerViewIcFavoriteClick(icFavoriteCard, pokemonCardPosition, pokemon)
           }
-
 
       }
     }
