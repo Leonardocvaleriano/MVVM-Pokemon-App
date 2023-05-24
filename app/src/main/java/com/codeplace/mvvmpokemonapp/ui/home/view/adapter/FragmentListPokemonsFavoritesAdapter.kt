@@ -37,5 +37,4 @@ class FragmentListPokemonsFavoritesAdapter(
                 .into(imgPokemon)
          }
      }
-
 }

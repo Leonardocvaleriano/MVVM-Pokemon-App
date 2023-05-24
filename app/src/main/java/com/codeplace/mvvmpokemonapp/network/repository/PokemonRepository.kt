@@ -33,6 +33,9 @@ class PokemonRepository (private val baseUrl: String, val pokemonsDao: PokemonsD
     suspend fun getAllFavoritePokemons() = withContext(Dispatchers.IO){
         return@withContext pokemonsDao.getAll()
     }
-    suspend fun addPokemonToDb(pokemonsDb:PokemonDb) = pokemonsDao.insert(pokemonsDb)
+    suspend fun addPokemonToDb(pokemonsDb:PokemonDb) = withContext(Dispatchers.IO){
+       return@withContext pokemonsDao.insert(pokemonsDb)
     }
+
+}
 

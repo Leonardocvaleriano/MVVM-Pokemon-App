@@ -93,7 +93,7 @@ class ListPokemonFragment: Fragment(), RecyclerViewClickListener {
     override fun onRecyclerViewIcFavoriteClick(view: View, pokemon: Pokemon, pokemonDb:PokemonDb) {
         when(view.id){
             R.id.icFavoriteCard -> {
-                viewModel.addPokemonDb(pokemonDb)
+                viewModel.addPokemonToDb(pokemonDb)
                 Toast.makeText(activity, "Pokemon Added to the favorites", Toast.LENGTH_SHORT).show()
             }
         }

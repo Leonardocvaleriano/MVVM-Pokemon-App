@@ -55,7 +55,6 @@ open class BaseViewModel : ViewModel() {
                 liveData.value = StateFlow.Error(e.message!!,null,null,null)
             }
         }
-
     }
 }
 

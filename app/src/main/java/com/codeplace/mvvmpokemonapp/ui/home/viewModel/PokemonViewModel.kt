@@ -40,7 +40,7 @@ class PokemonViewModel(private val pokemonRepository: PokemonRepository) : BaseV
      * 2. Sending the intended repository with the fun configured to call the API.
      */
 
-    fun addPokemonDb(pokemonsDb: PokemonDb) = viewModelScope.launch(Dispatchers.IO) {
+    fun addPokemonToDb(pokemonsDb: PokemonDb) = viewModelScope.launch() {
         pokemonRepository.addPokemonToDb(pokemonsDb)
     }
     fun getPokemonList() = fetchData(pokemonListNames) {
