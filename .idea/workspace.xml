@@ -10,23 +10,44 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3593562e-6abe-4c2f-93a0-a3aefb630319" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/codeplace/mvvmpokemonapp/util/Event.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/7.5/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.5/executionHistory/executionHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/7.5/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.5/executionHistory/executionHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/7.5/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.5/fileHashes/fileHashes.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/7.5/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.5/fileHashes/fileHashes.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/7.5/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.5/fileHashes/resourceHashesCache.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/file-system.probe" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/file-system.probe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/assetWizardSettings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/assetWizardSettings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/deploymentTargetDropDown.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/deploymentTargetDropDown.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/codeplace/mvvmpokemonapp/PokemonApplication.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/codeplace/mvvmpokemonapp/PokemonApplication.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/codeplace/mvvmpokemonapp/db/dao/PokemonsDao.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/codeplace/mvvmpokemonapp/db/dao/PokemonsDao.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/codeplace/mvvmpokemonapp/db/model/PokemonDb.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/codeplace/mvvmpokemonapp/db/model/PokemonDb.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/codeplace/mvvmpokemonapp/di/injectKoin.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/codeplace/mvvmpokemonapp/di/injectKoin.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/codeplace/mvvmpokemonapp/network/API.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/codeplace/mvvmpokemonapp/network/API.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/codeplace/mvvmpokemonapp/network/repository/PokemonRepository.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/codeplace/mvvmpokemonapp/repository/PokemonRepository.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/codeplace/mvvmpokemonapp/ui/base/baseViewModel/BaseViewModel.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/codeplace/mvvmpokemonapp/ui/base/baseViewModel/BaseViewModel.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/codeplace/mvvmpokemonapp/ui/home/view/adapter/FragmentListPokemonsFavoritesAdapter.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/codeplace/mvvmpokemonapp/ui/home/view/adapter/FragmentListPokemonsFavoritesAdapter.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/codeplace/mvvmpokemonapp/ui/home/view/adapter/FragmentListPokemonAdapter.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/codeplace/mvvmpokemonapp/ui/home/view/adapter/FragmentListPokemonAdapter.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/codeplace/mvvmpokemonapp/ui/home/view/adapter/RecyclerViewClickListener.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/codeplace/mvvmpokemonapp/ui/home/view/adapter/RecyclerViewClickListener.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/codeplace/mvvmpokemonapp/ui/home/view/fragments/ListFavoritesPokemonFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/codeplace/mvvmpokemonapp/ui/home/view/fragments/ListFavoritesPokemonFragment.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/codeplace/mvvmpokemonapp/ui/home/view/fragments/ListPokemonFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/codeplace/mvvmpokemonapp/ui/home/view/fragments/ListPokemonFragment.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/codeplace/mvvmpokemonapp/ui/home/view/fragments/PokemonDetailsFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/codeplace/mvvmpokemonapp/ui/home/view/fragments/PokemonDetailsFragment.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/codeplace/mvvmpokemonapp/ui/home/view/models/Move.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/codeplace/mvvmpokemonapp/ui/home/view/models/Pokemon.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/codeplace/mvvmpokemonapp/ui/home/view/models/Pokemon.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/codeplace/mvvmpokemonapp/ui/home/view/models/PokemonDetails.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/codeplace/mvvmpokemonapp/ui/home/view/models/PokemonInfo.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/codeplace/mvvmpokemonapp/ui/home/viewModel/PokemonViewModel.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/codeplace/mvvmpokemonapp/ui/home/viewModel/PokemonViewModel.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/codeplace/mvvmpokemonapp/util/ExtendedFunction.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/codeplace/mvvmpokemonapp/util/ExtendedFunction.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable/ic_favorite.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/ic_favorite.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/pokemon_items.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/pokemon_items.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[/Users/leonardo/.android/avd/Pixel_6_API_33.avd]" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[/Users/leonardo/.android/avd/Pixel_6_API_25_Mvvm_.avd]" />
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
@@ -78,10 +99,10 @@
         <option value="Kotlin Sealed Class" />
         <option value="Kotlin File" />
         <option value="Kotlin Object" />
-        <option value="resourceFile" />
         <option value="valueResourceFile" />
         <option value="Kotlin Interface" />
         <option value="Kotlin Class" />
+        <option value="resourceFile" />
       </list>
     </option>
   </component>
@@ -117,7 +138,7 @@
   </component>
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
-    &quot;DEBUGGABLE_DEVICE&quot;: &quot;Pixel_6_API_25_Mvvm_ [emulator-5554]&quot;,
+    &quot;DEBUGGABLE_DEVICE&quot;: &quot;Pixel_6_API_33 [emulator-5554]&quot;,
     &quot;DEBUGGABLE_PROCESS&quot;: &quot;com.codeplace.mvvmpokemonapp&quot;,
     &quot;DEBUGGER_ID&quot;: &quot;Auto&quot;,
     &quot;PROJECT_TRUSTED_KEY&quot;: &quot;true&quot;,
@@ -131,6 +152,7 @@
     &quot;android-custom-view/Users/leonardo/.gradle/caches/modules-2/files-2.1/androidx.recyclerview/recyclerview/1.3.0/f4de7876e10ff121102f131b26d4a98b1613a012/recyclerview-1.3.0-sources.jar!/androidx/recyclerview/widget/RecyclerView.java_SELECTED&quot;: &quot;RecyclerView&quot;,
     &quot;android-custom-view/Users/leonardo/.gradle/caches/modules-2/files-2.1/com.google.android.material/material/1.8.0/60ab9cfeed56173f0fb0c798009d91e049bbbba1/material-1.8.0-sources.jar!/com/google/android/material/bottomnavigation/BottomNavigationView.java_SELECTED&quot;: &quot;BottomNavigationView&quot;,
     &quot;android-custom-view/Users/leonardo/Library/Android/sdk/sources/android-33/android/view/View.java_SELECTED&quot;: &quot;View&quot;,
+    &quot;android-custom-view/Users/leonardo/Library/Android/sdk/sources/android-33/android/widget/ImageButton.java_SELECTED&quot;: &quot;ImageButton&quot;,
     &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
     &quot;com.google.services.firebase.aqiPopupShown&quot;: &quot;true&quot;,
     &quot;last_directory_selection&quot;: &quot;/Users/leonardo/AndroidStudioProjects/Apps/Git/MVVMPokemonApp/app/src/androidTest/java&quot;,
@@ -157,9 +179,9 @@
       <recent name="$PROJECT_DIR$/app/src/main/java/com/codeplace/mvvmpokemonapp/ui/home" />
     </key>
     <key name="CreateKotlinClassDialog.RecentsKey">
+      <recent name="com.codeplace.mvvmpokemonapp.ui.home.view.models" />
       <recent name="com.codeplace.mvvmpokemonapp.ui.home.view.adapter" />
       <recent name="com.codeplace.mvvmpokemonapp.ui.baseViewModel" />
-      <recent name="com.codeplace.mvvmpokemonapp.ui.home.view.models" />
       <recent name="com.codeplace.mvvmpokemonapp.ui.activity.models" />
     </key>
     <key name="MoveKotlinTopLevelDeclarationsDialog.RECENTS_KEY">

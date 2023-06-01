@@ -1,10 +1,10 @@
 package com.codeplace.mvvmpokemonapp.ui.base.baseViewModel
 
 import android.util.Log
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
+ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.codeplace.mvvmpokemonapp.db.model.PokemonDb
 import com.codeplace.mvvmpokemonapp.stateFlow.StateFlow
 import kotlinx.coroutines.launch
 import org.json.JSONObject
@@ -43,7 +43,7 @@ open class BaseViewModel : ViewModel() {
             }
         }
     }
-    fun getAllFavoritePokemons(liveData: MutableLiveData<StateFlow>, dbCall: suspend () -> List<*>){
+    fun getAllFavoritePokemons(liveData: MutableLiveData<StateFlow>, dbCall: suspend () -> List<PokemonDb>){
         liveData.value = StateFlow.Loading(true)
         viewModelScope.launch {
             try {

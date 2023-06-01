@@ -46,17 +46,30 @@
             app:layout_constraintTop_toTopOf="parent"
             tools:text="Pokemon Name" />
 
-        <ImageView
-            android:id="@+id/icFavoriteCard"
-            android:layout_width="36dp"
-            android:layout_height="36dp"
+<!--        <CheckBox-->
+<!--            android:id="@+id/checkBoxFavorite"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:button="@drawable/ic_favorite"-->
+<!--            android:background="@color/beige"-->
+<!--            android:layout_marginTop="10dp"-->
+<!--             android:layout_marginEnd="15dp"-->
+<!--            android:contentDescription="@string/favorites_icon"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            app:layout_constraintTop_toTopOf="parent" />-->
+
+
+        <ImageButton
+            android:id="@+id/icFavorite"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_favorite"
+            android:background="@color/beige"
             android:layout_marginTop="10dp"
             android:layout_marginEnd="15dp"
             android:contentDescription="@string/favorites_icon"
-            android:src="@drawable/ic_favorite"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
-
 
         <androidx.cardview.widget.CardView
             android:id="@+id/cvPokemonAbility"

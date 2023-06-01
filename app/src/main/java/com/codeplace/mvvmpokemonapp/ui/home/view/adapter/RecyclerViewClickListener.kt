@@ -1,9 +1,27 @@
 package com.codeplace.mvvmpokemonapp.ui.home.view.adapter
 
-import android.view.View
 import com.codeplace.mvvmpokemonapp.db.model.PokemonDb
-import com.codeplace.mvvmpokemonapp.ui.home.view.models.Pokemon
 
 interface RecyclerViewClickListener {
-    fun onRecyclerViewIcFavoriteClick(view: View, pokemon:Pokemon, pokemonsDb: PokemonDb)
+
+
+
+    fun addToFavoriteClick(
+        pokemonDb: PokemonDb?,
+        message:String?
+    )
+
+    fun removeFromFavoritesClick(
+        pokemonName:String?,
+        message:String?
+    )
+
+//    fun onRecyclerViewIcFavoriteClick(
+//        pokemonNamePosition: Pokemon,
+//        pokemonDb: PokemonDb,
+//        message:String
+//    )
+
+
+
 }

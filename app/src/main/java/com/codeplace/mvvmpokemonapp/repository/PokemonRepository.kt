@@ -1,7 +1,6 @@
-package com.codeplace.mvvmpokemonapp.network.repository
+package com.codeplace.mvvmpokemonapp.repository
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
+
 import com.codeplace.mvvmpokemonapp.db.dao.PokemonsDao
 import com.codeplace.mvvmpokemonapp.db.model.PokemonDb
 import com.codeplace.mvvmpokemonapp.network.RetrofitInstance
@@ -10,13 +9,13 @@ import kotlinx.coroutines.withContext
 
 class PokemonRepository (private val baseUrl: String, val pokemonsDao: PokemonsDao) {
 
-         suspend fun getPokemonList() = withContext(Dispatchers.IO){
+         suspend fun getPokemonNames() = withContext(Dispatchers.IO){
             val api = RetrofitInstance.getRetrofit(baseUrl)
-            return@withContext api.getPokemonList()
+            return@withContext api.getPokemonNames()
         }
-         suspend fun getPokemonDetails(pokemonName: String) = withContext(Dispatchers.IO){
+         suspend fun getPokemonInfo(pokemonName: String) = withContext(Dispatchers.IO){
              val api = RetrofitInstance.getRetrofit(baseUrl)
-             return@withContext api.getPokemonDetails(pokemonName)
+             return@withContext api.getPokemonInfo(pokemonName)
     }
         suspend fun getPokemonEffects(pokemonId:Int) = withContext(Dispatchers.IO){
             val api = RetrofitInstance.getRetrofit(baseUrl)
@@ -29,13 +28,18 @@ class PokemonRepository (private val baseUrl: String, val pokemonsDao: PokemonsD
         }
 
     // db
-
     suspend fun getAllFavoritePokemons() = withContext(Dispatchers.IO){
         return@withContext pokemonsDao.getAll()
     }
-    suspend fun addPokemonToDb(pokemonsDb:PokemonDb) = withContext(Dispatchers.IO){
+
+    suspend fun addPokemonToFavorites(pokemonsDb:PokemonDb) = withContext(Dispatchers.IO){
        return@withContext pokemonsDao.insert(pokemonsDb)
     }
+    suspend fun deleteFavoritePokemon(pokemonName:String?) = withContext(Dispatchers.IO){
+        return@withContext pokemonsDao.delete(pokemonName)
+    }
+
+
 
 }
 

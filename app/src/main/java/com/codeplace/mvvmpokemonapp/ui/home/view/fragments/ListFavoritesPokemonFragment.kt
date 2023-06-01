@@ -40,7 +40,7 @@ class ListFavoritesPokemonFragment: Fragment(){
     }
 
     private fun initObservables() {
-        viewModel.favoritePokemons.observe(viewLifecycleOwner){
+        viewModel.allPokemonsAsFavorites.observe(viewLifecycleOwner){
             when(it){
                 is StateFlow.Loading -> (loading(it.loading))
                 is StateFlow.Success<*> -> (fillFavoritesPokemon(it.data as List<PokemonDb>))
@@ -63,7 +63,7 @@ class ListFavoritesPokemonFragment: Fragment(){
     private fun initRecyclerAdapter() {
         with(binding){
             adapter = FragmentListPokemonsFavoritesAdapter(
-                viewModel.listFavoritePokemons
+                viewModel.allPokemonsAsFavorites_
             )
             recyclerView.layoutManager = LinearLayoutManager(activity)
             recyclerView.adapter = adapter

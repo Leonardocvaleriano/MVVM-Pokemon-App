@@ -3,7 +3,7 @@ package com.codeplace.mvvmpokemonapp.ui.home.view.models
 import org.json.JSONObject
 import java.io.Serializable
 
-data class PokemonDetails(
+data class PokemonInfo(
     val name: String,
     val urlImage:String,
     val type: String,

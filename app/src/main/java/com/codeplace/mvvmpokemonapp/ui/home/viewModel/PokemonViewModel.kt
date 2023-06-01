@@ -1,15 +1,13 @@
 package com.codeplace.mvvmpokemonapp.ui.home.viewModel
 
-import android.annotation.SuppressLint
-import androidx.lifecycle.*
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.viewModelScope
 import com.codeplace.mvvmpokemonapp.db.model.PokemonDb
-import com.codeplace.mvvmpokemonapp.network.repository.PokemonRepository
+import com.codeplace.mvvmpokemonapp.repository.PokemonRepository
 import com.codeplace.mvvmpokemonapp.stateFlow.StateFlow
 import com.codeplace.mvvmpokemonapp.ui.base.baseViewModel.BaseViewModel
 import com.codeplace.mvvmpokemonapp.ui.home.view.models.Pokemon
-import com.codeplace.mvvmpokemonapp.ui.home.view.models.PokemonDetails
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.flow.*
+import com.codeplace.mvvmpokemonapp.ui.home.view.models.PokemonInfo
 import kotlinx.coroutines.launch
 import org.json.JSONObject
 
@@ -21,64 +19,52 @@ class PokemonViewModel(private val pokemonRepository: PokemonRepository) : BaseV
      */
 
     // Network liveData
-    val pokemonListNames = MutableLiveData<StateFlow>()
-    val pokemonDetails = MutableLiveData<StateFlow>()
+    val pokemonNames = MutableLiveData<StateFlow>()
+    val pokemonInfo = MutableLiveData<StateFlow>()
+
+
+    val allPokemonsAsFavorites = MutableLiveData<StateFlow>()
+    val allPokemonsAsFavorites_= ArrayList<PokemonDb>()
+    val pokemonNames_ = ArrayList<Pokemon>()
+    val pokemonInfo_ = ArrayList<PokemonInfo>()
+
     val pokemonEffects  = MutableLiveData<StateFlow>()
     val pokemonSpecies = MutableLiveData<StateFlow>()
 
-    // Database liveData
-    val favoritePokemons = MutableLiveData<StateFlow>()
 
+        fun getPokemonNames() = fetchData(pokemonNames) {
+//            pokemonNames_.clear()
+//            pokemonInfo_.clear()
+            pokemonRepository.getPokemonNames()
+        }
 
-    val listPokemonNames = ArrayList<Pokemon>()
-    val listPokemonDetails = ArrayList<PokemonDetails>()
-    val listFavoritePokemons = ArrayList<PokemonDb>()
-
-     /**
-     * 1. Sending the pokemonlist, pokemonDetails & etc to the BaseViewModel, because when the API be called, the currrent data return
-     * will be added to the property sent previously
-     * 2. Sending the intended repository with the fun configured to call the API.
-     */
-
-    fun addPokemonToDb(pokemonsDb: PokemonDb) = viewModelScope.launch() {
-        pokemonRepository.addPokemonToDb(pokemonsDb)
-    }
-    fun getPokemonList() = fetchData(pokemonListNames) {
-        listPokemonNames.clear()
-        listPokemonDetails.clear()
-        pokemonRepository.getPokemonList()
-    }
-
-    fun initPokemonDetails() {
-        listPokemonNames.forEach {
-            getPokemonDetails(it.name)
+    fun getPokemonInfoByName() {
+        pokemonNames_.forEach { pokemonNames ->
+            getPokemonInfo(pokemonNames.name)
         }
     }
-    fun getAllFavoritesPokemon() = getAllFavoritePokemons(favoritePokemons){
-       pokemonRepository.getAllFavoritePokemons()
+    fun getPokemonInfo(pokemonName: String) = fetchData(pokemonInfo) {
+        pokemonRepository.getPokemonInfo(pokemonName)
     }
+        fun getPokemonDetails(pokemonId:Int) {
 
-    fun getPokemonDetails(pokemonName: String) = fetchData(pokemonDetails) {
-        pokemonRepository.getPokemonDetails(pokemonName)
-    }
-    fun getPokemonEffects(pokemonId:Int) = fetchData(pokemonEffects){
-        pokemonRepository.getPokemonEffects(pokemonId)
-    }
-
-    fun getPokemonSpecies(pokemonId: Int) = fetchData(pokemonSpecies){
-        pokemonRepository.getPokemonSpecies(pokemonId)
-    }
-    fun fillListPokemonNames(result: JSONObject) {
+            fun getPokemonEffects(pokemonId:Int) = fetchData(pokemonEffects){
+                pokemonRepository.getPokemonEffects(pokemonId)
+            }
+            fun getPokemonSpecies(pokemonId: Int) = fetchData(pokemonSpecies){
+                pokemonRepository.getPokemonSpecies(pokemonId)
+            }
+        }
+    fun fillPokemonNames(result: JSONObject) {
         val resultJSONArray = result.getJSONArray("results")
         (0 until resultJSONArray.length())
             .map { resultJSONArray.getJSONObject(it) }
             .forEach {
-                listPokemonNames += Pokemon(it)
+                pokemonNames_ += Pokemon(it)
             }
     }
-    @SuppressLint("SuspiciousIndentation")
-    fun fillListPokemonDetails(result: JSONObject) {
 
+    fun fillPokemonInfo(result: JSONObject) {
         val forms = result.getJSONArray("forms")
         val name = forms.getJSONObject(0).getString("name")
         val images = result.getJSONObject("sprites").getJSONObject("other").getJSONObject("home")
@@ -96,13 +82,43 @@ class PokemonViewModel(private val pokemonRepository: PokemonRepository) : BaseV
         val abilities = result.getJSONArray("abilities")
         val ability = abilities.getJSONObject(0).getJSONObject("ability")
         val abilityName = ability.getString("name")
-        listPokemonDetails.add(PokemonDetails(name,urlImage,typeName, moveName, abilityName))
-    }
-    fun fillListFavoritePokemons(result: List<PokemonDb>){
-        result.forEach {
-            listFavoritePokemons.add(PokemonDb(it.pokemonName, it.pokemonAbility, it.pokemonType,it.pokemonMove,it.pokemonImg))
-        }
+
+        pokemonInfo_.add(PokemonInfo(name, urlImage, typeName,moveName, abilityName))
 
     }
+
+        fun getAllFavoritesPokemon() = getAllFavoritePokemons(allPokemonsAsFavorites){
+            pokemonRepository.getAllFavoritePokemons()
+    }
+
+
+        fun fillListFavoritePokemons(result: List<PokemonDb>){
+            result.forEach {
+             allPokemonsAsFavorites_.add(PokemonDb(it.pokemonName, it.pokemonAbility, it.pokemonType,it.pokemonMove,it.pokemonImg))
+        }
+     }
+
+    fun addPokemonToFavorites(pokemonDb: PokemonDb) = viewModelScope.launch {
+        pokemonRepository.addPokemonToFavorites(pokemonDb)
+    }
+
+    fun deletePokemonFromFavorites(pokemonName:String) = viewModelScope.launch {
+        pokemonRepository.deleteFavoritePokemon(pokemonName)
+    }
+
+
+//        fun updateFavoritesPokemon(pokemonName: String, pokemonDb: PokemonDb) = viewModelScope.launch{
+//        val isExist = pokemonRepository.checkFavPokemonByName(pokemonName).isNotEmpty()
+//            if (isExist){
+//                pokemonRepository.deleteFavoritePokemon(pokemonName)
+//                //statusMessage.value = Event("Pokemon Removed from favorites.")
+//            } else {
+//                pokemonRepository.addPokemonToFavorites(pokemonDb)
+//               // statusMessage.value = Event("Pokemon added to the favorites.")
+//            }
+//    }
+
+
+
 }
 
