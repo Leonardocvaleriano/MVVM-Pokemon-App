@@ -36,11 +36,11 @@ class ListFavoritesPokemonFragment: Fragment(){
 
     }
     private fun initValues() {
-        viewModel.getAllFavoritesPokemon()
+        viewModel.getFavoritesPokemon()
     }
 
     private fun initObservables() {
-        viewModel.allPokemonsAsFavorites.observe(viewLifecycleOwner){
+        viewModel.pokemonFavorites.observe(viewLifecycleOwner){
             when(it){
                 is StateFlow.Loading -> (loading(it.loading))
                 is StateFlow.Success<*> -> (fillFavoritesPokemon(it.data as List<PokemonDb>))
@@ -58,15 +58,15 @@ class ListFavoritesPokemonFragment: Fragment(){
     }
     fun fillFavoritesPokemon(result:List<PokemonDb>){
         viewModel.fillListFavoritePokemons(result)
-        initRecyclerAdapter()
+        //initRecyclerAdapter()
     }
-    private fun initRecyclerAdapter() {
-        with(binding){
-            adapter = FragmentListPokemonsFavoritesAdapter(
-                viewModel.allPokemonsAsFavorites_
-            )
-            recyclerView.layoutManager = LinearLayoutManager(activity)
-            recyclerView.adapter = adapter
-        }
-    }
+//    private fun initRecyclerAdapter() {
+//        with(binding){
+//            adapter = FragmentListPokemonsFavoritesAdapter(
+//                viewModel.allPokemonsAsFavorites_
+//            )
+//            recyclerView.layoutManager = LinearLayoutManager(activity)
+//            recyclerView.adapter = adapter
+//        }
+//    }
 }

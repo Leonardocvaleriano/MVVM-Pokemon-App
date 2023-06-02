@@ -6,8 +6,9 @@ import com.codeplace.mvvmpokemonapp.db.model.PokemonDb
 import com.codeplace.mvvmpokemonapp.repository.PokemonRepository
 import com.codeplace.mvvmpokemonapp.stateFlow.StateFlow
 import com.codeplace.mvvmpokemonapp.ui.base.baseViewModel.BaseViewModel
-import com.codeplace.mvvmpokemonapp.ui.home.view.models.Pokemon
-import com.codeplace.mvvmpokemonapp.ui.home.view.models.PokemonInfo
+import com.codeplace.mvvmpokemonapp.ui.home.view.models.PokemonInfos
+import com.codeplace.mvvmpokemonapp.ui.home.view.models.PokemonNames
+import com.codeplace.mvvmpokemonapp.ui.home.view.models.SynchronizedData
 import kotlinx.coroutines.launch
 import org.json.JSONObject
 
@@ -21,46 +22,69 @@ class PokemonViewModel(private val pokemonRepository: PokemonRepository) : BaseV
     // Network liveData
     val pokemonNames = MutableLiveData<StateFlow>()
     val pokemonInfo = MutableLiveData<StateFlow>()
-
-
-    val allPokemonsAsFavorites = MutableLiveData<StateFlow>()
-    val allPokemonsAsFavorites_= ArrayList<PokemonDb>()
-    val pokemonNames_ = ArrayList<Pokemon>()
-    val pokemonInfo_ = ArrayList<PokemonInfo>()
-
+    val pokemonFavorites = MutableLiveData<StateFlow>()
     val pokemonEffects  = MutableLiveData<StateFlow>()
     val pokemonSpecies = MutableLiveData<StateFlow>()
 
+    // List to send to the Adapter
+    val synchronizedDataList = mutableListOf<SynchronizedData>()
 
-        fun getPokemonNames() = fetchData(pokemonNames) {
-//            pokemonNames_.clear()
-//            pokemonInfo_.clear()
-            pokemonRepository.getPokemonNames()
+    // Creating the List of items
+    private val pokemonNamesList =  ArrayList<PokemonNames>()
+    private val pokemonInfosList = ArrayList<PokemonInfos>()
+    val pokemonFavoritesList = ArrayList<PokemonDb>()
+
+    private fun synchronizeDataInAList(){
+        for (item in pokemonNamesList){
+            val ability = pokemonInfosList.find { it.name == item.name}!!.ability
+            val type = pokemonInfosList.find { it.name == item.name }!!.type
+            val move = pokemonInfosList.find { it.name == item.name}!!.move
+            val imageUrl = pokemonInfosList.find { it.name == item.name}!!.imageUrl
+            val favoriteStats = pokemonFavoritesList.find { it.pokemonName == item.name}?.favoriteStats
+
+            val synchronizedData = SynchronizedData(
+                item.name,
+                ability,
+                type,
+                move,
+                imageUrl,
+                favoriteStats
+            )
+            synchronizedDataList.add(synchronizedData)
         }
+    }
+
+    fun getPokemonNames() = fetchData(pokemonNames) {
+        pokemonNamesList.clear()
+        pokemonInfosList.clear()
+        pokemonRepository.getPokemonNames()
+    }
 
     fun getPokemonInfoByName() {
-        pokemonNames_.forEach { pokemonNames ->
-            getPokemonInfo(pokemonNames.name)
+        pokemonNamesList.forEach {
+            getPokemonInfo(it.name)
         }
     }
-    fun getPokemonInfo(pokemonName: String) = fetchData(pokemonInfo) {
+
+    // Chamado 20x
+    private fun getPokemonInfo(pokemonName: String) = fetchData(pokemonInfo) {
         pokemonRepository.getPokemonInfo(pokemonName)
     }
-        fun getPokemonDetails(pokemonId:Int) {
-
-            fun getPokemonEffects(pokemonId:Int) = fetchData(pokemonEffects){
-                pokemonRepository.getPokemonEffects(pokemonId)
-            }
-            fun getPokemonSpecies(pokemonId: Int) = fetchData(pokemonSpecies){
-                pokemonRepository.getPokemonSpecies(pokemonId)
-            }
-        }
-    fun fillPokemonNames(result: JSONObject) {
+    //        fun getPokemonDetails(pokemonId:Int) {
+//
+//            fun getPokemonEffects(pokemonId:Int) = fetchData(pokemonEffects){
+//                pokemonRepository.getPokemonEffects(pokemonId)
+//            }
+//            fun getPokemonSpecies(pokemonId: Int) = fetchData(pokemonSpecies){
+//                pokemonRepository.getPokemonSpecies(pokemonId)
+//            }
+//        }
+    fun fillPokemonNamesList(result: JSONObject) {
         val resultJSONArray = result.getJSONArray("results")
         (0 until resultJSONArray.length())
             .map { resultJSONArray.getJSONObject(it) }
             .forEach {
-                pokemonNames_ += Pokemon(it)
+                pokemonNamesList.add(PokemonNames(it))
             }
     }
 
@@ -82,31 +106,27 @@ class PokemonViewModel(private val pokemonRepository: PokemonRepository) : BaseV
         val abilities = result.getJSONArray("abilities")
         val ability = abilities.getJSONObject(0).getJSONObject("ability")
         val abilityName = ability.getString("name")
+        pokemonInfosList.add(PokemonInfos(name,urlImage,typeName,moveName,abilityName))
 
-        pokemonInfo_.add(PokemonInfo(name, urlImage, typeName,moveName, abilityName))
-
-    }
-
-        fun getAllFavoritesPokemon() = getAllFavoritePokemons(allPokemonsAsFavorites){
-            pokemonRepository.getAllFavoritePokemons()
-    }
-
-
-        fun fillListFavoritePokemons(result: List<PokemonDb>){
-            result.forEach {
-             allPokemonsAsFavorites_.add(PokemonDb(it.pokemonName, it.pokemonAbility, it.pokemonType,it.pokemonMove,it.pokemonImg))
+        if (pokemonNamesList.size == pokemonInfosList.size){
+            synchronizeDataInAList()
         }
-     }
 
+    }
+    fun getFavoritesPokemon() = getAllFavoritePokemons(pokemonFavorites){
+        pokemonRepository.getAllFavoritePokemons()
+    }
+    fun fillListFavoritePokemons(result: List<PokemonDb>){
+        result.forEach {
+            pokemonFavoritesList.add(PokemonDb(it.pokemonName, it.pokemonAbility, it.pokemonType,it.pokemonMove,it.pokemonImg, it.favoriteStats))
+        }
+    }
     fun addPokemonToFavorites(pokemonDb: PokemonDb) = viewModelScope.launch {
         pokemonRepository.addPokemonToFavorites(pokemonDb)
     }
-
     fun deletePokemonFromFavorites(pokemonName:String) = viewModelScope.launch {
         pokemonRepository.deleteFavoritePokemon(pokemonName)
     }
-
-
 //        fun updateFavoritesPokemon(pokemonName: String, pokemonDb: PokemonDb) = viewModelScope.launch{
 //        val isExist = pokemonRepository.checkFavPokemonByName(pokemonName).isNotEmpty()
 //            if (isExist){
@@ -117,8 +137,4 @@ class PokemonViewModel(private val pokemonRepository: PokemonRepository) : BaseV
 //               // statusMessage.value = Event("Pokemon added to the favorites.")
 //            }
 //    }
-
-
-
 }
-

@@ -13,6 +13,8 @@ import com.codeplace.mvvmpokemonapp.databinding.FragmentListPokemonBinding
 import com.codeplace.mvvmpokemonapp.db.model.PokemonDb
 import com.codeplace.mvvmpokemonapp.stateFlow.StateFlow
 import com.codeplace.mvvmpokemonapp.ui.home.view.adapter.FragmentListPokemonAdapter
+import com.codeplace.mvvmpokemonapp.ui.home.view.adapter.FragmentListPokemonAdapterCustomized
+import com.codeplace.mvvmpokemonapp.ui.home.view.adapter.PokemonListAdapter
 import com.codeplace.mvvmpokemonapp.ui.home.view.adapter.RecyclerViewClickListener
 import com.codeplace.mvvmpokemonapp.ui.home.viewModel.PokemonViewModel
 import org.json.JSONObject
@@ -21,7 +23,7 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class ListPokemonFragment: Fragment(), RecyclerViewClickListener {
     private lateinit var binding: FragmentListPokemonBinding
-    private lateinit var adapter: FragmentListPokemonAdapter
+    private lateinit var adapter: FragmentListPokemonAdapterCustomized
      private val viewModel by viewModel<PokemonViewModel>()
      override fun onCreateView(
         inflater: LayoutInflater,
@@ -36,13 +38,14 @@ class ListPokemonFragment: Fragment(), RecyclerViewClickListener {
     }
     private fun initValues() {
         viewModel.getPokemonNames()
+        viewModel.getFavoritesPokemon()
       }
 
     private fun initObservables() {
         viewModel.pokemonNames.observe(viewLifecycleOwner) {
             when (it) {
                 is StateFlow.Loading -> (loading(it.loading))
-                is StateFlow.Success<*> -> (fillPokemonNames(it.data as JSONObject))
+                is StateFlow.Success<*> -> (fillPokemonNamesAndGetPokemonInfo(it.data as JSONObject))
                 is StateFlow.Error -> (errorMessage(it.errorMessage))
             }
         }
@@ -53,7 +56,7 @@ class ListPokemonFragment: Fragment(), RecyclerViewClickListener {
                 is StateFlow.Error -> (errorMessage(it.errorMessage))
             }
         }
-        viewModel.allPokemonsAsFavorites.observe(viewLifecycleOwner){
+        viewModel.pokemonFavorites.observe(viewLifecycleOwner){
             when (it) {
                 is StateFlow.Loading -> (loading(it.loading))
                 is StateFlow.Success<*> -> (fillPokemonFavorites(it.data as List<PokemonDb>))
@@ -61,9 +64,16 @@ class ListPokemonFragment: Fragment(), RecyclerViewClickListener {
             }
         }
     }
+    private fun fillPokemonFavorites(result: List<PokemonDb>) {
+        viewModel.fillListFavoritePokemons(result)
+    }
 
-    private fun fillPokemonNames(result: JSONObject) {
-        viewModel.fillPokemonNames(result)
+    private fun fillPokemonNamesAndGetPokemonInfo(result: JSONObject) {
+        viewModel.fillPokemonNamesList(result)
+        getPokemonInfoByName()
+    }
+
+    private fun getPokemonInfoByName(){
         viewModel.getPokemonInfoByName()
     }
     private fun fillPokemonInfo(result: JSONObject) {
@@ -71,17 +81,14 @@ class ListPokemonFragment: Fragment(), RecyclerViewClickListener {
         initRecyclerAdapter()
     }
 
-
-    private fun fillPokemonFavorites(result: List<PokemonDb>) {
-        viewModel.fillListFavoritePokemons(result)
-    }
     private fun initRecyclerAdapter() {
         with(binding) {
             recyclerView.layoutManager = LinearLayoutManager(activity)
-            adapter = FragmentListPokemonAdapter(
-                viewModel.pokemonNames_,
-                viewModel.pokemonInfo_,
-                this@ListPokemonFragment)
+            adapter = FragmentListPokemonAdapterCustomized(
+                viewModel.synchronizedDataList,
+                this@ListPokemonFragment
+            )
+
             recyclerView.adapter = adapter
          }
     }

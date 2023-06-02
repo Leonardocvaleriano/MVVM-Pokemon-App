@@ -10,11 +10,13 @@ import com.codeplace.mvvmpokemonapp.databinding.PokemonItemsBinding
 import com.codeplace.mvvmpokemonapp.db.model.PokemonDb
 import com.codeplace.mvvmpokemonapp.ui.home.view.models.Pokemon
 import com.codeplace.mvvmpokemonapp.ui.home.view.models.PokemonInfo
+import com.codeplace.mvvmpokemonapp.ui.home.view.models.PokemonInfos
+import com.codeplace.mvvmpokemonapp.ui.home.view.models.PokemonNames
 
 
 class FragmentListPokemonAdapter(
-    private val pokemonNamesItem:List<Pokemon>,
-    private val pokemonInfoItem:List<PokemonInfo>,
+    private val pokemonNamesItem:List<PokemonNames>,
+    private val pokemonInfoItem:List<PokemonInfos>,
     private val listener: RecyclerViewClickListener,
     //private val onClickListener: (PokemonDb) -> Unit
 ): RecyclerView.Adapter<FragmentListPokemonAdapter.FragmentListPokemonHolder>(){
@@ -40,7 +42,7 @@ class FragmentListPokemonAdapter(
             with(holder.binding) {
 
                     val pokemonNamesItemsPosition = pokemonNamesItem[position]
-                    val pokemonImg = pokemonInfoItem.firstOrNull { it.name == pokemonNamesItemsPosition.name}!!.urlImage
+                    val pokemonImg = pokemonInfoItem.firstOrNull { it.name == pokemonNamesItemsPosition.name}!!.imageUrl
                     val name = pokemonNamesItemsPosition.name
                     val move = pokemonInfoItem.firstOrNull{it.name == pokemonNamesItemsPosition.name}!!.move
 
