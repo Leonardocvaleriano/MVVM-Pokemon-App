@@ -34,16 +34,16 @@ class FragmentListPokemonAdapterCustomized(
                 .load(item.imageUrl)
                 .into(imgPokemon)
 
-            if (item.favoriteStats != null && item.favoriteStats.equals("1")){
+            if (item.favoriteStats != null || item.favoriteStats == ("1")){
                 icFavorite.setBackgroundResource(R.drawable.ic_favorite_filled)
 
-            } else if(item.favoriteStats != null && item.favoriteStats.equals("0")){
+            } else if(item.favoriteStats == ("0") || item.favoriteStats == null){
                 icFavorite.setBackgroundResource(R.drawable.ic_favorite)
             }
             icFavorite.setOnClickListener {
                if (item.favoriteStats.equals("0") || item.favoriteStats == null){
                    item.favoriteStats = "1"
-                   listener.addToFavoriteClick(PokemonDb(item.name, item.ability, item.type, item.move, item.imageUrl, item.favoriteStats),
+                   listener.addToFavoriteClick(PokemonDb(item.name, item.ability, item.type, item.move, item.imageUrl, "1"),
                    "Pokemon Added to the Favorites")
                    icFavorite.setBackgroundResource(R.drawable.ic_favorite_filled)
                 } else {
@@ -55,6 +55,5 @@ class FragmentListPokemonAdapterCustomized(
                }
             }
         }
-
     }
 }

@@ -36,6 +36,7 @@ class PokemonViewModel(private val pokemonRepository: PokemonRepository) : BaseV
 
     private fun synchronizeDataInAList(){
         for (item in pokemonNamesList){
+            val name = pokemonInfosList.find { it.name == item.name}!!.name
             val ability = pokemonInfosList.find { it.name == item.name}!!.ability
             val type = pokemonInfosList.find { it.name == item.name }!!.type
             val move = pokemonInfosList.find { it.name == item.name}!!.move
@@ -43,7 +44,7 @@ class PokemonViewModel(private val pokemonRepository: PokemonRepository) : BaseV
             val favoriteStats = pokemonFavoritesList.find { it.pokemonName == item.name}?.favoriteStats
 
             val synchronizedData = SynchronizedData(
-                item.name,
+                name,
                 ability,
                 type,
                 move,
