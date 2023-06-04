@@ -12,9 +12,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.codeplace.mvvmpokemonapp.databinding.FragmentListPokemonBinding
 import com.codeplace.mvvmpokemonapp.db.model.PokemonDb
 import com.codeplace.mvvmpokemonapp.stateFlow.StateFlow
-import com.codeplace.mvvmpokemonapp.ui.home.view.adapter.FragmentListPokemonAdapter
 import com.codeplace.mvvmpokemonapp.ui.home.view.adapter.FragmentListPokemonAdapterCustomized
-import com.codeplace.mvvmpokemonapp.ui.home.view.adapter.PokemonListAdapter
 import com.codeplace.mvvmpokemonapp.ui.home.view.adapter.RecyclerViewClickListener
 import com.codeplace.mvvmpokemonapp.ui.home.viewModel.PokemonViewModel
 import org.json.JSONObject
@@ -59,13 +57,13 @@ class ListPokemonFragment: Fragment(), RecyclerViewClickListener {
         viewModel.pokemonFavorites.observe(viewLifecycleOwner){
             when (it) {
                 is StateFlow.Loading -> (loading(it.loading))
-                is StateFlow.Success<*> -> (fillPokemonFavorites(it.data as List<PokemonDb>))
+                is StateFlow.Success<*> -> (fillFavoritePokemonList(it.data as List<PokemonDb>))
                 is StateFlow.Error -> (errorMessage(it.errorMessage))
             }
         }
     }
-    private fun fillPokemonFavorites(result: List<PokemonDb>) {
-        viewModel.fillListFavoritePokemons(result)
+    private fun fillFavoritePokemonList(result: List<PokemonDb>) {
+        viewModel.fillFavoritePokemonList(result)
     }
 
     private fun fillPokemonNamesAndGetPokemonInfo(result: JSONObject) {

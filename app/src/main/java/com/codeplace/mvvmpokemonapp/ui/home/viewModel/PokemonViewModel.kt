@@ -116,7 +116,7 @@ class PokemonViewModel(private val pokemonRepository: PokemonRepository) : BaseV
     fun getFavoritesPokemon() = getAllFavoritePokemons(pokemonFavorites){
         pokemonRepository.getAllFavoritePokemons()
     }
-    fun fillListFavoritePokemons(result: List<PokemonDb>){
+    fun fillFavoritePokemonList(result: List<PokemonDb>){
         result.forEach {
             pokemonFavoritesList.add(PokemonDb(it.pokemonName, it.pokemonAbility, it.pokemonType,it.pokemonMove,it.pokemonImg, it.favoriteStats))
         }

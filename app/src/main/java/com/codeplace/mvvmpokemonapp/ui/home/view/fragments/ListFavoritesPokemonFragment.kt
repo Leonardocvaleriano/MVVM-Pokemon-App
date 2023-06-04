@@ -33,7 +33,6 @@ class ListFavoritesPokemonFragment: Fragment(){
         initValues()
         initObservables()
         return binding.root
-
     }
     private fun initValues() {
         viewModel.getFavoritesPokemon()
@@ -43,7 +42,7 @@ class ListFavoritesPokemonFragment: Fragment(){
         viewModel.pokemonFavorites.observe(viewLifecycleOwner){
             when(it){
                 is StateFlow.Loading -> (loading(it.loading))
-                is StateFlow.Success<*> -> (fillFavoritesPokemon(it.data as List<PokemonDb>))
+                is StateFlow.Success<*> -> (fillFavoritePokemonList(it.data as List<PokemonDb>))
                 is StateFlow.Error -> (errorMessage(it.errorMessage))
             }
         }
@@ -56,17 +55,17 @@ class ListFavoritesPokemonFragment: Fragment(){
     private fun errorMessage(errorMessage: String) {
         Toast.makeText(activity, "$errorMessage", Toast.LENGTH_SHORT).show()
     }
-    fun fillFavoritesPokemon(result:List<PokemonDb>){
-        viewModel.fillListFavoritePokemons(result)
-        //initRecyclerAdapter()
+    fun fillFavoritePokemonList(result:List<PokemonDb>){
+        viewModel.fillFavoritePokemonList(result)
+        initRecyclerAdapter()
     }
-//    private fun initRecyclerAdapter() {
-//        with(binding){
-//            adapter = FragmentListPokemonsFavoritesAdapter(
-//                viewModel.allPokemonsAsFavorites_
-//            )
-//            recyclerView.layoutManager = LinearLayoutManager(activity)
-//            recyclerView.adapter = adapter
-//        }
-//    }
+    private fun initRecyclerAdapter() {
+        with(binding){
+            adapter = FragmentListPokemonsFavoritesAdapter(
+                viewModel.pokemonFavoritesList
+            )
+            recyclerView.layoutManager = LinearLayoutManager(activity)
+            recyclerView.adapter = adapter
+        }
+    }
 }

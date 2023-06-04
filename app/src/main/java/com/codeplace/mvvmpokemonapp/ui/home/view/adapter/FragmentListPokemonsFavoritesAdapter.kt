@@ -6,10 +6,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.codeplace.mvvmpokemonapp.databinding.PokemonItemsBinding
 import com.codeplace.mvvmpokemonapp.db.model.PokemonDb
-import com.codeplace.mvvmpokemonapp.ui.home.view.models.Pokemon
 
 class FragmentListPokemonsFavoritesAdapter(
-    private var listPokemonsDb: List<PokemonDb>
+    private var pokemonFavoriteList: List<PokemonDb>
     ): RecyclerView.Adapter<FragmentListPokemonsFavoritesAdapter.FragmentListPokemonsFavoritesHolder>(){
 
     inner class FragmentListPokemonsFavoritesHolder(val binding: PokemonItemsBinding): RecyclerView.ViewHolder(binding.root)
@@ -21,20 +20,22 @@ class FragmentListPokemonsFavoritesAdapter(
         return FragmentListPokemonsFavoritesHolder(PokemonItemsBinding.inflate(LayoutInflater.from(parent.context), parent, false))
     }
 
-    override fun getItemCount(): Int {
-        return   listPokemonsDb.size
-    }
+    override fun getItemCount(): Int = pokemonFavoriteList.size
 
     override fun onBindViewHolder(holder: FragmentListPokemonsFavoritesHolder, position: Int) {
-        with(holder.binding){
 
-            txtPokemonName.text  = listPokemonsDb[position].pokemonName
-            txtPokemonAbility.text = listPokemonsDb[position].pokemonAbility
-            txtPokemonType.text = listPokemonsDb[position].pokemonType
-            txtPokemonMove.text = listPokemonsDb[position].pokemonMove
-            Glide.with(holder.itemView.context)
-                .load(listPokemonsDb[position].pokemonImg)
-                .into(imgPokemon)
+
+        with(holder.binding){
+            val item = pokemonFavoriteList[position]
+            with(item){
+                txtPokemonName.text  = pokemonName
+                txtPokemonAbility.text = pokemonAbility
+                txtPokemonType.text = pokemonType
+                txtPokemonMove.text = pokemonMove
+                Glide.with(holder.itemView.context)
+                    .load(pokemonImg)
+                    .into(imgPokemon)
+            }
          }
      }
 }
