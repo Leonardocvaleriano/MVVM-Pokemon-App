@@ -57,20 +57,23 @@
         android:id="@+id/ListFavoritesPokemonFragment"
         android:name="com.codeplace.mvvmpokemonapp.ui.home.view.fragments.ListFavoritesPokemonFragment"
         android:label="Favorites" >
+        <action
+            android:id="@+id/action_ListFavoritesPokemonFragment_to_listPokemonFragment"
+            app:destination="@id/listPokemonFragment"
+            app:enterAnim="@anim/from_left" />
 
     </fragment>
     <action
         android:id="@+id/globalActionNavigateToNestedGraph"
         app:destination="@id/listPokemonFragment"
         app:enterAnim="@anim/from_left"
-
-
         app:popExitAnim="@anim/from_right" />
 
     <action
         android:id="@+id/globalActionNavigateToFavoritesFragment"
         app:destination="@id/ListFavoritesPokemonFragment"
         app:enterAnim="@anim/from_right"
-
         app:popExitAnim="@anim/from_left" />
+
+
 </navigation>

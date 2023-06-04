@@ -56,8 +56,7 @@ class PokemonViewModel(private val pokemonRepository: PokemonRepository) : BaseV
     }
 
     fun getPokemonNames() = fetchData(pokemonNames) {
-        pokemonNamesList.clear()
-        pokemonInfosList.clear()
+        synchronizedDataList.clear()
         pokemonRepository.getPokemonNames()
     }
 
