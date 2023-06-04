@@ -1,9 +1,8 @@
-package com.codeplace.mvvmpokemonapp.ui.home.view.adapter
+package com.codeplace.mvvmpokemonapp.ui.home.view.adapters
 
 import com.codeplace.mvvmpokemonapp.db.model.PokemonDb
 
-interface RecyclerViewClickListener {
-
+interface PokemonItemClickListener {
 
 
     fun addToFavoriteClick(

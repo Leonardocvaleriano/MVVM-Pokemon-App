@@ -124,9 +124,16 @@ class PokemonViewModel(private val pokemonRepository: PokemonRepository) : BaseV
     fun addPokemonToFavorites(pokemonDb: PokemonDb) = viewModelScope.launch {
         pokemonRepository.addPokemonToFavorites(pokemonDb)
     }
-    fun deletePokemonFromFavorites(pokemonName:String) = viewModelScope.launch {
+    fun deletePokemonFromFavorites(pokemonName:String?) = viewModelScope.launch {
         pokemonRepository.deleteFavoritePokemon(pokemonName)
+
     }
+    fun updatePokemonFavorites(){
+        getFavoritesPokemon()
+        pokemonFavoritesList.clear()
+
+    }
+
 //        fun updateFavoritesPokemon(pokemonName: String, pokemonDb: PokemonDb) = viewModelScope.launch{
 //        val isExist = pokemonRepository.checkFavPokemonByName(pokemonName).isNotEmpty()
 //            if (isExist){

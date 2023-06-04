@@ -1,4 +1,4 @@
-package com.codeplace.mvvmpokemonapp.ui.home.view.adapter
+package com.codeplace.mvvmpokemonapp.ui.home.view.adapters
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -12,7 +12,7 @@ import com.codeplace.mvvmpokemonapp.util.capitalize
 
 class FragmentListPokemonAdapterCustomized(
     private val synchronizedDataList:List<SynchronizedData>,
-    private val listener: RecyclerViewClickListener
+    private val listener: PokemonItemClickListener
 ) :RecyclerView.Adapter<FragmentListPokemonAdapterCustomized.ViewHolder>(){
 
     inner class ViewHolder(val binding: PokemonItemsBinding) : RecyclerView.ViewHolder(binding.root)
@@ -36,22 +36,22 @@ class FragmentListPokemonAdapterCustomized(
                     .into(imgPokemon)
 
                 if (favoriteStats != null || favoriteStats == ("1")){
-                    icFavorite.setBackgroundResource(R.drawable.ic_favorite_filled)
+                    icFavorite.setImageResource(R.drawable.ic_favorite_filled)
 
                 } else if(favoriteStats == ("0") || favoriteStats == null){
-                    icFavorite.setBackgroundResource(R.drawable.ic_favorite)
+                    icFavorite.setImageResource(R.drawable.ic_favorite)
                 }
                 icFavorite.setOnClickListener {
                     if (favoriteStats.equals("0") || favoriteStats == null){
                         favoriteStats = "1"
                         listener.addToFavoriteClick(PokemonDb(name, ability, type, move, imageUrl, favoriteStats),
                             "Pokemon has been Added to favorites list.")
-                        icFavorite.setBackgroundResource(R.drawable.ic_favorite_filled)
+                        icFavorite.setImageResource(R.drawable.ic_favorite_filled)
                     } else {
                         favoriteStats = "0"
                         listener.removeFromFavoritesClick(name,
                             "Pokemon has been removed from favorites list.")
-                        icFavorite.setBackgroundResource(R.drawable.ic_favorite)
+                        icFavorite.setImageResource(R.drawable.ic_favorite)
                     }
                 }
             }

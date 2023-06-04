@@ -12,14 +12,14 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.codeplace.mvvmpokemonapp.databinding.FragmentListPokemonBinding
 import com.codeplace.mvvmpokemonapp.db.model.PokemonDb
 import com.codeplace.mvvmpokemonapp.stateFlow.StateFlow
-import com.codeplace.mvvmpokemonapp.ui.home.view.adapter.FragmentListPokemonAdapterCustomized
-import com.codeplace.mvvmpokemonapp.ui.home.view.adapter.RecyclerViewClickListener
+import com.codeplace.mvvmpokemonapp.ui.home.view.adapters.FragmentListPokemonAdapterCustomized
+import com.codeplace.mvvmpokemonapp.ui.home.view.adapters.PokemonItemClickListener
 import com.codeplace.mvvmpokemonapp.ui.home.viewModel.PokemonViewModel
 import org.json.JSONObject
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
-class ListPokemonFragment: Fragment(), RecyclerViewClickListener {
+class ListPokemonFragment: Fragment(), PokemonItemClickListener {
     private lateinit var binding: FragmentListPokemonBinding
     private lateinit var adapter: FragmentListPokemonAdapterCustomized
      private val viewModel by viewModel<PokemonViewModel>()

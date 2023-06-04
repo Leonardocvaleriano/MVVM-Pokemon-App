@@ -12,11 +12,12 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.codeplace.mvvmpokemonapp.databinding.FragmentFavoritesBinding
 import com.codeplace.mvvmpokemonapp.db.model.PokemonDb
 import com.codeplace.mvvmpokemonapp.stateFlow.StateFlow
-import com.codeplace.mvvmpokemonapp.ui.home.view.adapter.FragmentListPokemonsFavoritesAdapter
+import com.codeplace.mvvmpokemonapp.ui.home.view.adapters.FragmentListPokemonsFavoritesAdapter
+import com.codeplace.mvvmpokemonapp.ui.home.view.adapters.PokemonFavoriteItemClickListener
 import com.codeplace.mvvmpokemonapp.ui.home.viewModel.PokemonViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class ListFavoritesPokemonFragment: Fragment(){
+class ListFavoritesPokemonFragment: Fragment(), PokemonFavoriteItemClickListener {
 
     private lateinit var binding: FragmentFavoritesBinding
     private lateinit var adapter: FragmentListPokemonsFavoritesAdapter
@@ -53,19 +54,30 @@ class ListFavoritesPokemonFragment: Fragment(){
         }
     }
     private fun errorMessage(errorMessage: String) {
-        Toast.makeText(activity, "$errorMessage", Toast.LENGTH_SHORT).show()
+        Toast.makeText(activity, errorMessage, Toast.LENGTH_SHORT).show()
     }
-    fun fillFavoritePokemonList(result:List<PokemonDb>){
+    private fun fillFavoritePokemonList(result:List<PokemonDb>){
         viewModel.fillFavoritePokemonList(result)
         initRecyclerAdapter()
     }
     private fun initRecyclerAdapter() {
         with(binding){
             adapter = FragmentListPokemonsFavoritesAdapter(
-                viewModel.pokemonFavoritesList
+                viewModel.pokemonFavoritesList,
+                this@ListFavoritesPokemonFragment
             )
             recyclerView.layoutManager = LinearLayoutManager(activity)
             recyclerView.adapter = adapter
         }
     }
+
+    override fun removeFromFavoriteClick(name: String?, message: String) {
+        viewModel.deletePokemonFromFavorites(name)
+        Toast.makeText(activity, "Pokemon has been removed from favorites.", Toast.LENGTH_SHORT).show()
+        viewModel.updatePokemonFavorites()
+        initObservables()
+        adapter.notifyDataSetChanged()
+
+    }
+
 }

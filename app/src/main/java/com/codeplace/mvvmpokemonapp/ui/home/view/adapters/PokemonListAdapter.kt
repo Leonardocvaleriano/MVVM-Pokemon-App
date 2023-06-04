@@ -1,4 +1,4 @@
-package com.codeplace.mvvmpokemonapp.ui.home.view.adapter
+package com.codeplace.mvvmpokemonapp.ui.home.view.adapters
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
