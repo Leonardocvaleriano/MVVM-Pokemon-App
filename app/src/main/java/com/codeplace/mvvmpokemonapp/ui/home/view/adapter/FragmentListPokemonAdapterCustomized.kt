@@ -8,6 +8,7 @@ import com.codeplace.mvvmpokemonapp.R
 import com.codeplace.mvvmpokemonapp.databinding.PokemonItemsBinding
 import com.codeplace.mvvmpokemonapp.db.model.PokemonDb
 import com.codeplace.mvvmpokemonapp.ui.home.view.models.SynchronizedData
+import com.codeplace.mvvmpokemonapp.util.capitalize
 
 class FragmentListPokemonAdapterCustomized(
     private val synchronizedDataList:List<SynchronizedData>,
@@ -24,35 +25,35 @@ class FragmentListPokemonAdapterCustomized(
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
          val item = synchronizedDataList[position]
-
         with(holder.binding){
-            txtPokemonName.text = item.name
-            txtPokemonAbility.text = item.ability
-            txtPokemonType.text = item.type
-            txtPokemonMove.text = item.move
-            Glide.with(holder.itemView.context)
-                .load(item.imageUrl)
-                .into(imgPokemon)
+            with(item){
+                txtPokemonName.text = capitalize(name)
+                txtPokemonAbility.text = capitalize(ability)
+                txtPokemonType.text = capitalize(type)
+                txtPokemonMove.text = capitalize(move)
+                Glide.with(holder.itemView.context)
+                    .load(item.imageUrl)
+                    .into(imgPokemon)
 
-            if (item.favoriteStats != null || item.favoriteStats == ("1")){
-                icFavorite.setBackgroundResource(R.drawable.ic_favorite_filled)
+                if (favoriteStats != null || favoriteStats == ("1")){
+                    icFavorite.setBackgroundResource(R.drawable.ic_favorite_filled)
 
-            } else if(item.favoriteStats == ("0") || item.favoriteStats == null){
-                icFavorite.setBackgroundResource(R.drawable.ic_favorite)
-            }
-            icFavorite.setOnClickListener {
-               if (item.favoriteStats.equals("0") || item.favoriteStats == null){
-                   item.favoriteStats = "1"
-                   listener.addToFavoriteClick(PokemonDb(item.name, item.ability, item.type, item.move, item.imageUrl, "1"),
-                   "Pokemon Added to the Favorites")
-                   icFavorite.setBackgroundResource(R.drawable.ic_favorite_filled)
-                } else {
-                   item.favoriteStats = "0"
-                   listener.removeFromFavoritesClick(item.name,
-                   "Pokemon has been removed from favorites list.")
-                   icFavorite.setBackgroundResource(R.drawable.ic_favorite)
-
-               }
+                } else if(favoriteStats == ("0") || favoriteStats == null){
+                    icFavorite.setBackgroundResource(R.drawable.ic_favorite)
+                }
+                icFavorite.setOnClickListener {
+                    if (favoriteStats.equals("0") || favoriteStats == null){
+                        favoriteStats = "1"
+                        listener.addToFavoriteClick(PokemonDb(name, ability, type, move, imageUrl, favoriteStats),
+                            "Pokemon has been Added to favorites list.")
+                        icFavorite.setBackgroundResource(R.drawable.ic_favorite_filled)
+                    } else {
+                        favoriteStats = "0"
+                        listener.removeFromFavoritesClick(name,
+                            "Pokemon has been removed from favorites list.")
+                        icFavorite.setBackgroundResource(R.drawable.ic_favorite)
+                    }
+                }
             }
         }
     }

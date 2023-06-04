@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.codeplace.mvvmpokemonapp.databinding.PokemonItemsBinding
 import com.codeplace.mvvmpokemonapp.db.model.PokemonDb
+import com.codeplace.mvvmpokemonapp.util.capitalize
 
 class FragmentListPokemonsFavoritesAdapter(
     private var pokemonFavoriteList: List<PokemonDb>
@@ -28,10 +29,10 @@ class FragmentListPokemonsFavoritesAdapter(
         with(holder.binding){
             val item = pokemonFavoriteList[position]
             with(item){
-                txtPokemonName.text  = pokemonName
-                txtPokemonAbility.text = pokemonAbility
-                txtPokemonType.text = pokemonType
-                txtPokemonMove.text = pokemonMove
+                txtPokemonName.text  = capitalize(pokemonName)
+                txtPokemonAbility.text = capitalize(pokemonAbility)
+                txtPokemonType.text = capitalize(pokemonType)
+                txtPokemonMove.text = capitalize(pokemonMove)
                 Glide.with(holder.itemView.context)
                     .load(pokemonImg)
                     .into(imgPokemon)
