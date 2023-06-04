@@ -126,11 +126,12 @@ class PokemonViewModel(private val pokemonRepository: PokemonRepository) : BaseV
     }
     fun deletePokemonFromFavorites(pokemonName:String?) = viewModelScope.launch {
         pokemonRepository.deleteFavoritePokemon(pokemonName)
+        updatePokemonFavorites()
 
     }
     fun updatePokemonFavorites(){
-        getFavoritesPokemon()
         pokemonFavoritesList.clear()
+        getFavoritesPokemon()
 
     }
 

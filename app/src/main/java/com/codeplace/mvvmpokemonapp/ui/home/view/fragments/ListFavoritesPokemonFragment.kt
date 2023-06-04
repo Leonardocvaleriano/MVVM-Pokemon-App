@@ -74,10 +74,7 @@ class ListFavoritesPokemonFragment: Fragment(), PokemonFavoriteItemClickListener
     override fun removeFromFavoriteClick(name: String?, message: String) {
         viewModel.deletePokemonFromFavorites(name)
         Toast.makeText(activity, "Pokemon has been removed from favorites.", Toast.LENGTH_SHORT).show()
-        viewModel.updatePokemonFavorites()
-        initObservables()
-        adapter.notifyDataSetChanged()
-
+        initRecyclerAdapter()
     }
 
 }
