@@ -6,14 +6,14 @@ import androidx.room.Index
 import androidx.room.PrimaryKey
 
 
-@Entity("pokemonTable", indices = [Index(value =["pokemon_name"], unique = true)])
+@Entity("pokemonTable", indices = [Index(value =["name"], unique = true)])
 class PokemonDb(
-    @ColumnInfo(name = "pokemon_name")val pokemonName:String?,
-    @ColumnInfo(name = "pokemon_ability") val pokemonAbility:String?,
-    @ColumnInfo(name = "pokemon_type") val pokemonType:String?,
-    @ColumnInfo(name = "pokemon_move")val pokemonMove:String?,
-    @ColumnInfo(name = "pokemon_img_url")val pokemonImg:String?,
-    @ColumnInfo(name = "favorite_Stats")val favoriteStats:String?
+    @ColumnInfo(name = "name")val name:String?,
+    @ColumnInfo(name = "ability") val ability:String?,
+    @ColumnInfo(name = "type") val type:String?,
+    @ColumnInfo(name = "move")val move:String?,
+    @ColumnInfo(name = "url")val img:String?,
+    @ColumnInfo(name = "favorite_stats")val favoriteStats:String?
 
     ) {
     @PrimaryKey(autoGenerate = true) var id = 0

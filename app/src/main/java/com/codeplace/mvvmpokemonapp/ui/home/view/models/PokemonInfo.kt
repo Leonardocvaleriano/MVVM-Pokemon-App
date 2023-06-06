@@ -1,24 +1,9 @@
 package com.codeplace.mvvmpokemonapp.ui.home.view.models
 
-import org.json.JSONObject
-import java.io.Serializable
-
-data class PokemonInfo(
-    val name: String,
-    val urlImage:String,
-    val type: String,
-    val move:String,
-    val ability:String
-
-    ): Serializable {
-    constructor(jsonObject: JSONObject):this(
-        jsonObject.getString("name"),
-        jsonObject.getString("front_default"),
-        jsonObject.getString("name"),
-        jsonObject.getString("name"),
-        jsonObject.getString("name")
-
-        )
-}
-
-
+class PokemonInfo(
+    val name:String?,
+    val id:Int?,
+    val imageUrl:String?,
+    val ability:String?,
+    val type:String?,
+    val move:String?)

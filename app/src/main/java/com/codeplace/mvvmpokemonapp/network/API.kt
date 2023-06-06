@@ -8,14 +8,14 @@ interface API {
 
     @GET("pokemon")
     suspend fun getPokemonNames():Response<Map<String, *>>
-    @GET("pokemon/{pokemonName}")
+    @GET("pokemon/{name}")
     suspend fun getPokemonInfo(
-        @Path("pokemonName")pokemonName:String):Response<Map<String, *>>
-    @GET("pokemon-species/{pokemonId}")
+        @Path("name")name:String?):Response<Map<String, *>>
+    @GET("pokemon-species/{id}")
     suspend fun getPokemonSpecies(
-        @Path("pokemonId")pokemonId:Int):Response<Map<String, *>>
-    @GET("ability/{pokemonId}")
+        @Path("id")id:Int?):Response<Map<String, *>>
+    @GET("ability/{id}")
     suspend fun getPokemonEffect(
-        @Path("pokemonId")pokemonId:Int):Response<Map<String, *>>
+        @Path("id")id:Int?):Response<Map<String, *>>
 
 }

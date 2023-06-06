@@ -10,12 +10,12 @@ interface PokemonsDao {
         @Query("SELECT * FROM pokemonTable order by id ASC")
         fun getAll(): List<PokemonDb>
 
-        @Query("SELECT pokemon_name FROM pokemonTable WHERE pokemon_name=:pokemonName")
-        fun checkFavPokemonByName(pokemonName:String?):String?
+        @Query("SELECT name FROM pokemonTable WHERE name=:name")
+        fun checkFavPokemonByName(name:String?):String?
 
         @Insert(onConflict = OnConflictStrategy.IGNORE)
-        suspend fun insert(pokemonsDb: PokemonDb)
+        suspend fun insert(pokemonDb: PokemonDb)
 
-        @Query("DELETE FROM pokemonTable WHERE pokemon_name = :pokemonName")
-        suspend fun delete(pokemonName:String?)
+        @Query("DELETE FROM pokemonTable WHERE name =:name")
+        suspend fun delete(name:String?)
 }

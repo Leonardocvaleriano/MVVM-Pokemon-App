@@ -12,7 +12,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.codeplace.mvvmpokemonapp.databinding.FragmentListPokemonBinding
 import com.codeplace.mvvmpokemonapp.db.model.PokemonDb
 import com.codeplace.mvvmpokemonapp.stateFlow.StateFlow
-import com.codeplace.mvvmpokemonapp.ui.home.view.adapters.FragmentListPokemonAdapterCustomized
+import com.codeplace.mvvmpokemonapp.ui.home.view.adapters.FragmentListPokemonAdapter
 import com.codeplace.mvvmpokemonapp.ui.home.view.adapters.PokemonItemClickListener
 import com.codeplace.mvvmpokemonapp.ui.home.viewModel.PokemonViewModel
 import org.json.JSONObject
@@ -21,7 +21,7 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class ListPokemonFragment: Fragment(), PokemonItemClickListener {
     private lateinit var binding: FragmentListPokemonBinding
-    private lateinit var adapter: FragmentListPokemonAdapterCustomized
+    private lateinit var adapter: FragmentListPokemonAdapter
      private val viewModel by viewModel<PokemonViewModel>()
      override fun onCreateView(
         inflater: LayoutInflater,
@@ -82,7 +82,7 @@ class ListPokemonFragment: Fragment(), PokemonItemClickListener {
     private fun initRecyclerAdapter() {
         with(binding) {
             recyclerView.layoutManager = LinearLayoutManager(activity)
-            adapter = FragmentListPokemonAdapterCustomized(
+            adapter = FragmentListPokemonAdapter(
                 viewModel.synchronizedDataList,
                 this@ListPokemonFragment
             )

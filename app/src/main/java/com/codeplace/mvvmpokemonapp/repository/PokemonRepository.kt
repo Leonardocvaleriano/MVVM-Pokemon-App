@@ -13,16 +13,16 @@ class PokemonRepository (private val baseUrl: String, val pokemonsDao: PokemonsD
             val api = RetrofitInstance.getRetrofit(baseUrl)
             return@withContext api.getPokemonNames()
         }
-         suspend fun getPokemonInfo(pokemonName: String) = withContext(Dispatchers.IO){
+         suspend fun getPokemonInfo(name: String?) = withContext(Dispatchers.IO){
              val api = RetrofitInstance.getRetrofit(baseUrl)
-             return@withContext api.getPokemonInfo(pokemonName)
+             return@withContext api.getPokemonInfo(name)
     }
-        suspend fun getPokemonEffects(id:Int) = withContext(Dispatchers.IO){
+        suspend fun getPokemonEffects(id:Int?) = withContext(Dispatchers.IO){
             val api = RetrofitInstance.getRetrofit(baseUrl)
             return@withContext api.getPokemonEffect(id)
         }
 
-        suspend fun getPokemonSpecies(id: Int) = withContext(Dispatchers.IO){
+        suspend fun getPokemonSpecies(id: Int?) = withContext(Dispatchers.IO){
             val api = RetrofitInstance.getRetrofit(baseUrl)
             return@withContext api.getPokemonSpecies(id)
         }
@@ -32,11 +32,11 @@ class PokemonRepository (private val baseUrl: String, val pokemonsDao: PokemonsD
         return@withContext pokemonsDao.getAll()
     }
 
-    suspend fun addPokemonToFavorites(pokemonsDb:PokemonDb) = withContext(Dispatchers.IO){
-       return@withContext pokemonsDao.insert(pokemonsDb)
+    suspend fun addPokemonToFavorites(pokemonDb:PokemonDb) = withContext(Dispatchers.IO){
+       return@withContext pokemonsDao.insert(pokemonDb)
     }
-    suspend fun deleteFavoritePokemon(pokemonName:String?) = withContext(Dispatchers.IO){
-        return@withContext pokemonsDao.delete(pokemonName)
+    suspend fun deleteFavoritePokemon(name:String?) = withContext(Dispatchers.IO){
+        return@withContext pokemonsDao.delete(name)
     }
 
 

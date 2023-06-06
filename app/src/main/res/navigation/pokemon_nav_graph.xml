@@ -58,8 +58,8 @@
         android:label="Favorites" >
         <action
             android:id="@+id/action_ListFavoritesPokemonFragment_to_listPokemonFragment"
-            app:destination="@id/listPokemonFragment"
-            app:enterAnim="@anim/from_left" />
+            app:destination="@id/pokemonDetailsFragment" />
+
     </fragment>
     <action
         android:id="@+id/globalActionNavigateToNestedGraph"

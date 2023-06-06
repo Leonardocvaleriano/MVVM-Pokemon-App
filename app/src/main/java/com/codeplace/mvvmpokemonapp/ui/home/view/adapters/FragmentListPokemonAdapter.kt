@@ -12,10 +12,10 @@ import com.codeplace.mvvmpokemonapp.ui.home.view.fragments.ListPokemonFragmentDi
 import com.codeplace.mvvmpokemonapp.ui.home.view.models.SynchronizedData
 import com.codeplace.mvvmpokemonapp.util.capitalize
 
-class FragmentListPokemonAdapterCustomized(
+class FragmentListPokemonAdapter(
     private val synchronizedDataList: List<SynchronizedData>,
     private val listener: PokemonItemClickListener
-) : RecyclerView.Adapter<FragmentListPokemonAdapterCustomized.ViewHolder>() {
+) : RecyclerView.Adapter<FragmentListPokemonAdapter.ViewHolder>() {
 
 
     inner class ViewHolder(val binding: PokemonItemsBinding) : RecyclerView.ViewHolder(binding.root)
@@ -71,12 +71,12 @@ class FragmentListPokemonAdapterCustomized(
                 clickableTextMore.setOnClickListener {
                     val navController = findNavController(holder.itemView)
                     val action = ListPokemonFragmentDirections.navigateToPokemonDetailsFragment(
-                        name,
-                        id,
-                        imageUrl,
-                        ability,
-                        type,
-                        move
+                        name!!,
+                        id!!,
+                        imageUrl!!,
+                        ability!!,
+                        type!!,
+                        move!!
                     )
                     navController.navigate(action)
                 }
