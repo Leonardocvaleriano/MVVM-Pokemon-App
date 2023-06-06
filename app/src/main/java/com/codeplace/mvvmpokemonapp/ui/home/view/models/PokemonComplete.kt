@@ -6,26 +6,17 @@ import java.io.Serializable
 open class PokemonComplete
 
 class PokemonNames(val name:String,
-                   val favoriteStats:String,
                    val url:String?):PokemonComplete(), Serializable {
     constructor(jsonObject: JSONObject):this(
         jsonObject.getString("name"),
-        jsonObject.getString("name"),
-        jsonObject.getString("url"))
+        jsonObject.getString("name"))
 }
 
 class PokemonInfos(
     val name: String,
+    val id:Int,
     val imageUrl:String,
     val type: String,
     val move:String,
-    val ability:String):PokemonComplete()
-
-
-
-
-
-
-
-
-
+    val ability:String,
+    ):PokemonComplete()

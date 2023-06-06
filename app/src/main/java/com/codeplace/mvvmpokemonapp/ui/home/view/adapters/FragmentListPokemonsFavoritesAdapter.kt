@@ -27,9 +27,6 @@ class FragmentListPokemonsFavoritesAdapter(
 
     override fun onBindViewHolder(holder: FragmentListPokemonsFavoritesHolder, position: Int) {
 
-
-
-
         with(holder.binding){
             val item = pokemonFavoriteList[position]
             with(item){
@@ -48,6 +45,7 @@ class FragmentListPokemonsFavoritesAdapter(
                             "Pokemon has been removed from favorites list.")
                         icFavorite.setBackgroundResource(R.drawable.ic_favorite)
                     }
+
                 }
             }
      }

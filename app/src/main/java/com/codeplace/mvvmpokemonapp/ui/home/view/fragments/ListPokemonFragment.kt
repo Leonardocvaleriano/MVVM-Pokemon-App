@@ -107,6 +107,5 @@ class ListPokemonFragment: Fragment(), PokemonItemClickListener {
         Toast.makeText(activity, message, Toast.LENGTH_SHORT).show()
     }
 
-
 }
 

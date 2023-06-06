@@ -111,4 +111,5 @@
     <string name="growth_rate">Growth-Rate</string>
     <string name="meterMeasurement">m</string>
     <string name="kgMeasurement">kg</string>
+    <string name="more">MORE</string>
 </resources>

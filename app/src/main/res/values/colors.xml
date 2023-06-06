@@ -21,9 +21,8 @@
     <color name="bluePoke"> #003a70</color>
     <color name="blueLightPoke">#3d7dca</color>
     <color name="yellowPoke"> #ffcb05</color>
-
-
-
+    <color name="darker_gray">#AAAAAA</color>
+    <color name="blueMore">#00BCD4</color>
 
 
 </resources>

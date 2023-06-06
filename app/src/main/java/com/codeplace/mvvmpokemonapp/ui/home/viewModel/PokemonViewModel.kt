@@ -11,6 +11,7 @@ import com.codeplace.mvvmpokemonapp.ui.home.view.models.PokemonNames
 import com.codeplace.mvvmpokemonapp.ui.home.view.models.SynchronizedData
 import kotlinx.coroutines.launch
 import org.json.JSONObject
+import org.koin.core.KoinApplication.Companion.init
 
 class PokemonViewModel(private val pokemonRepository: PokemonRepository) : BaseViewModel() {
 
@@ -42,14 +43,16 @@ class PokemonViewModel(private val pokemonRepository: PokemonRepository) : BaseV
             val move = pokemonInfosList.find { it.name == item.name}!!.move
             val imageUrl = pokemonInfosList.find { it.name == item.name}!!.imageUrl
             val favoriteStats = pokemonFavoritesList.find { it.pokemonName == item.name}?.favoriteStats
+            val id = pokemonInfosList.find { it.name == item.name }!!.id
 
             val synchronizedData = SynchronizedData(
                 name,
+                id,
                 ability,
                 type,
                 move,
                 imageUrl,
-                favoriteStats
+                favoriteStats,
             )
             synchronizedDataList.add(synchronizedData)
         }
@@ -65,20 +68,27 @@ class PokemonViewModel(private val pokemonRepository: PokemonRepository) : BaseV
             getPokemonInfo(it.name)
         }
     }
+            fun getPokemonCharacteristics(id:Int, name:String) {
+                getPokemonInfo(name)
+                getPokemonEffects(id)
+                getPokemonSpecies(id)
+        }
 
-    // Chamado 20x
     private fun getPokemonInfo(pokemonName: String) = fetchData(pokemonInfo) {
         pokemonRepository.getPokemonInfo(pokemonName)
     }
-    //        fun getPokemonDetails(pokemonId:Int) {
-//
-//            fun getPokemonEffects(pokemonId:Int) = fetchData(pokemonEffects){
-//                pokemonRepository.getPokemonEffects(pokemonId)
-//            }
-//            fun getPokemonSpecies(pokemonId: Int) = fetchData(pokemonSpecies){
-//                pokemonRepository.getPokemonSpecies(pokemonId)
-//            }
-//        }
+
+    fun getPokemonEffects(id:Int) = fetchData(pokemonEffects){
+        pokemonRepository.getPokemonEffects(id)
+    }
+    fun getPokemonSpecies(id: Int) = fetchData(pokemonSpecies){
+        pokemonRepository.getPokemonSpecies(id)
+    }
+
+    fun getFavoritesPokemon() = getAllFavoritePokemons(pokemonFavorites){
+        pokemonRepository.getAllFavoritePokemons()
+    }
+
     fun fillPokemonNamesList(result: JSONObject) {
         val resultJSONArray = result.getJSONArray("results")
         (0 until resultJSONArray.length())
@@ -106,18 +116,17 @@ class PokemonViewModel(private val pokemonRepository: PokemonRepository) : BaseV
         val abilities = result.getJSONArray("abilities")
         val ability = abilities.getJSONObject(0).getJSONObject("ability")
         val abilityName = ability.getString("name")
-        pokemonInfosList.add(PokemonInfos(name,urlImage,typeName,moveName,abilityName))
+        val id = result.getInt("id")
+        pokemonInfosList.add(PokemonInfos(name,id,urlImage,typeName,moveName,abilityName))
 
         if (pokemonNamesList.size == pokemonInfosList.size){
             synchronizeDataInAList()
         }
 
     }
-    fun getFavoritesPokemon() = getAllFavoritePokemons(pokemonFavorites){
-        pokemonRepository.getAllFavoritePokemons()
-    }
-    fun fillFavoritePokemonList(result: List<PokemonDb>){
-        result.forEach {
+
+    fun fillFavoritePokemonList(result: List<PokemonDb>?){
+        result?.forEach {
             pokemonFavoritesList.add(PokemonDb(it.pokemonName, it.pokemonAbility, it.pokemonType,it.pokemonMove,it.pokemonImg, it.favoriteStats))
         }
     }
@@ -129,7 +138,7 @@ class PokemonViewModel(private val pokemonRepository: PokemonRepository) : BaseV
         updatePokemonFavorites()
 
     }
-    fun updatePokemonFavorites(){
+    private fun updatePokemonFavorites(){
         pokemonFavoritesList.clear()
         getFavoritesPokemon()
 

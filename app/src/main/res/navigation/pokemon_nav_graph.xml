@@ -11,8 +11,7 @@
             android:id="@+id/listPokemonFragmentHome"
             android:name="com.codeplace.mvvmpokemonapp.ui.home.view.fragments.ListPokemonFragment"
             android:label="Pokemons"
-            tools:layout="@layout/fragment_list_pokemon"
-            >
+            tools:layout="@layout/fragment_list_pokemon">
             <action
                 android:id="@+id/navigateToPokemonDetailsFragment"
                 app:destination="@id/pokemonDetailsFragment"
@@ -26,27 +25,27 @@
             android:label="Pokemon Details"
             tools:layout="@layout/fragment_pokemon_details" >
             <argument
-                android:name="pokemonName"
+                android:name="name"
                 app:argType="string"
                 android:defaultValue="Name"/>
             <argument
-                android:name="pokemonUrl"
-                app:argType="string"
-                android:defaultValue="pokemonUrl"/>
+                android:name="id"
+                app:argType="integer"
+                android:defaultValue="0"/>
             <argument
-                android:name="urlPokemonImage"
+                android:name="imageUrl"
                 app:argType="string"
                 android:defaultValue="Image"/>
             <argument
-                android:name="pokemonAbilityName"
+                android:name="ability"
                 app:argType="string"
                 android:defaultValue="Type"/>
             <argument
-                android:name="pokemonTypeName"
+                android:name="type"
                 app:argType="string"
                 android:defaultValue="Move"/>
             <argument
-                android:name="pokemonMoveName"
+                android:name="move"
                 app:argType="string"
                 android:defaultValue="Ability" />
         </fragment>
@@ -61,7 +60,6 @@
             android:id="@+id/action_ListFavoritesPokemonFragment_to_listPokemonFragment"
             app:destination="@id/listPokemonFragment"
             app:enterAnim="@anim/from_left" />
-
     </fragment>
     <action
         android:id="@+id/globalActionNavigateToNestedGraph"

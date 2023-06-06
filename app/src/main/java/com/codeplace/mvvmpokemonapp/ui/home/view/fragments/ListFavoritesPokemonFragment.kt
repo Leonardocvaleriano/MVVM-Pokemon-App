@@ -43,7 +43,7 @@ class ListFavoritesPokemonFragment: Fragment(), PokemonFavoriteItemClickListener
         viewModel.pokemonFavorites.observe(viewLifecycleOwner){
             when(it){
                 is StateFlow.Loading -> (loading(it.loading))
-                is StateFlow.Success<*> -> (fillFavoritePokemonList(it.data as List<PokemonDb>))
+                is StateFlow.Success<*> -> (fillFavoritePokemonList(it.data as List<PokemonDb>?))
                 is StateFlow.Error -> (errorMessage(it.errorMessage))
             }
         }
@@ -56,7 +56,7 @@ class ListFavoritesPokemonFragment: Fragment(), PokemonFavoriteItemClickListener
     private fun errorMessage(errorMessage: String) {
         Toast.makeText(activity, errorMessage, Toast.LENGTH_SHORT).show()
     }
-    private fun fillFavoritePokemonList(result:List<PokemonDb>){
+    private fun fillFavoritePokemonList(result:List<PokemonDb>?){
         viewModel.fillFavoritePokemonList(result)
         initRecyclerAdapter()
     }

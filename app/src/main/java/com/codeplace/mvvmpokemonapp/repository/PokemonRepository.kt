@@ -17,14 +17,14 @@ class PokemonRepository (private val baseUrl: String, val pokemonsDao: PokemonsD
              val api = RetrofitInstance.getRetrofit(baseUrl)
              return@withContext api.getPokemonInfo(pokemonName)
     }
-        suspend fun getPokemonEffects(pokemonId:Int) = withContext(Dispatchers.IO){
+        suspend fun getPokemonEffects(id:Int) = withContext(Dispatchers.IO){
             val api = RetrofitInstance.getRetrofit(baseUrl)
-            return@withContext api.getPokemonEffect(pokemonId)
+            return@withContext api.getPokemonEffect(id)
         }
 
-        suspend fun getPokemonSpecies(pokemonId: Int) = withContext(Dispatchers.IO){
+        suspend fun getPokemonSpecies(id: Int) = withContext(Dispatchers.IO){
             val api = RetrofitInstance.getRetrofit(baseUrl)
-            return@withContext api.getPokemonSpecies(pokemonId)
+            return@withContext api.getPokemonSpecies(id)
         }
 
     // db
