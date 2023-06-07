@@ -47,7 +47,7 @@ class FragmentListPokemonsFavoritesAdapter(
                 txtPokemonType.text = capitalize(type)
                 txtPokemonMove.text = capitalize(move)
                 Glide.with(holder.itemView.context)
-                    .load(img)
+                    .load(imgUrl)
                     .into(imgPokemon)
 
                 icFavorite.setOnClickListener {
@@ -59,8 +59,8 @@ class FragmentListPokemonsFavoritesAdapter(
                 }
                 clickableTextMore.setOnClickListener {
                     val navController = findNavController(holder.itemView)
-//                    val action = List
-//                    navController.navigate(action)
+                    val action = ListFavoritesPokemonFragmentDirections.naviteToPokemonDetailsFragment(name!!,id!!, imgUrl!!,ability!!,type!!,move!!)
+                    navController.navigate(action)
                 }
             }
         }

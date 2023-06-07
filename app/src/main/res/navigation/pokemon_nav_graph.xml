@@ -49,18 +49,18 @@
                 app:argType="string"
                 android:defaultValue="Ability" />
         </fragment>
+        <fragment
+            android:id="@+id/ListFavoritesPokemonFragment"
+            android:name="com.codeplace.mvvmpokemonapp.ui.home.view.fragments.ListFavoritesPokemonFragment"
+            android:label="Favorites" >
+            <action
+                android:id="@+id/naviteToPokemonDetailsFragment"
+                app:destination="@id/pokemonDetailsFragment" />
+        </fragment>
 
     </navigation>
 
-    <fragment
-        android:id="@+id/ListFavoritesPokemonFragment"
-        android:name="com.codeplace.mvvmpokemonapp.ui.home.view.fragments.ListFavoritesPokemonFragment"
-        android:label="Favorites" >
-        <action
-            android:id="@+id/action_ListFavoritesPokemonFragment_to_listPokemonFragment"
-            app:destination="@id/pokemonDetailsFragment" />
 
-    </fragment>
     <action
         android:id="@+id/globalActionNavigateToNestedGraph"
         app:destination="@id/listPokemonFragment"

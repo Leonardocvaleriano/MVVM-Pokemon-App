@@ -71,6 +71,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="30dp"
+                android:layout_marginStart="7dp"
                 android:backgroundTint="@color/navy"
                 app:cardCornerRadius="20dp"
                 app:cardElevation="5dp"
@@ -79,17 +80,16 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/imgPokemon">
 
-
-
             <TextView
                     android:id="@+id/txtPokemonAbility"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_gravity="center"
+                    android:textAlignment="center"
                     android:fontFamily="@font/latoregular"
                     android:padding="10dp"
                     android:textColor="@color/white"
-                    android:textSize="20sp"
+                    android:textSize="17sp"
                     tools:text="Ability" />
             </com.google.android.material.card.MaterialCardView>
 
@@ -110,10 +110,11 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
+                    android:textAlignment="center"
                     android:fontFamily="@font/latoregular"
                     android:padding="10dp"
                     android:textColor="@color/white"
-                    android:textSize="20sp"
+                    android:textSize="17sp"
                     tools:text="Type" />
             </com.google.android.material.card.MaterialCardView>
 
@@ -123,6 +124,7 @@
                 android:layout_height="wrap_content"
                 android:backgroundTint="@color/orange"
                 app:cardCornerRadius="20dp"
+                android:layout_marginEnd="7dp"
                 app:layout_constraintBottom_toBottomOf="@+id/cvPokemonType"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/cvPokemonType"
@@ -132,13 +134,11 @@
                     android:id="@+id/txtPokemonMove"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:fontFamily="@font/latoregular"
+                     android:fontFamily="@font/latoregular"
                     android:padding="10dp"
                     android:textColor="@color/white"
-                    android:textSize="20sp"
+                    android:textSize="17sp"
                     tools:text="Movement" />
-
             </com.google.android.material.card.MaterialCardView>
 
             <TextView

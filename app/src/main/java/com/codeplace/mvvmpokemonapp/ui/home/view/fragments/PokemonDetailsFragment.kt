@@ -41,8 +41,8 @@ class PokemonDetailsFragment : Fragment() {
         val type = args.type
         val move = args.move
 
-        with(binding){
-            txtPokemonName.text = name
+        with(binding) {
+            txtPokemonName.text = capitalize(name)
             Glide.with(this@PokemonDetailsFragment)
                 .load(imageUrl)
                 .fitCenter()
@@ -58,8 +58,8 @@ class PokemonDetailsFragment : Fragment() {
 
     }
 
-    private fun initValues(id: Int, name:String) {
-        viewModel.getPokemonCharacteristics(id,name )
+    private fun initValues(id: Int, name: String) {
+        viewModel.getPokemonCharacteristics(id, name)
     }
 
     private fun initObservables() {
@@ -71,15 +71,15 @@ class PokemonDetailsFragment : Fragment() {
             }
         }
 
-        viewModel.pokemonSpecies.observe(viewLifecycleOwner){
-            when(it){
+        viewModel.pokemonSpecies.observe(viewLifecycleOwner) {
+            when (it) {
                 is StateFlow.Loading -> (loading(it.loading))
                 is StateFlow.Success<*> -> (fillCharacteristicsPokemonGrowthRate(it.data as JSONObject))
                 is StateFlow.Error -> (errorMessage(it.errorMessage))
             }
         }
-        viewModel.pokemonSpecies.observe(viewLifecycleOwner){
-            when(it){
+        viewModel.pokemonSpecies.observe(viewLifecycleOwner) {
+            when (it) {
                 is StateFlow.Loading -> (loading(it.loading))
                 is StateFlow.Success<*> -> (fillCharacteristicsPokemonHabitat(it.data as JSONObject))
                 is StateFlow.Error -> (errorMessage(it.errorMessage))
@@ -93,52 +93,48 @@ class PokemonDetailsFragment : Fragment() {
             }
         }
     }
+
     private fun fillCharacteristicsHeightWeight(result: JSONObject?) {
         with(binding) {
-            txtHeight.text = convertDecimetersToMeters(result!!.getInt("height").toDouble()).toString()
+            txtHeight.text =
+                convertDecimetersToMeters(result!!.getInt("height").toDouble()).toString()
             txtWeight.text = convertHectogramsToKg(result.getInt("weight").toDouble()).toString()
         }
     }
 
     private fun fillCharacteristicsPokemonGrowthRate(result: JSONObject) {
-        with(binding){
+        with(binding) {
             txtGrowthRate.text = capitalize(result.getJSONObject("growth_rate").getString("name"))
         }
     }
+
     private fun fillCharacteristicsPokemonHabitat(result: JSONObject) {
-        with(binding){
+        with(binding) {
             txtHabitat.text = capitalize(result.getJSONObject("habitat").getString("name"))
         }
 
     }
+
     private fun fillCharacteristicsPokemonEffect(result: JSONObject) {
         with(binding) {
-            val effectText = result.getJSONArray("effect_entries").getJSONObject(1).getString("effect").toString()
+            val effectText =
+                result.getJSONArray("effect_entries").getJSONObject(1).getString("effect")
+                    .toString()
             val effectTextSpacesAdjusted = effectText.replace("\\s+".toRegex(), " ")
             txtPokemonEffect.text = effectTextSpacesAdjusted
         }
     }
+
     private fun errorMessage(errorMessage: String) {
-        Toast.makeText(activity, errorMessage , Toast.LENGTH_SHORT).show()
+        Toast.makeText(activity, errorMessage, Toast.LENGTH_SHORT).show()
     }
+
     private fun loading(loading: Boolean) {
-        with(binding){
+        with(binding) {
             progressBar.visibility = if (loading) VISIBLE else GONE
-            viewBackGround.visibility = if (loading) GONE else VISIBLE
-            txtPokemonName.visibility =  if (loading) GONE else VISIBLE
-            imgPokemon.visibility =  if (loading) GONE else VISIBLE
-            txtPokemonType.visibility =  if (loading) GONE else VISIBLE
-            txtPokemonMove.visibility =  if (loading) GONE else VISIBLE
-            materialCardViewPokemonEffect.visibility =  if (loading) GONE else VISIBLE
-            txtPokemonAbility.visibility =  if (loading) GONE else VISIBLE
-            viewPokemonCharacteristics.visibility = if (loading) GONE else VISIBLE
-            txtCharacterTitle.visibility =  if (loading) GONE else VISIBLE
-            txtHeightTitle.visibility =  if (loading) GONE else VISIBLE
-            txtWeightTitle.visibility =  if (loading) GONE else VISIBLE
-            txtHabitatTitle.visibility =  if (loading) GONE else VISIBLE
-            txtGrowthRateTitle.visibility=  if (loading) GONE else VISIBLE
+            txtHeightTitle.visibility = if (loading) GONE else VISIBLE
+            txtWeightTitle.visibility = if (loading) GONE else VISIBLE
+
         }
     }
-
-
 }

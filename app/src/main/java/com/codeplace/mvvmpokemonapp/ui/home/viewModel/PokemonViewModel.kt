@@ -13,11 +13,6 @@ import org.koin.core.KoinApplication.Companion.init
 
 class PokemonViewModel(private val pokemonRepository: PokemonRepository) : BaseViewModel() {
 
-    /**
-     * This pokemonList of type MutableLiveData will hold the current data defined in the BaseViewModel,
-     * to set it to the activity, fragment or whoever be connected with it.
-     */
-
     // Network liveData
     val pokemonNames = MutableLiveData<StateFlow>()
     val pokemonInfo = MutableLiveData<StateFlow>()
@@ -30,8 +25,10 @@ class PokemonViewModel(private val pokemonRepository: PokemonRepository) : BaseV
     private val pokemonInfosList = ArrayList<PokemonInfo>()
     val pokemonFavoritesList = ArrayList<PokemonDb>()
 
-    // List to send to Adapter
+    // List to be sent to Adapter
     val synchronizedDataList = mutableListOf<SynchronizedData>()
+
+
 
     private fun synchronizeDataInAList(){
         for (item in pokemonNamesList){
@@ -125,7 +122,7 @@ class PokemonViewModel(private val pokemonRepository: PokemonRepository) : BaseV
 
     fun fillFavoritePokemonList(result: List<PokemonDb>?){
         result?.forEach {
-            pokemonFavoritesList.add(PokemonDb(it.name, it.ability, it.type,it.move,it.img, it.favoriteStats))
+            pokemonFavoritesList.add(PokemonDb(it.name,it.id, it.ability, it.type,it.move,it.imgUrl, it.favoriteStats))
         }
     }
     fun addPokemonToFavorites(pokemonDb: PokemonDb) = viewModelScope.launch {

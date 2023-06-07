@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/cardView"
     android:layout_width="match_parent"
-    android:layout_height="220dp"
+    android:layout_height="wrap_content"
     android:backgroundTint="@color/beige"
     app:cardCornerRadius="10dp"
     app:strokeColor="@color/black"
@@ -24,71 +24,56 @@
             android:id="@+id/imgPokemon"
             android:layout_width="120dp"
             android:layout_height="120dp"
+            android:layout_marginStart="7dp"
             android:contentDescription="@string/pokemon_image"
-            android:padding="3dp"
-            android:layout_marginStart="3dp"
             android:scaleType="centerCrop"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            tools:src="@drawable/img_pokemon"/>
+            tools:src="@drawable/img_pokemon" />
 
         <TextView
-            android:layout_marginTop="15dp"
             android:id="@+id/txtPokemonName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
+            android:layout_marginTop="20dp"
             android:fontFamily="@font/latobold"
             android:textColor="@color/black"
             android:textSize="25sp"
-             app:layout_constraintStart_toEndOf="@+id/imgPokemon"
+            app:layout_constraintEnd_toStartOf="@+id/icFavorite"
+            app:layout_constraintStart_toEndOf="@+id/imgPokemon"
             app:layout_constraintTop_toTopOf="parent"
             tools:text="Pokemon Name" />
-
-<!--        <CheckBox-->
-<!--            android:id="@+id/checkBoxFavorite"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:button="@drawable/ic_favorite"-->
-<!--            android:background="@color/beige"-->
-<!--            android:layout_marginTop="10dp"-->
-<!--             android:layout_marginEnd="15dp"-->
-<!--            android:contentDescription="@string/favorites_icon"-->
-<!--            app:layout_constraintEnd_toEndOf="parent"-->
-<!--            app:layout_constraintTop_toTopOf="parent" />-->
-
 
         <ImageButton
             android:id="@+id/icFavorite"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/ic_favorite"
+             android:layout_marginEnd="7dp"
             android:background="@color/beige"
-            android:layout_marginTop="10dp"
-            android:layout_marginEnd="15dp"
             android:contentDescription="@string/favorites_icon"
+            android:src="@drawable/ic_favorite"
+            app:layout_constraintBottom_toBottomOf="@+id/txtPokemonName"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="@+id/txtPokemonName" />
 
         <androidx.cardview.widget.CardView
             android:id="@+id/cvPokemonAbility"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="20dp"
             android:backgroundTint="@color/navy"
             app:cardCornerRadius="10dp"
-            app:cardElevation="5dp"
-            app:layout_constraintHorizontal_chainStyle="packed"
-            app:layout_constraintStart_toEndOf="@+id/imgPokemon"
+             app:cardElevation="5dp"
+            android:layout_marginTop="20dp"
+            app:layout_constraintStart_toStartOf="@+id/txtPokemonName"
             app:layout_constraintTop_toBottomOf="@+id/txtPokemonName">
 
             <TextView
                 android:id="@+id/txtPokemonAbility"
                 android:layout_width="wrap_content"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_gravity="center"
+                android:textAlignment="center"
                 android:fontFamily="@font/latoregular"
                 android:padding="7dp"
                 android:textColor="@color/white"
@@ -100,9 +85,9 @@
             android:id="@+id/cvPokemonType"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
             android:backgroundTint="@color/purple"
             app:cardCornerRadius="10dp"
-            android:layout_marginStart="5dp"
             app:cardElevation="5dp"
             app:layout_constraintStart_toEndOf="@+id/cvPokemonAbility"
             app:layout_constraintTop_toTopOf="@+id/cvPokemonAbility">
@@ -123,10 +108,12 @@
             android:id="@+id/cvPokemonMovement"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="20dp"
             android:backgroundTint="@color/orange"
             app:cardCornerRadius="10dp"
-            android:layout_marginTop="5dp"
             app:cardElevation="5dp"
+            app:layout_constraintBottom_toTopOf="@+id/clickableTextMore"
             app:layout_constraintStart_toStartOf="@+id/cvPokemonAbility"
             app:layout_constraintTop_toBottomOf="@+id/cvPokemonAbility">
 
@@ -158,21 +145,18 @@
 
 
         <TextView
-             android:id="@+id/clickableTextMore"
+            android:id="@+id/clickableTextMore"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/latoregular"
-            android:layout_gravity="center"
-             android:layout_marginEnd="15dp"
-            android:layout_marginBottom="7dp"
+            android:layout_marginBottom="5dp"
             android:contentDescription="@string/pokemon_details"
+            android:fontFamily="@font/latoregular"
             android:src="@drawable/ic_arrow_circle_right"
             android:text="@string/more"
             android:textColor="@color/black"
             android:textSize="20sp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-              />
+            app:layout_constraintEnd_toEndOf="@+id/icFavorite" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </com.google.android.material.card.MaterialCardView>

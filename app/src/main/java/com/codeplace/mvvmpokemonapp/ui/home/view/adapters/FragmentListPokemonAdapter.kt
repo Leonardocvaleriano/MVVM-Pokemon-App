@@ -54,7 +54,7 @@ class FragmentListPokemonAdapter(
                     if (favoriteStats.equals("0") || favoriteStats == null) {
                         favoriteStats = "1"
                         listener.addToFavoriteClick(
-                            PokemonDb(name, ability, type, move, imageUrl, favoriteStats),
+                            PokemonDb(name, id, ability, type, move, imageUrl, favoriteStats),
                             "Pokemon has been Added to favorites list."
                         )
                         icFavorite.setImageResource(R.drawable.ic_favorite_filled)
