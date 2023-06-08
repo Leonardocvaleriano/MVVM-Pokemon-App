@@ -44,7 +44,7 @@ class PokemonDetailsFragment : Fragment() {
         val move = args.move
 
         with(binding) {
-            textViews = listOf(txtWeightTitle,txtHabitatTitle,txtHeightTitle,txtCharacterTitle,txtGrowthRateTitle)
+            textViews = listOf(txtWeightTitle,txtHabitatTitle,txtHeightTitle,txtCharacterTitle,txtGrowthRateTitle, txtKg, txtMeter)
             txtPokemonName.text = capitalize(name)
             Glide.with(this@PokemonDetailsFragment)
                 .load(imageUrl)
@@ -71,7 +71,6 @@ class PokemonDetailsFragment : Fragment() {
                 is StateFlow.Error -> (errorMessage(it.errorMessage))
             }
         }
-
         viewModel.pokemonSpecies.observe(viewLifecycleOwner) {
             when (it) {
                 is StateFlow.Loading -> (loading(it.loading))
@@ -94,7 +93,6 @@ class PokemonDetailsFragment : Fragment() {
             }
         }
     }
-
     private fun fillCharacteristicsHeightWeight(result: JSONObject?) {
         with(binding) {
             txtHeight.text =
@@ -138,8 +136,8 @@ class PokemonDetailsFragment : Fragment() {
     }
 
     private fun setTextViewsVisibilityStatus(loading: Boolean) {
-        repeat(textViews.size) {
-            if (loading) GONE else VISIBLE
+         textViews.forEach {textViews ->
+            textViews.visibility =  if (loading) GONE else VISIBLE
+         }
         }
     }
-}

@@ -26,37 +26,35 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-
             <TextView
                 android:id="@+id/txtPokemonName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="60dp"
-                android:layout_marginBottom="30dp"
                 android:fontFamily="@font/latobold"
                 android:padding="4dp"
                 android:textAlignment="center"
                 android:textColor="@color/white"
                 android:textSize="40sp"
-                 app:layout_constraintBottom_toTopOf="@+id/imgPokemon"
-                app:layout_constraintEnd_toEndOf="@+id/imgPokemon"
-                app:layout_constraintStart_toStartOf="@+id/imgPokemon"
-                app:layout_constraintTop_toTopOf="@+id/viewBackGround"
+                app:layout_constraintBottom_toTopOf="@+id/imgPokemon"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
                 tools:text="Pokemon" />
 
             <View
                 android:id="@+id/viewPokemonCharacteristics"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_marginTop="80dp"
+                android:layout_marginTop="50dp"
                 android:background="@drawable/shape_view_pokemon_info"
                 app:layout_constraintTop_toBottomOf="@+id/viewBackGround"
                 app:layout_constraintBottom_toBottomOf="parent"/>
 
             <ImageView
                 android:id="@+id/imgPokemon"
-                android:layout_width="200dp"
-                android:layout_height="200dp"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:layout_marginBottom="30dp"
                 android:contentDescription="@string/pokemon_image"
                 android:scaleType="fitXY"
                 android:src="@drawable/img_pokemon"
