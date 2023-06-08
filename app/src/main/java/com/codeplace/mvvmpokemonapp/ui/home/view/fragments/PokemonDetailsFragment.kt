@@ -6,6 +6,7 @@ import android.view.View
 import android.view.View.GONE
 import android.view.View.VISIBLE
 import android.view.ViewGroup
+import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.navArgs
@@ -20,9 +21,10 @@ import org.json.JSONObject
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class PokemonDetailsFragment : Fragment() {
-
+    private lateinit var textViews: List<TextView>
     private var _binding: FragmentPokemonDetailsBinding? = null
     private val binding get() = _binding!!
+
 
     private val viewModel by viewModel<PokemonViewModel>()
     private val args: PokemonDetailsFragmentArgs by navArgs()
@@ -42,6 +44,7 @@ class PokemonDetailsFragment : Fragment() {
         val move = args.move
 
         with(binding) {
+            textViews = listOf(txtWeightTitle,txtHabitatTitle,txtHeightTitle,txtCharacterTitle,txtGrowthRateTitle)
             txtPokemonName.text = capitalize(name)
             Glide.with(this@PokemonDetailsFragment)
                 .load(imageUrl)
@@ -51,13 +54,11 @@ class PokemonDetailsFragment : Fragment() {
             txtPokemonType.text = capitalize(type)
             txtPokemonMove.text = capitalize(move)
         }
+
         initValues(id, name)
         initObservables()
-
         return binding.root
-
     }
-
     private fun initValues(id: Int, name: String) {
         viewModel.getPokemonCharacteristics(id, name)
     }
@@ -132,9 +133,13 @@ class PokemonDetailsFragment : Fragment() {
     private fun loading(loading: Boolean) {
         with(binding) {
             progressBar.visibility = if (loading) VISIBLE else GONE
-            txtHeightTitle.visibility = if (loading) GONE else VISIBLE
-            txtWeightTitle.visibility = if (loading) GONE else VISIBLE
+            setTextViewsVisibilityStatus(loading)
+        }
+    }
 
+    private fun setTextViewsVisibilityStatus(loading: Boolean) {
+        repeat(textViews.size) {
+            if (loading) GONE else VISIBLE
         }
     }
 }

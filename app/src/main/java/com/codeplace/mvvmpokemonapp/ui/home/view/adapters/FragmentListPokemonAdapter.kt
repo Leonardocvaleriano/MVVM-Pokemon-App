@@ -80,6 +80,20 @@ class FragmentListPokemonAdapter(
                     )
                     navController.navigate(action)
                 }
+
+                cardView.setOnClickListener{
+                    val navController = findNavController(holder.itemView)
+                    val action = ListPokemonFragmentDirections.navigateToPokemonDetailsFragment(
+                        name!!,
+                        id!!,
+                        imageUrl!!,
+                        ability!!,
+                        type!!,
+                        move!!
+                    )
+                    navController.navigate(action)
+
+                }
             }
         }
     }

@@ -9,7 +9,6 @@ import com.codeplace.mvvmpokemonapp.R
 import com.codeplace.mvvmpokemonapp.databinding.PokemonItemsBinding
 import com.codeplace.mvvmpokemonapp.db.model.PokemonDb
 import com.codeplace.mvvmpokemonapp.ui.home.view.fragments.ListFavoritesPokemonFragmentDirections
-import com.codeplace.mvvmpokemonapp.ui.home.view.fragments.ListPokemonFragmentDirections
 import com.codeplace.mvvmpokemonapp.util.capitalize
 
 class FragmentListPokemonsFavoritesAdapter(
@@ -58,6 +57,11 @@ class FragmentListPokemonsFavoritesAdapter(
                     icFavorite.setBackgroundResource(R.drawable.ic_favorite)
                 }
                 clickableTextMore.setOnClickListener {
+                    val navController = findNavController(holder.itemView)
+                    val action = ListFavoritesPokemonFragmentDirections.naviteToPokemonDetailsFragment(name!!,id!!, imgUrl!!,ability!!,type!!,move!!)
+                    navController.navigate(action)
+                }
+                cardView.setOnClickListener {
                     val navController = findNavController(holder.itemView)
                     val action = ListFavoritesPokemonFragmentDirections.naviteToPokemonDetailsFragment(name!!,id!!, imgUrl!!,ability!!,type!!,move!!)
                     navController.navigate(action)
