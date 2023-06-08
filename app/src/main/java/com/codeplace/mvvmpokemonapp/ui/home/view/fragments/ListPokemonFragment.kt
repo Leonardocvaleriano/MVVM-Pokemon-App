@@ -1,13 +1,15 @@
 package com.codeplace.mvvmpokemonapp.ui.home.view.fragments
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
+import android.view.MenuItem
 import android.view.View
 import android.view.View.GONE
 import android.view.View.VISIBLE
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.fragment.app.Fragment
+ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.codeplace.mvvmpokemonapp.databinding.FragmentListPokemonBinding
 import com.codeplace.mvvmpokemonapp.db.model.PokemonDb
@@ -17,12 +19,20 @@ import com.codeplace.mvvmpokemonapp.ui.home.view.adapters.PokemonItemClickListen
 import com.codeplace.mvvmpokemonapp.ui.home.viewModel.PokemonViewModel
 import org.json.JSONObject
 import org.koin.androidx.viewmodel.ext.android.viewModel
-
+import androidx.activity.OnBackPressedCallback
+import androidx.activity.addCallback
+import androidx.navigation.Navigation.findNavController
+import androidx.navigation.findNavController
+import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.fragment.findNavController
+import com.codeplace.mvvmpokemonapp.R
+import com.codeplace.mvvmpokemonapp.ui.home.view.adapters.onBackPressedClickListener
 
 class ListPokemonFragment: Fragment(), PokemonItemClickListener {
     private lateinit var binding: FragmentListPokemonBinding
     private lateinit var adapter: FragmentListPokemonAdapter
-     private val viewModel by viewModel<PokemonViewModel>()
+    private val viewModel by viewModel<PokemonViewModel>()
+
      override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -30,10 +40,13 @@ class ListPokemonFragment: Fragment(), PokemonItemClickListener {
     ): View {
         binding = FragmentListPokemonBinding.inflate(inflater, container, false)
 
-        initValues()
-        initObservables()
-        return binding.root
+         initValues()
+         initObservables()
+         return binding.root
     }
+
+
+
     private fun initValues() {
         viewModel.getPokemonNames()
         viewModel.getFavoritesPokemon()
@@ -76,6 +89,7 @@ class ListPokemonFragment: Fragment(), PokemonItemClickListener {
     }
     private fun fillPokemonInfo(result: JSONObject) {
         viewModel.fillPokemonInfo(result)
+        viewModel.syncronizeDataInAList()
         initRecyclerAdapter()
     }
 
@@ -86,7 +100,6 @@ class ListPokemonFragment: Fragment(), PokemonItemClickListener {
                 viewModel.synchronizedDataList,
                 this@ListPokemonFragment
             )
-
             recyclerView.adapter = adapter
          }
     }
@@ -108,4 +121,5 @@ class ListPokemonFragment: Fragment(), PokemonItemClickListener {
     }
 
 }
+
 
