@@ -1,5 +1,5 @@
 <h2>  Objective 🎯</h2>
-<p> The objective of the study plan was: Develop an App which consume the network data with the retrofit library and also retrieve the data with the Room library,following the MVVM desgin pattern  <br>
+<p> Plan of study objective: Develop an App which consume the network data with the retrofit library and also retrieve the data with the Room library, following the MVVM desgin pattern  <br>
 
 <h2> Features of the project 🔨 </h2>
 
@@ -7,7 +7,7 @@
 
 <h2>Techniques and tecnologies used ✔️</h2>
 
-In this App the following techniques and technologies are being used:
+In this App the following libraries and technologies have been applied:
 
 - MVVM(Design pattern) 
 - RESTful API | Retrofit 2 
